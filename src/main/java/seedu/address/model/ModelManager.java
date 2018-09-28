@@ -71,7 +71,7 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public void addPerson(Ride ride) {
         versionedAddressBook.addRide(ride);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        updateFilteredPersonList(PREDICATE_SHOW_ALL_RIDES);
         indicateAddressBookChanged();
     }
 
