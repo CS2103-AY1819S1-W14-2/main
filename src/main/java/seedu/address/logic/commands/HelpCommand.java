@@ -15,11 +15,31 @@ public class HelpCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Shows program usage instructions.\n"
             + "Example: " + COMMAND_WORD;
 
+    public static final String SHOWING_SHORT_HELP_MESSAGE = "Showing summarized help.";
     public static final String SHOWING_HELP_MESSAGE = "Opened help window.";
+    public static final String MORE_HELP_FLAG = "more";
+
+
+    public final boolean isSummarized;
+
+    public HelpCommand(String[] args) {
+        if (args.length == 1 && args[0].isEmpty()) {
+            isSummarized = true;
+        } else if (args.length == 1 && args[0].equals(MORE_HELP_FLAG)) {
+            isSummarized = false;
+        } else {
+            //error
+            isSummarized = false;
+        }
+    }
 
     @Override
     public CommandResult execute(Model model, CommandHistory history) {
-        EventsCenter.getInstance().post(new ShowHelpRequestEvent());
-        return new CommandResult(SHOWING_HELP_MESSAGE);
+        EventsCenter.getInstance().post(new ShowHelpRequestEvent(isSummarized));
+        if (isSummarized) {
+            return new CommandResult(SHOWING_SHORT_HELP_MESSAGE);
+        } else {
+            return new CommandResult(SHOWING_HELP_MESSAGE);
+        }
     }
 }

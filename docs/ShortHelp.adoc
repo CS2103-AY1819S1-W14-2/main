@@ -1,0 +1,14 @@
+* `add <attraction>`
+* `delete <attraction>`
+* `exit`
+* `find <attraction>`
+* `help [option]`
+* `history |find| [findargs...]`
+* `undo`
+* `redo`
+* `update <attraction> <tag> <value>`
+* `shutdown <attraction>`
+* `view <name>`
+* `quickview`
+* `filter <tag> <condition>`
+* `{tab}`

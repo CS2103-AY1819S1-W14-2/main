@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- ThanePark save file which contains the same Ride values as in TypicalPersons#getTypicalAddressBook() -->
+<thanepark>
+    <rides>
+        <name>Alice Pauline</name>
+        <daysSinceMaintenanceString>94351253</daysSinceMaintenanceString>
+        <waitingTimeString>1</waitingTimeString>
+        <address>123, Jurong West Ave 6, #08-111</address>
+        <tagged>friends</tagged>
+    </rides>
+    <rides>
+        <name>Benson Meier</name>
+        <daysSinceMaintenanceString>98765432</daysSinceMaintenanceString>
+        <waitingTimeString>16</waitingTimeString>
+        <address>311, Clementi Ave 2, #02-25</address>
+        <tagged>owesMoney</tagged>
+        <tagged>friends</tagged>
+    </rides>
+    <rides>
+        <name>Carl Kurz</name>
+        <daysSinceMaintenanceString>95352563</daysSinceMaintenanceString>
+        <waitingTimeString>13</waitingTimeString>
+        <address>wall street</address>
+    </rides>
+    <rides>
+        <name>Daniel Meier</name>
+        <daysSinceMaintenanceString>87652533</daysSinceMaintenanceString>
+        <waitingTimeString>3</waitingTimeString>
+        <address>10th street</address>
+        <tagged>friends</tagged>
+    </rides>
+    <rides>
+        <name>Elle Meyer</name>
+        <daysSinceMaintenanceString>9482224</daysSinceMaintenanceString>
+        <waitingTimeString>21</waitingTimeString>
+        <address>michegan ave</address>
+    </rides>
+    <rides>
+        <name>Fiona Kunz</name>
+        <daysSinceMaintenanceString>9482427</daysSinceMaintenanceString>
+        <waitingTimeString>12</waitingTimeString>
+        <address>little tokyo</address>
+    </rides>
+    <rides>
+        <name>George Best</name>
+        <daysSinceMaintenanceString>9482442</daysSinceMaintenanceString>
+        <waitingTimeString>1</waitingTimeString>
+        <address>4th street</address>
+    </rides>
+</thanepark>

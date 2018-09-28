@@ -11,21 +11,21 @@ import seedu.address.commons.events.ui.JumpToListRequestEvent;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.Person;
+import seedu.address.model.ride.Ride;
 
 /**
- * Views a ride identified using it's displayed name from ThanPark.
+ * Selects a ride identified using it's displayed name from from ThanePark.
  */
 public class ViewCommand extends Command {
 
     public static final String COMMAND_WORD = "view";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Selects the person identified by the name used in the displayed rides list.\n"
+            + ": Selects the ride identified by the name used in the displayed rides list.\n"
             + "Parameters: NAME (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " Battlestar Galactica";
 
-    public static final String MESSAGE_SELECT_PERSON_SUCCESS = "Selected Person: %1$s";
+    public static final String MESSAGE_SELECT_PERSON_SUCCESS = "Selected Ride: %1$s";
 
     private final Index targetIndex;
 
@@ -37,9 +37,9 @@ public class ViewCommand extends Command {
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
 
-        List<Person> filteredPersonList = model.getFilteredPersonList();
+        List<Ride> filteredRideList = model.getFilteredPersonList();
 
-        if (targetIndex.getZeroBased() >= filteredPersonList.size()) {
+        if (targetIndex.getZeroBased() >= filteredRideList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 

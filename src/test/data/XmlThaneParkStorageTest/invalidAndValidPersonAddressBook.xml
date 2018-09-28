@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<thanepark>
+    <!-- Valid Ride -->
+    <rides>
+        <name>Hans Muster</name>
+        <maintenance isPrivate="false">9482424</maintenance>
+        <waitingTime isPrivate="false">hans@example.com</waitingTime>
+        <address isPrivate="false">4th street</address>
+    </rides>
+    <!-- Ride with invalid maintenance field -->
+    <rides>
+        <name>Hans Muster</name>
+        <maintenance isPrivate="false">948asdf2424</maintenance>
+        <waitingTime isPrivate="false">hans@example.com</waitingTime>
+        <address isPrivate="false">4th street</address>
+    </rides>
+</thanepark>

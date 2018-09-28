@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<thanepark>
+    <!-- Ride with invalid name field -->
+    <rides>
+        <name>Ha!ns Mu@ster</name>
+        <maintenance isPrivate="false">9482424</maintenance>
+        <waitingTime isPrivate="false">hans@example.com</waitingTime>
+        <address isPrivate="false">4th street</address>
+    </rides>
+</thanepark>

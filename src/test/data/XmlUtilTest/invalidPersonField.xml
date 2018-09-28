@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<!-- Person with an invalid phone field -->
-<person>
+<!-- Ride with an invalid maintenance field -->
+<ride>
     <name>Hans Muster</name>
-    <phone>9482asf424</phone>
-    <email>hans@example</email>
+    <daysSinceMaintenanceString>9482asf424</daysSinceMaintenanceString>
+    <waitingTimeString>13</waitingTimeString>
     <address>4th street</address>
     <tagged>friends</tagged>
-</person>
+</ride>

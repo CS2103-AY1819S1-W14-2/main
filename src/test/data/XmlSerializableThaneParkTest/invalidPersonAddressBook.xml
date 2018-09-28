@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<thanepark>
+    <!-- Ride with invalid waitingTime field -->
+    <rides>
+        <name>Hans Muster</name>
+        <daysSinceMaintenanceString isPrivate="false">9482424</daysSinceMaintenanceString>
+        <waitingTimeString isPrivate="false">hans@exam!32ple</waitingTimeString>
+        <address isPrivate="false">4th street</address>
+    </rides>
+</thanepark>

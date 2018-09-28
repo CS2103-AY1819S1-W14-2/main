@@ -10,11 +10,12 @@ import static seedu.address.ui.testutil.GuiTestAssert.assertListMatching;
 import org.junit.Test;
 
 import guitests.GuiRobot;
+import guitests.guihandles.BrowserPanelHandle;
 import guitests.guihandles.HelpWindowHandle;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.SelectCommand;
-import seedu.address.ui.BrowserPanel;
+import seedu.address.ui.HelpWindow;
 import seedu.address.ui.StatusBarFooter;
 
 /**
@@ -52,11 +53,11 @@ public class HelpCommandSystemTest extends AddressBookSystemTest {
         assertHelpWindowOpen();
 
         //use command box
-        executeCommand(HelpCommand.COMMAND_WORD);
+        executeCommand(HelpCommand.COMMAND_WORD + " more");
         assertHelpWindowOpen();
 
         // open help window and give it focus
-        executeCommand(HelpCommand.COMMAND_WORD);
+        executeCommand(HelpCommand.COMMAND_WORD + " more");
         getMainWindowHandle().focus();
 
         // assert that while the help window is open the UI updates correctly for a command execution
@@ -64,13 +65,27 @@ public class HelpCommandSystemTest extends AddressBookSystemTest {
         assertEquals("", getCommandBox().getInput());
         assertCommandBoxShowsDefaultStyle();
         assertNotEquals(HelpCommand.SHOWING_HELP_MESSAGE, getResultDisplay().getText());
-        assertNotEquals(BrowserPanel.DEFAULT_PAGE, getBrowserPanel().getLoadedUrl());
+        assertNotEquals(getClass().getResource(HelpWindow.SHORT_HELP_FILE_PATH), getBrowserPanel().getLoadedUrl());
         assertListMatching(getPersonListPanel(), getModel().getFilteredPersonList());
 
         // assert that the status bar too is updated correctly while the help window is open
         // note: the select command tested above does not update the status bar
         executeCommand(DeleteCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
         assertNotEquals(StatusBarFooter.SYNC_STATUS_INITIAL, getStatusBarFooter().getSyncStatus());
+    }
+
+    @Test
+    public void openHelpSummary() {
+        //already open on startup
+        assertShortHelpDisplayed();
+
+        //select something
+        executeCommand(SelectCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
+        assertShortHelpNotDisplayed();
+
+        //use command box
+        executeCommand(HelpCommand.COMMAND_WORD);
+        assertShortHelpDisplayed();
     }
 
     @Test
@@ -81,7 +96,7 @@ public class HelpCommandSystemTest extends AddressBookSystemTest {
         getMainMenu().openHelpWindowUsingAccelerator();
 
         getMainWindowHandle().focus();
-        executeCommand(HelpCommand.COMMAND_WORD);
+        executeCommand(HelpCommand.COMMAND_WORD + " more");
 
         assertEquals(1, guiRobot.getNumberOfWindowsShown(HelpWindowHandle.HELP_WINDOW_TITLE));
     }
@@ -104,4 +119,19 @@ public class HelpCommandSystemTest extends AddressBookSystemTest {
         assertFalse(ERROR_MESSAGE, HelpWindowHandle.isWindowPresent());
     }
 
+    /**
+     * Asserts that the browser's url is changed to display the short help
+     * @see BrowserPanelHandle#isHelpUrl()
+     */
+    protected void assertShortHelpDisplayed() {
+        assertTrue(getMainWindowHandle().getBrowserPanel().isHelpUrl());
+    }
+
+    /**
+     * Asserts that the browser's url is not displaying the short help
+     * @see BrowserPanelHandle#isHelpUrl()
+     */
+    protected void assertShortHelpNotDisplayed() {
+        assertFalse(getMainWindowHandle().getBrowserPanel().isHelpUrl());
+    }
 }

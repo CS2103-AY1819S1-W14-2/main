@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<thanepark>
+
+    <rides>
+        <name>Alice Pauline</name>
+        <daysSinceMaintenanceString>94351253</daysSinceMaintenanceString>
+        <waitingTimeString>1</waitingTimeString>
+        <address>123, Jurong West Ave 6, #08-111</address>
+        <tagged>friends</tagged>
+    </rides>
+
+    <!-- Ride with same identity as Alice Pauline -->
+    <rides>
+        <name>Alice Pauline</name>
+        <daysSinceMaintenanceString>94351253</daysSinceMaintenanceString>
+        <waitingTimeString>19</waitingTimeString>
+        <address>4th street</address>
+    </rides>
+
+</thanepark>

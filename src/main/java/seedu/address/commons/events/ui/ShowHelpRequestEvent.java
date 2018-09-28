@@ -7,6 +7,12 @@ import seedu.address.commons.events.BaseEvent;
  */
 public class ShowHelpRequestEvent extends BaseEvent {
 
+    public final boolean isSummarized;
+
+    public ShowHelpRequestEvent(boolean summarized) {
+        this.isSummarized = summarized;
+    }
+
     @Override
     public String toString() {
         return getClass().getSimpleName();

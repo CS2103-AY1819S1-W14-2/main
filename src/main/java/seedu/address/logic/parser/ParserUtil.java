@@ -9,10 +9,10 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Phone;
+import seedu.address.model.ride.Address;
+import seedu.address.model.ride.Maintenance;
+import seedu.address.model.ride.Name;
+import seedu.address.model.ride.WaitTime;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -51,18 +51,18 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String phone} into a {@code Phone}.
+     * Parses a {@code String daysSinceMaintenanceString} into a {@code Maintenance}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code phone} is invalid.
+     * @throws ParseException if the given {@code daysSinceMaintenanceString} is invalid.
      */
-    public static Phone parsePhone(String phone) throws ParseException {
-        requireNonNull(phone);
-        String trimmedPhone = phone.trim();
-        if (!Phone.isValidPhone(trimmedPhone)) {
-            throw new ParseException(Phone.MESSAGE_PHONE_CONSTRAINTS);
+    public static Maintenance parseMaintenance(String daysSinceMaintenanceString) throws ParseException {
+        requireNonNull(daysSinceMaintenanceString);
+        String trimmedMaintenance = daysSinceMaintenanceString.trim();
+        if (!Maintenance.isValidMaintenance(trimmedMaintenance)) {
+            throw new ParseException(Maintenance.MESSAGE_MAINTENANCE_CONSTRAINTS);
         }
-        return new Phone(trimmedPhone);
+        return new Maintenance(trimmedMaintenance);
     }
 
     /**
@@ -81,18 +81,18 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String email} into an {@code Email}.
+     * Parses a {@code String email} into an {@code WaitTime}.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code email} is invalid.
      */
-    public static Email parseEmail(String email) throws ParseException {
+    public static WaitTime parseEmail(String email) throws ParseException {
         requireNonNull(email);
         String trimmedEmail = email.trim();
-        if (!Email.isValidEmail(trimmedEmail)) {
-            throw new ParseException(Email.MESSAGE_EMAIL_CONSTRAINTS);
+        if (!WaitTime.isValidWaitTime(trimmedEmail)) {
+            throw new ParseException(WaitTime.MESSAGE_WAIT_TIME_CONSTRAINTS);
         }
-        return new Email(trimmedEmail);
+        return new WaitTime(trimmedEmail);
     }
 
     /**

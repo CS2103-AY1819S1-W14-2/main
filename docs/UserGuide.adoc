@@ -1,4 +1,4 @@
-= AddressBook Level 4 - User Guide
+= Thane Park - User Guide
 :site-section: UserGuide
 :toc:
 :toc-title:
@@ -18,17 +18,21 @@ By: `CS2103-AY1819S1-W14-2`      Since: `Sep 2018`      Licence: `MIT`
 
 == Introduction
 
-ThanePark is for those who *prefer to use a desktop app for managing contacts*. More importantly, ThanePark is
-*optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB4 can get your contact management tasks done faster than traditional GUI apps. Interested? Jump to the <<Quick Start>> to get started. Enjoy!
+ThanePark is for those who *prefer to use a desktop app for managing the rides in
+your theme park!*. More importantly, ThanePark is *optimized for those who prefer
+to work with a Command Line Interface* (CLI) while still having the benefits of a
+Graphical User Interface (GUI). If you can type fast, ThanePark can get your
+contact management tasks done faster than traditional GUI apps. Interested? Jump
+to the <<Quick Start>> to get started. Enjoy!
 
 == Quick Start
 
 .  Ensure you have Java version `9` or later installed in your Computer.
-.  Download the latest `addressbook.jar` link:{repoURL}/releases[here].
-.  Copy the file to the folder you want to use as the home folder for your Address Book.
+.  Download the latest `thanepark.jar` link:{repoURL}/releases[here].
+.  Copy the file to the folder you want to use as the home folder for your ThanePark.
 .  Double-click the file to start the app. The GUI should appear in a few seconds.
 +
-image::Ui.png[width="790"]
+image::Mockup.png[width="790"]
 +
 .  Type the command in the command box and press kbd:[Enter] to execute it. +
 e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.

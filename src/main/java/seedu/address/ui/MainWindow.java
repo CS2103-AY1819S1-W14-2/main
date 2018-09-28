@@ -164,10 +164,23 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
+     * Handle request for help
+     * @param event
+     */
+    public void handleHelp(ShowHelpRequestEvent event) {
+        if (event.isSummarized) {
+            String userGuideUrl = getClass().getResource(HelpWindow.SHORT_HELP_FILE_PATH).toString();
+            browserPanel.loadPage(userGuideUrl);
+        } else {
+            showHelpWindow();
+        }
+    }
+
+    /**
      * Opens the help window or focuses on it if it's already opened.
      */
     @FXML
-    public void handleHelp() {
+    public void showHelpWindow() {
         if (!helpWindow.isShowing()) {
             helpWindow.show();
         } else {
@@ -198,6 +211,6 @@ public class MainWindow extends UiPart<Stage> {
     @Subscribe
     private void handleShowHelpEvent(ShowHelpRequestEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
-        handleHelp();
+        handleHelp(event);
     }
 }
