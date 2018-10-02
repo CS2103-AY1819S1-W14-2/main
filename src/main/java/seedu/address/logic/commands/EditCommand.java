@@ -6,7 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_MAINTENANCE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_WAITING_TIME;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_RIDES;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -83,7 +83,7 @@ public class EditCommand extends Command {
         }
 
         model.updatePerson(rideToEdit, editedRide);
-        model.updateFilteredRideList(PREDICATE_SHOW_ALL_PERSONS);
+        model.updateFilteredRideList(PREDICATE_SHOW_ALL_RIDES);
         model.commitAddressBook();
         return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, editedRide));
     }

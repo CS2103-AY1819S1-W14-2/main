@@ -17,7 +17,7 @@ public class SuggestCommand extends Command {
 
     public static final String[] COMMAND_WORDS = {AddCommand.COMMAND_WORD, ClearCommand.COMMAND_WORD,
         DeleteCommand.COMMAND_WORD, EditCommand.COMMAND_WORD, ExitCommand.COMMAND_WORD, FindCommand.COMMAND_WORD,
-        HelpCommand.COMMAND_WORD, HistoryCommand.COMMAND_WORD, ListCommand.COMMAND_WORD, RedoCommand.COMMAND_WORD,
+        HelpCommand.COMMAND_WORD, HistoryCommand.COMMAND_WORD, ViewAllCommand.COMMAND_WORD, RedoCommand.COMMAND_WORD,
         SelectCommand.COMMAND_WORD, UndoCommand.COMMAND_WORD};
     public static final String MESSAGE_SUGGEST_COMMAND_SUCCESS = "Do you mean the following commands:\n%1$s";
 
