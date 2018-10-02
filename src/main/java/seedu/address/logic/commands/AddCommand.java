@@ -22,17 +22,17 @@ public class AddCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a ride to the address book. "
             + "Parameters: "
             + PREFIX_NAME + "NAME "
-            + PREFIX_MAINTENANCE + "PHONE "
-            + PREFIX_WAITING_TIME + "EMAIL "
+            + PREFIX_MAINTENANCE + "MAINTENANCE "
+            + PREFIX_WAITING_TIME + "WAITING TIME "
             + PREFIX_ADDRESS + "ADDRESS "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_NAME + "John Doe "
-            + PREFIX_MAINTENANCE + "98765432 "
-            + PREFIX_WAITING_TIME + "johnd@example.com "
+            + PREFIX_NAME + "Transformers "
+            + PREFIX_MAINTENANCE + "3 "
+            + PREFIX_WAITING_TIME + "45 "
             + PREFIX_ADDRESS + "311, Clementi Ave 2, #02-25 "
-            + PREFIX_TAG + "friends "
-            + PREFIX_TAG + "owesMoney";
+            + PREFIX_TAG + "4D "
+            + PREFIX_TAG + "indoor";
 
     public static final String MESSAGE_SUCCESS = "New ride added: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON = "This ride already exists in the address book";

@@ -653,7 +653,7 @@ attraction and coming back later without having to queue |visitors do not feel m
 *Actor* Manager +
 *MSS*
 
-1.  User adds attraction.
+1.  User adds attraction by name with the information.
 2.  ThanePark shows add success message.
 +
 Use case ends.
@@ -673,7 +673,7 @@ Use case ends.
 *Actor* Manager +
 *MSS*
 
-1.  User deletes attraction.
+1.  User deletes attraction by index(must be a positive integer).
 2.  ThanePark show delete success message.
 +
 Use case ends.

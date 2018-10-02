@@ -48,7 +48,16 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 ====
 *Command Format*
 
-* `<>` denotes compulsory field. Example: `add <attraction>`
+* Words in UPPER_CASE are the parameters to be supplied by the user
+  e.g. in add n/NAME, NAME is a parameter which can be used as add n/Battlestar Galactica.
+* Items in square brackets are optional e.g n/NAME [t/TAG] can be used as
+  n/Battlestar Galactica t/4D or as n/Battlestar Galactica.
+* Items with …​ after them can be used multiple times including
+  zero times e.g. [t/TAG]…​ can be used as
+  (i.e. 0 times), t/4D, t/3D t/indoor etc.
+* Parameters can be in any order e.g. if the command specifies
+  n/NAME p/ADDRESS, p/ADDRESS n/NAME is also acceptable.
+* `<>` denotes compulsory field. Example: `add <attraction>``<maintenance>` `<waitTime>` `<address>`
 * `[]` denotes optional field. Example: `help [more]`
 * `||` denotes flag. Example: `history |find| [findargs...]`
 * `{}` denotes keystroke. Example `{tab}` is the TAB keystroke.
@@ -60,13 +69,35 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 
 ==== Add attractions: `add`
 
-Add an attraction by name. +
-Format: `add <attraction>`
+Add an attraction by name with the information. +
+Format: `add <attraction>` `<maintenance>` `<waitTime>` `<address>` `[tag(s)]`
+
+A ride can have any number of tags (including 0).
+Examples:
+
+* add n/Transformers m/1 w/30 a/John street, block 123, #01-01
+* add n/The Mummy m/3 w/45 a/311, Clementi Ave 2, #02-25 t/3D t/indoor
 
 ==== Delete attractions: `delete`
 
-Delete an attraction by name. +
-Format: `delete <attraction>`
+Deletes the specified attraction from the address book.
+Format: `delete <INDEX>`
+
+* Deletes the attraction at the specified INDEX.
+
+* The index refers to the index number shown in the displayed attraction list.
+
+* The index must be a positive integer 1, 2, 3, …​
+
+Examples:
+
+* `viewall` +
+  `delete 2` +
+  Deletes the 2nd attraction in the address book.
+
+* `find Puss in Boots' Giant Journey` +
+   `delete 1` +
+   Deletes the 1st attraction in the results of the find command.
 
 ==== Update information of attraction: `update`
 
@@ -202,8 +233,10 @@ Format: `exit`
 == Command Summary
 
 === Provided
-* *Add*: `add <attraction>`
-* *Delete*: `delete <attraction>`
+* *Add*: `add <attraction>` `<maintenance>` `<waitTime>` `<address>` `[tag(s)]` +
+  e.g. add n/Mummy m/3 w/45 a/311, Clementi Ave 2, #02-25 t/3D t/indoor
+* *Delete*: `delete <index>` +
+  e.g. delete 3
 * *Exit*: `exit`
 * *Find*: `find <attraction>`
 * *Help*: `help [option]`
