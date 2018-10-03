@@ -26,11 +26,6 @@ public class UndoCommandTest {
     private final Model expectedModel = new ModelManager(getTypicalAddressBook(), new UserPrefs());
     private final CommandHistory commandHistory = new CommandHistory();
 
-    @Before
-    public void setUp() {
-        ;
-    }
-
     @Test
     public void execute() {
         //setup
