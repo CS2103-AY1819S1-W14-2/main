@@ -97,7 +97,20 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p><code>&lt;&gt;</code> denotes compulsory field. Example: <code>add &lt;attraction&gt;</code></p>
+<p>Items in square brackets are optional e.g n/name [t/tag] can be used as
+n/Battlestar Galactica t/4D or as n/Battlestar Galactica.</p>
+</li>
+<li>
+<p>Items with …​ after them can be used multiple times including
+zero times e.g. [t/tag]…​ can be used as
+(i.e. 0 times), t/4D, t/3D t/indoor etc.</p>
+</li>
+<li>
+<p>Parameters can be in any order e.g. if the command specifies
+n/name p/address, p/address n/name is also acceptable.</p>
+</li>
+<li>
+<p><code>&lt;&gt;</code> denotes compulsory field. Example: <code>add &lt;attraction&gt;`</code>&lt;maintenance&gt;` <code>&lt;waitTime&gt;</code> <code>&lt;address&gt;</code></p>
 </li>
 <li>
 <p><code>[]</code> denotes optional field. Example: <code>help [more]</code></p>
@@ -120,15 +133,59 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="sect3">
 <h4 id="add-attractions-code-add-code"><a class="link" href="#add-attractions-code-add-code">3.1.1. Add attractions: <code>add</code></a></h4>
 <div class="paragraph">
-<p>Add an attraction by name.<br>
-Format: <code>add &lt;attraction&gt;</code></p>
+<p>Add an attraction by name with the information.<br>
+Format: <code>add &lt;attraction&gt;</code> <code>&lt;maintenance&gt;</code> <code>&lt;waitTime&gt;</code> <code>&lt;address&gt;</code> <code>[tag(s)]</code></p>
+</div>
+<div class="paragraph">
+<p>A ride can have any number of tags (including 0).
+Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>add n/Transformers m/1 w/30 a/John street, block 123, #01-01</p>
+</li>
+<li>
+<p>add n/The Mummy m/3 w/45 a/311, Clementi Ave 2, #02-25 t/3D t/indoor</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect3">
 <h4 id="delete-attractions-code-delete-code"><a class="link" href="#delete-attractions-code-delete-code">3.1.2. Delete attractions: <code>delete</code></a></h4>
 <div class="paragraph">
-<p>Delete an attraction by name.<br>
-Format: <code>delete &lt;attraction&gt;</code></p>
+<p>Deletes the specified attraction from the address book.
+Format: <code>delete &lt;index&gt;</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the attraction at the specified index.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the displayed attraction list.</p>
+</li>
+<li>
+<p>The index must be a positive integer 1, 2, 3, …​</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>viewall</code><br>
+<code>delete 2</code><br>
+Deletes the 2nd attraction in the address book.</p>
+</li>
+<li>
+<p><code>find Puss in Boots' Giant Journey</code><br>
+<code>delete 1</code><br>
+Deletes the 1st attraction in the results of the find command.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect3">
@@ -324,10 +381,12 @@ Format: <code>find &lt;attraction&gt;</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Add</strong>: <code>add &lt;attraction&gt;</code></p>
+<p><strong>Add</strong>: <code>add &lt;attraction&gt;</code> <code>&lt;maintenance&gt;</code> <code>&lt;waitTime&gt;</code> <code>&lt;address&gt;</code> <code>[tag(s)]</code><br>
+e.g. add n/Mummy m/3 w/45 a/311, Clementi Ave 2, #02-25 t/3D t/indoor</p>
 </li>
 <li>
-<p><strong>Delete</strong>: <code>delete &lt;attraction&gt;</code></p>
+<p><strong>Delete</strong>: <code>delete &lt;index&gt;</code><br>
+e.g. delete 3</p>
 </li>
 <li>
 <p><strong>Exit</strong>: <code>exit</code></p>
@@ -376,4 +435,4 @@ Format: <code>find &lt;attraction&gt;</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-02 14:20:43 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-03 08:56:03 UTC</div></div></div></body></html>
