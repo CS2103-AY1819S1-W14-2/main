@@ -869,9 +869,6 @@ AttributePredicate to test the attriute</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream</p>
-</div>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
@@ -885,8 +882,10 @@ A new instance of <code>SuggestCommand</code> is created whenever <code>AddressB
 or when {tab} is pressed inside the CommandBox.</p>
 </div>
 <div class="paragraph">
-<p>When an incomplete command is entered, the <code>AddressBookParser</code> will parse the output using a <code>SuggestCommandParser</code>.
-The <code>AddressBookParser</code> then checks that</p>
+<p>When an incomplete command is entered, the <code>AddressBookParser</code> will parse the output using a <code>SuggestCommandParser</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>AddressBookParser</code> then checks that</p>
 </div>
 <div class="paragraph">
 <p>Given below are some example usage scenarios and how the undo/redo mechanism behaves at each step.</p>
@@ -897,38 +896,38 @@ The <code>AddressBookParser</code> then checks that</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Figure 3.5.1 Activity Diagram of user e</p>
+<p>Figure 3.5.1 Activity Diagram of user executing command</p>
 </div>
 <div class="paragraph">
 <p>==== Design Considerations</p>
 </div>
 <div class="paragraph">
-<p>===== Aspect: How undo &amp; redo executes</p>
+<p>===== Aspect: Handle tab through events and SuggestCommand</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire address book.</p>
+<p><strong>Alternative 1 (current choice):</strong> Handle tab through events and SuggestCommand.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Flexible.</p>
+</li>
+<li>
+<p>Cons: Difficult to implement.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Handle everything in CommandWindow.</p>
 <div class="ulist">
 <ul>
 <li>
 <p>Pros: Easy to implement.</p>
 </li>
 <li>
-<p>Cons: May have performance issues in terms of memory usage.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the person being deleted).</p>
-</li>
-<li>
-<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
+<p>Cons: Difficult to extend.</p>
 </li>
 </ul>
 </div>
@@ -961,8 +960,7 @@ The <code>AddressBookParser</code> then checks that</p>
 <p>Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.</p>
 </li>
 <li>
-<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; Stashed changes</p>
+<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p>
 </li>
 </ul>
 </div>
@@ -2248,4 +2246,4 @@ An attraction/ride that is meant for visitors to patronize.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-16 16:00:29 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-16 16:08:52 UTC</div></div></div></body></html>
