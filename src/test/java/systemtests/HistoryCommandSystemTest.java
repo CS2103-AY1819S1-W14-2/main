@@ -11,9 +11,10 @@ import org.junit.Test;
 
 import guitests.GuiRobot;
 import guitests.guihandles.HistoryWindowHandle;
+
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.HistoryCommand;
-import seedu.address.logic.commands.SelectCommand;
+import seedu.address.logic.commands.ViewCommand;
 import seedu.address.ui.StatusBarFooter;
 
 /**
@@ -38,7 +39,7 @@ public class HistoryCommandSystemTest extends AddressBookSystemTest {
         getMainWindowHandle().focus();
 
         // assert that while the history window is open the UI updates correctly for a command execution
-        executeCommand(SelectCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
+        executeCommand(ViewCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
         assertEquals("", getCommandBox().getInput());
         assertCommandBoxShowsDefaultStyle();
         assertNotEquals(HistoryCommand.MESSAGE_HISTORY_WINDOW, getResultDisplay().getText());

@@ -14,7 +14,7 @@ import guitests.guihandles.BrowserPanelHandle;
 import guitests.guihandles.HelpWindowHandle;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.HelpCommand;
-import seedu.address.logic.commands.SelectCommand;
+import seedu.address.logic.commands.ViewCommand;
 import seedu.address.ui.HelpWindow;
 import seedu.address.ui.StatusBarFooter;
 
@@ -61,7 +61,7 @@ public class HelpCommandSystemTest extends AddressBookSystemTest {
         getMainWindowHandle().focus();
 
         // assert that while the help window is open the UI updates correctly for a command execution
-        executeCommand(SelectCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
+        executeCommand(ViewCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
         assertEquals("", getCommandBox().getInput());
         assertCommandBoxShowsDefaultStyle();
         assertNotEquals(HelpCommand.SHOWING_HELP_MESSAGE, getResultDisplay().getText());
@@ -79,7 +79,7 @@ public class HelpCommandSystemTest extends AddressBookSystemTest {
         assertShortHelpDisplayed();
 
         //select something
-        executeCommand(SelectCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
+        executeCommand(ViewCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
         assertShortHelpNotDisplayed();
 
         //use command box

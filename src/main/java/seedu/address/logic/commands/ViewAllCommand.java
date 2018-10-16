@@ -15,7 +15,6 @@ public class ViewAllCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Viewed all rides";
 
-
     @Override
     public CommandResult execute(Model model, CommandHistory history) {
         requireNonNull(model);

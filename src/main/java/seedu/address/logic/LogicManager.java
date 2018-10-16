@@ -41,7 +41,7 @@ public class LogicManager extends ComponentManager implements Logic {
     }
 
     @Override
-    public ObservableList<Ride> getFilteredPersonList() {
+    public ObservableList<Ride> getFilteredRideList() {
         return model.getFilteredRideList();
     }
 
