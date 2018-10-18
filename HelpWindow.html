@@ -14,7 +14,7 @@
 <li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
 <li><a href="#manage-attractions">3.1. Manage attractions</a></li>
-<li><a href="#user-help-and-accessbility">3.2. User help and accessbility</a></li>
+<li><a href="#user-help-and-accessibility">3.2. User help and accessibility</a></li>
 <li><a href="#view-the-information-of-a-ride">3.3. View the information of a ride</a></li>
 <li><a href="#storage-data-management">3.4. Storage/data management</a></li>
 </ul>
@@ -45,10 +45,13 @@ to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get st
 <div class="sect1">
 <h2 id="quick-start"><a class="link" href="#quick-start">2. Quick Start</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Steps to set up ThanePark:</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Ensure you have Java version <code>9</code> or later installed in your Computer.</p>
+<p>Check that you have Java version <code>9</code> or later installed in your Computer.</p>
 </li>
 <li>
 <p>Download the latest <code>thanepark.jar</code> <a href="https://github.com/CS2103-AY1819S1-W14-2/main/releases">here</a>.</p>
@@ -69,25 +72,31 @@ to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get st
 e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window.</p>
 </li>
 <li>
-<p>Some example commands you can try:</p>
+<p>Type some of these commands to try out ThanePark:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong><code>exit</code></strong> : exits the app</p>
+<p><strong><code>viewall</code></strong> : lists all rides in your theme park.</p>
+</li>
+<li>
+<p><strong><code>exit</code></strong> : exits the app.</p>
 </li>
 </ul>
 </div>
 </li>
-<li>
-<p>Refer to <a href="#Features">Section 3, &#8220;Features&#8221;</a> for details of each command.</p>
-</li>
 </ol>
+</div>
+<div class="paragraph">
+<p>Refer to <a href="#Features">Section 3, &#8220;Features&#8221;</a> for details of each command.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="Features"><a class="link" href="#Features">3. Features</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>This section contains all commands used for ThanePark.</p>
+</div>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
@@ -96,32 +105,25 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p>Items in square brackets are optional e.g n/name [t/tag] can be used as
-n/Battlestar Galactica t/4D or as n/Battlestar Galactica.</p>
+<p>Items in chevrons <code>&lt;&gt;</code> denotes compulsory field.<br>
+Example: <code>add &lt;attraction&gt;</code>&lt;maintenance&gt; <code>&lt;waitTime&gt;</code> <code>&lt;address&gt;</code></p>
 </li>
 <li>
-<p>Items with …​ after them can be used multiple times including
-zero times e.g. [t/tag]…​ can be used as
-(i.e. 0 times), t/4D, t/3D t/indoor etc.</p>
+<p>Items in square brackets <code>[]</code> denotes optional field.<br>
+Example: <code>help [more]</code></p>
 </li>
 <li>
-<p>Parameters can be in any order e.g. if the command specifies
-n/name p/address, p/address n/name is also acceptable.</p>
+<p>Items in curly brackets <code>{}</code> denotes keystroke.<br>
+Example: <code>{tab}</code> is the TAB keystroke.</p>
 </li>
 <li>
-<p><code>&lt;&gt;</code> denotes compulsory field. Example: <code>add &lt;attraction&gt;`</code>&lt;maintenance&gt;` <code>&lt;waitTime&gt;</code> <code>&lt;address&gt;</code></p>
+<p>Items ending with ellipses <code>&#8230;&#8203;</code> denotes variable arguments.<br>
+Example: <code>history [findargs&#8230;&#8203;]</code></p>
 </li>
 <li>
-<p><code>[]</code> denotes optional field. Example: <code>help [more]</code></p>
-</li>
-<li>
-<p><code>||</code> denotes flag. Example: <code>history |find| [findargs&#8230;&#8203;]</code></p>
-</li>
-<li>
-<p><code>{}</code> denotes keystroke. Example <code>{tab}</code> is the TAB keystroke.</p>
-</li>
-<li>
-<p><code>&#8230;&#8203;</code> denotes variable arguments. Example: <code>history |find| [findargs&#8230;&#8203;]</code></p>
+<p>Parameters can be in any order<br>
+Example: if the command specifies
+  n/name p/address, p/address n/name is also acceptable.</p>
 </li>
 </ul>
 </div>
@@ -129,15 +131,20 @@ n/name p/address, p/address n/name is also acceptable.</p>
 </div>
 <div class="sect2">
 <h3 id="manage-attractions"><a class="link" href="#manage-attractions">3.1. Manage attractions</a></h3>
+<div class="paragraph">
+<p>This section contains all commands related to managing attractions.</p>
+</div>
 <div class="sect3">
 <h4 id="add-attractions-code-add-code"><a class="link" href="#add-attractions-code-add-code">3.1.1. Add attractions: <code>add</code></a></h4>
 <div class="paragraph">
 <p>Add an attraction by name with the information.<br>
-Format: <code>add &lt;attraction&gt;</code> <code>&lt;maintenance&gt;</code> <code>&lt;waitTime&gt;</code> <code>&lt;address&gt;</code> <code>[tag(s)]</code></p>
+Format: <code>add <code>&lt;attraction&gt;</code> <code>&lt;maintenance&gt;</code> <code>&lt;waitTime&gt;</code> <code>&lt;address&gt;</code> [tag(s)]</code></p>
 </div>
 <div class="paragraph">
-<p>A ride can have any number of tags (including 0).
-Examples:</p>
+<p>A ride can have any number of tags (including 0).<br></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -153,16 +160,16 @@ Examples:</p>
 <div class="sect3">
 <h4 id="delete-attractions-code-delete-code"><a class="link" href="#delete-attractions-code-delete-code">3.1.2. Delete attractions: <code>delete</code></a></h4>
 <div class="paragraph">
-<p>Deletes the specified attraction from the address book.
+<p>Deletes the specified attraction from the ThanePark.<br>
 Format: <code>delete &lt;index&gt;</code></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Deletes the attraction at the specified index.</p>
+<p>Deletes the ride at the specified index.</p>
 </li>
 <li>
-<p>The index refers to the index number shown in the displayed attraction list.</p>
+<p>The index refers to the index number shown in the list of displayed rides.</p>
 </li>
 <li>
 <p>The index must be a positive integer 1, 2, 3, …​</p>
@@ -177,12 +184,12 @@ Format: <code>delete &lt;index&gt;</code></p>
 <li>
 <p><code>viewall</code><br>
 <code>delete 2</code><br>
-Deletes the 2nd attraction in the address book.</p>
+Deletes the 2nd ride in ThanePark.</p>
 </li>
 <li>
 <p><code>find Puss in Boots' Giant Journey</code><br>
 <code>delete 1</code><br>
-Deletes the 1st attraction in the results of the find command.</p>
+Deletes the 1st ride in the results of the find command.</p>
 </li>
 </ul>
 </div>
@@ -190,27 +197,30 @@ Deletes the 1st attraction in the results of the find command.</p>
 <div class="sect3">
 <h4 id="update-information-of-attraction-code-update-code"><a class="link" href="#update-information-of-attraction-code-update-code">3.1.3. Update information of attraction: <code>update</code></a></h4>
 <div class="paragraph">
-<p>Updates the information <code>&lt;tag&gt;</code> with <code>&lt;value&gt;</code> about the attraction with <code>&lt;name&gt;</code>.<br>
+<p>Updates the information <code>&lt;tag&gt;</code> with <code>&lt;value&gt;</code> about the ride with <code>&lt;name&gt;</code>.<br>
 Format: <code>update &lt;attraction&gt; &lt;tag&gt; &lt;value&gt;</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="shutdown-attraction-code-shutdown-code"><a class="link" href="#shutdown-attraction-code-shutdown-code">3.1.4. Shutdown attraction: <code>shutdown</code></a></h4>
 <div class="paragraph">
-<p>Close the attraction for the day. Display statistics for the ride on that day.<br>
+<p>Close the ride for the day. Display statistics for the ride on that day.<br>
 Format: <code>shutdown &lt;attraction&gt;</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="open-attraction-code-open-code"><a class="link" href="#open-attraction-code-open-code">3.1.5. Open attraction: <code>open</code></a></h4>
 <div class="paragraph">
-<p>Open the attraction for the day. Display statistics for the ride on that day.<br>
+<p>Open the ride for the day. Display statistics for the ride on that day.<br>
 Format: <code>open &lt;attraction&gt;</code></p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="user-help-and-accessbility"><a class="link" href="#user-help-and-accessbility">3.2. User help and accessbility</a></h3>
+<h3 id="user-help-and-accessibility"><a class="link" href="#user-help-and-accessibility">3.2. User help and accessibility</a></h3>
+<div class="paragraph">
+<p>This section contains all commands related to managing commands.</p>
+</div>
 <div class="sect3">
 <h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.2.1. Viewing help: <code>help</code></a></h4>
 <div class="paragraph">
@@ -221,14 +231,11 @@ Format: <code>help [option]</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="history-of-previously-inputted-commands-code-history-code"><a class="link" href="#history-of-previously-inputted-commands-code-history-code">3.2.2. History of previously inputted commands: <code>history</code></a></h4>
+<h4 id="history-of-previous-commands-code-history-code"><a class="link" href="#history-of-previous-commands-code-history-code">3.2.2. History of previous commands: <code>history</code></a></h4>
 <div class="paragraph">
-<p>Display previously inputted commands during this session. Inputted
-commands from the past are logged into the system. To view/start a
-query on commands, specify the <code>find</code> flag with the appropriate find
-arguments. If invalid arguments are passed, the error handling will be
-done by <code>find</code>.<br>
-Format: <code>history |find| [findargs&#8230;&#8203;]</code></p>
+<p>Display previous commands during this session. Inputted
+commands from the past are logged into the system.<br>
+Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -313,46 +320,51 @@ Format: <code>clear</code></p>
 <div class="sect3">
 <h4 id="exit-code-exit-code"><a class="link" href="#exit-code-exit-code">3.2.7. Exit: <code>exit</code></a></h4>
 <div class="paragraph">
-<p>Format: <code>exit</code></p>
+<p>Exits the ThanePark application.<br>
+Format: <code>exit</code></p>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="view-the-information-of-a-ride"><a class="link" href="#view-the-information-of-a-ride">3.3. View the information of a ride</a></h3>
+<div class="paragraph">
+<p>This section contains all commands related to viewing specific information on rides.</p>
+</div>
 <div class="sect3">
 <h4 id="viewing-all-available-attractions-code-viewall-code"><a class="link" href="#viewing-all-available-attractions-code-viewall-code">3.3.1. Viewing all available attractions: <code>viewall</code></a></h4>
 <div class="paragraph">
 <p>Display all available attractions in a list according to the number of
 people that have taken the ride for the day in alphanumeric order if
 optional fields are not specified. <code>status</code> field specifies whether the user
-want to view opened or closed rides. <code>Order</code> field specifies whether the
-user want to view the rides in ascending or descending alphanumeric
-order.<br>
-Format: <code>viewall [status] [order]</code></p>
+want to view opened or closed rides.<br>
+Format: <code>viewall [status]</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="view-detailed-information-of-a-specific-ride-code-view-code"><a class="link" href="#view-detailed-information-of-a-specific-ride-code-view-code">3.3.2. View detailed information of a specific ride: <code>view</code></a></h4>
 <div class="paragraph">
-<p>Display all available information about a single ride.<br>
-Format: <code>view &lt;name&gt;</code></p>
+<p>Display all available information about a single ride on the list of displayed rides.
+<code>index</code> field specifies the index of the ride that the user wants to view.<br>
+Format: <code>view &lt;index&gt;</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="quick-view-information-of-top-five-most-frequented-rides-code-quickview-code"><a class="link" href="#quick-view-information-of-top-five-most-frequented-rides-code-quickview-code">3.3.3. Quick view information of top five most frequented rides: <code>quickview</code></a></h4>
 <div class="paragraph">
-<p>Quick view information of the top 5 most frequented rides in the park if
-optional field is empty.<br>
-Format: <code>quickview [order]</code></p>
+<p>Quick view information of the top 5 most frequented rides in the park.<br>
+Format: <code>quickview</code></p>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="storage-data-management"><a class="link" href="#storage-data-management">3.4. Storage/data management</a></h3>
+<div class="paragraph">
+<p>This section contains all commands related to filtering and finding rides.</p>
+</div>
 <div class="sect3">
 <h4 id="filter-code-filter-code"><a class="link" href="#filter-code-filter-code">3.4.1. Filter: <code>filter</code></a></h4>
 <div class="paragraph">
-<p>Display all attractions that fits the condition in a table.<br>
+<p>Display all rides that fits the condition in a table.<br>
 Can only filter conditions that have numeric values i.e. Maintenance and WaitTime<br>
 Can include more conditions as desired.<br>
 Format: <code>filter &lt;tag&gt; &lt;condition&gt; [[tag] [condition]&#8230;&#8203;]</code><br>
@@ -370,7 +382,7 @@ Filters attractions with waiting time less than 500 and more than 50 minutes.</p
 <div class="sect3">
 <h4 id="find-a-particular-attraction-code-find-code"><a class="link" href="#find-a-particular-attraction-code-find-code">3.4.2. Find a particular attraction: <code>find</code></a></h4>
 <div class="paragraph">
-<p>Find the attractions that the user needs to check on. Case insensitive.<br>
+<p>Find the rides that the user needs to check on. Case insensitive.<br>
 Can only find the name, the address, and the tags of the attractions.<br>
 Must include arguments when finding.<br>
 Format: <code>find &lt;[name] [[tag][keyword]&#8230;&#8203;]&gt;</code><br>
@@ -426,7 +438,7 @@ e.g. delete 3</p>
 <p><strong>Help</strong>: <code>help [option]</code></p>
 </li>
 <li>
-<p><strong>History</strong>: <code>history |find| [findargs&#8230;&#8203;]</code></p>
+<p><strong>History</strong>: <code>history</code></p>
 </li>
 <li>
 <p><strong>Undo</strong>: <code>undo</code></p>
@@ -466,4 +478,4 @@ e.g. delete 3</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-18 02:05:52 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-18 02:06:34 UTC</div></div></div></body></html>
