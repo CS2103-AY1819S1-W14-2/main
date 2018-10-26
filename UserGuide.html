@@ -13,17 +13,19 @@
 <li><a href="#quick-start">2. Quick Start</a></li>
 <li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
-<li><a href="#manage-attractions">3.1. Manage attractions</a></li>
-<li><a href="#user-help-and-accessibility">3.2. User help and accessibility</a></li>
-<li><a href="#view-the-information-of-a-ride">3.3. View the information of a ride</a></li>
-<li><a href="#storage-data-management">3.4. Storage/data management</a></li>
+<li><a href="#manage-commands">3.1. Manage commands</a></li>
+<li><a href="#manage-input-output-of-attractions">3.2. Manage input/output of attractions</a></li>
+<li><a href="#view-the-list-of-rides">3.3. View the list of rides</a></li>
 </ul>
 </li>
-<li><a href="#faq">4. FAQ</a></li>
-<li><a href="#command-summary">5. Command Summary</a>
-<ul class="sectlevel2">
-<li><a href="#provided">5.1. Provided</a></li>
-<li><a href="#added">5.2. Added</a></li>
+<li><a href="#tag-view">tag::view[]</a>
+<ul class="sectlevel3">
+<li><a href="#viewing-all-available-attractions-code-viewall-code">1.1. Viewing all available attractions: <code>viewall</code></a></li>
+<li><a href="#view-detailed-information-of-a-specific-ride-code-view-code">1.2. View detailed information of a specific ride: <code>view</code></a></li>
+<li><a href="#quick-view-information-of-top-five-most-frequented-rides-code-quickview-code">1.3. Quick view information of top five most frequented rides: <code>quickview</code></a></li>
+<li><a href="#filter-the-list-of-rides">1.4. Filter the list of rides</a></li>
+<li><a href="#faq">5. FAQ</a></li>
+<li><a href="#command-summary">6. Command Summary</a></li>
 </ul>
 </li>
 </ul>
@@ -37,7 +39,7 @@
 your theme park!</strong>. More importantly, ThanePark is <strong>optimized for those who prefer
 to work with a Command Line Interface</strong> (CLI) while still having the benefits of a
 Graphical User Interface (GUI). If you can type fast, ThanePark can get your
-contact management tasks done faster than traditional GUI apps. Interested? Jump
+ride information faster than traditional GUI apps. Interested? Jump
 to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
 </div>
 </div>
@@ -67,12 +69,23 @@ to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get st
 </div>
 </div>
 </li>
-<li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Congratulations! You have successfully set up ThanePark!</p>
+</div>
+<div class="paragraph">
 <p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.<br>
 e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window.</p>
-</li>
-<li>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>insert diagram here of help window</pre>
+</div>
+</div>
+<div class="paragraph">
 <p>Type some of these commands to try out ThanePark:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -82,9 +95,6 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p><strong><code>exit</code></strong> : exits the app.</p>
 </li>
 </ul>
-</div>
-</li>
-</ol>
 </div>
 <div class="paragraph">
 <p>Refer to <a href="#Features">Section 3, &#8220;Features&#8221;</a> for details of each command.</p>
@@ -130,12 +140,123 @@ Example: if the command specifies
 </div>
 </div>
 <div class="sect2">
-<h3 id="manage-attractions"><a class="link" href="#manage-attractions">3.1. Manage attractions</a></h3>
+<h3 id="manage-commands"><a class="link" href="#manage-commands">3.1. Manage commands</a></h3>
+<div class="paragraph">
+<p>This section contains all commands related to managing commands.</p>
+</div>
+<div class="sect3">
+<h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1.1. Viewing help: <code>help</code></a></h4>
+<div class="paragraph">
+<p>Display short summary of important commands. <br>
+Format: <code>help [option]</code></p>
+</div>
+<div class="paragraph">
+<p>Displays a full list of important commands with a more detailed description if more is supplied as an <code>option</code>. If a specific command is supplied as <code>option</code>, show
+greater detail of the specified command. If invalid <code>option</code> is specified, will show default help message.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="history-of-previous-commands-code-history-code"><a class="link" href="#history-of-previous-commands-code-history-code">3.1.2. History of previous commands: <code>history</code></a></h4>
+<div class="paragraph">
+<p>Display previous commands during this session. Inputted
+commands from the past are logged into the system.<br>
+Format: <code>history</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="undoing-commands-code-undo-code"><a class="link" href="#undoing-commands-code-undo-code">3.1.3. Undoing commands: <code>undo</code></a></h4>
+<div class="paragraph">
+<p>Undo previous command during current session.<br>
+Format: <code>undo</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete 1</code><br>
+<code>list</code><br>
+<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
+</li>
+<li>
+<p><code>select 1</code><br>
+<code>list</code><br>
+<code>undo</code><br>
+The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
+</li>
+<li>
+<p><code>delete 1</code><br>
+<code>clear</code><br>
+<code>undo</code> (reverses the <code>clear</code> command)<br>
+<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="redoing-previously-undone-commands-code-redo-code"><a class="link" href="#redoing-previously-undone-commands-code-redo-code">3.1.4. Redoing previously undone commands: <code>redo</code></a></h4>
+<div class="paragraph">
+<p>Reverse the previously undone commands during current session.<br>
+Format: <code>redo</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete 1</code><br>
+<code>undo</code> (reverses the <code>delete 1</code> command)<br>
+<code>redo</code> (reapplies the <code>delete 1</code> command)<br></p>
+</li>
+<li>
+<p><code>delete 1</code><br>
+<code>redo</code><br>
+The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
+</li>
+<li>
+<p><code>delete 1</code><br>
+<code>clear</code><br>
+<code>undo</code> (reverses the <code>clear</code> command)<br>
+<code>undo</code> (reverses the <code>delete 1</code> command)<br>
+<code>redo</code> (reapplies the <code>delete 1</code> command)<br>
+<code>redo</code> (reapplies the <code>clear</code> command)<br></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="autocomplete-suggest-code-tab-code"><a class="link" href="#autocomplete-suggest-code-tab-code">3.1.5. Autocomplete/Suggest: <code>{tab}</code></a></h4>
+<div class="paragraph">
+<p>Non-tech savvy users wouldn’t need to remember commands and can
+just use <code>tab</code> s to complete their sentences, or get suggestions on what
+commands start with their specified prefix.<br>
+Format: <code>{tab}</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.1.6. Clearing all entries : <code>clear</code></a></h4>
+<div class="paragraph">
+<p>Clears all entries from the address book.<br>
+Format: <code>clear</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="exit-code-exit-code"><a class="link" href="#exit-code-exit-code">3.1.7. Exit: <code>exit</code></a></h4>
+<div class="paragraph">
+<p>Exits the ThanePark application.<br>
+Format: <code>exit</code></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="manage-input-output-of-attractions"><a class="link" href="#manage-input-output-of-attractions">3.2. Manage input/output of attractions</a></h3>
 <div class="paragraph">
 <p>This section contains all commands related to managing attractions.</p>
 </div>
 <div class="sect3">
-<h4 id="add-attractions-code-add-code"><a class="link" href="#add-attractions-code-add-code">3.1.1. Add attractions: <code>add</code></a></h4>
+<h4 id="add-attractions-code-add-code"><a class="link" href="#add-attractions-code-add-code">3.2.1. Add attractions: <code>add</code></a></h4>
 <div class="paragraph">
 <p>Add an attraction by name with the information.<br>
 Format: <code>add <code>&lt;attraction&gt;</code> <code>&lt;maintenance&gt;</code> <code>&lt;waitTime&gt;</code> <code>&lt;address&gt;</code> [tag(s)]</code></p>
@@ -158,7 +279,7 @@ Format: <code>add <code>&lt;attraction&gt;</code> <code>&lt;maintenance&gt;</cod
 </div>
 </div>
 <div class="sect3">
-<h4 id="delete-attractions-code-delete-code"><a class="link" href="#delete-attractions-code-delete-code">3.1.2. Delete attractions: <code>delete</code></a></h4>
+<h4 id="delete-attractions-code-delete-code"><a class="link" href="#delete-attractions-code-delete-code">3.2.2. Delete attractions: <code>delete</code></a></h4>
 <div class="paragraph">
 <p>Deletes the specified attraction from the ThanePark.<br>
 Format: <code>delete &lt;index&gt;</code></p>
@@ -195,21 +316,21 @@ Deletes the 1st ride in the results of the find command.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="update-information-of-attraction-code-update-code"><a class="link" href="#update-information-of-attraction-code-update-code">3.1.3. Update information of attraction: <code>update</code></a></h4>
+<h4 id="update-information-of-attraction-code-update-code"><a class="link" href="#update-information-of-attraction-code-update-code">3.2.3. Update information of attraction: <code>update</code></a></h4>
 <div class="paragraph">
 <p>Updates the information <code>&lt;tag&gt;</code> with <code>&lt;value&gt;</code> about the ride with <code>&lt;name&gt;</code>.<br>
 Format: <code>update &lt;attraction&gt; &lt;tag&gt; &lt;value&gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="shutdown-attraction-code-shutdown-code"><a class="link" href="#shutdown-attraction-code-shutdown-code">3.1.4. Shutdown attraction: <code>shutdown</code></a></h4>
+<h4 id="shutdown-attraction-code-shutdown-code"><a class="link" href="#shutdown-attraction-code-shutdown-code">3.2.4. Shutdown attraction: <code>shutdown</code></a></h4>
 <div class="paragraph">
 <p>Close the ride for the day. Display statistics for the ride on that day.<br>
 Format: <code>shutdown &lt;attraction&gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="open-attraction-code-open-code"><a class="link" href="#open-attraction-code-open-code">3.1.5. Open attraction: <code>open</code></a></h4>
+<h4 id="open-attraction-code-open-code"><a class="link" href="#open-attraction-code-open-code">3.2.5. Open attraction: <code>open</code></a></h4>
 <div class="paragraph">
 <p>Open the ride for the day. Display statistics for the ride on that day.<br>
 Format: <code>open &lt;attraction&gt;</code></p>
@@ -217,121 +338,16 @@ Format: <code>open &lt;attraction&gt;</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="user-help-and-accessibility"><a class="link" href="#user-help-and-accessibility">3.2. User help and accessibility</a></h3>
+<h3 id="view-the-list-of-rides"><a class="link" href="#view-the-list-of-rides">3.3. View the list of rides</a></h3>
 <div class="paragraph">
-<p>This section contains all commands related to managing commands.</p>
+<p>This section contains all commands related to viewing list on rides.</p>
 </div>
+</div>
+</div>
+</div>
+<h1 id="tag-view" class="sect0"><a class="link" href="#tag-view">tag::view[]</a></h1>
 <div class="sect3">
-<h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.2.1. Viewing help: <code>help</code></a></h4>
-<div class="paragraph">
-<p>Display short summary of important commands if <code>option</code> was not supplied. Displays a full list of important commands
-with a more detailed description if more is supplied as an <code>option</code>. If a specific command is supplied as <code>option</code>, show
-greater detail of the specified command. If invalid <code>option</code> is specified, will show default help message.<br>
-Format: <code>help [option]</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="history-of-previous-commands-code-history-code"><a class="link" href="#history-of-previous-commands-code-history-code">3.2.2. History of previous commands: <code>history</code></a></h4>
-<div class="paragraph">
-<p>Display previous commands during this session. Inputted
-commands from the past are logged into the system.<br>
-Format: <code>history</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="undoing-commands-code-undo-code"><a class="link" href="#undoing-commands-code-undo-code">3.2.3. Undoing commands: <code>undo</code></a></h4>
-<div class="paragraph">
-<p>Undo previous command during current session.<br>
-Format: <code>undo</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete 1</code><br>
-<code>list</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
-</li>
-<li>
-<p><code>select 1</code><br>
-<code>list</code><br>
-<code>undo</code><br>
-The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="redoing-previously-undone-commands-code-redo-code"><a class="link" href="#redoing-previously-undone-commands-code-redo-code">3.2.4. Redoing previously undone commands: <code>redo</code></a></h4>
-<div class="paragraph">
-<p>Reverse the previously undone commands during current session.<br>
-Format: <code>redo</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete 1</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br></p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>redo</code><br>
-The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>clear</code> command)<br></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="autocomplete-suggest-code-tab-code"><a class="link" href="#autocomplete-suggest-code-tab-code">3.2.5. Autocomplete/Suggest: <code>{tab}</code></a></h4>
-<div class="paragraph">
-<p>Non-tech savvy users wouldn’t need to remember commands and can
-just use <code>tab</code> s to complete their sentences, or get suggestions on what
-commands start with their specified prefix.<br>
-Format: <code>{tab}</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.2.6. Clearing all entries : <code>clear</code></a></h4>
-<div class="paragraph">
-<p>Clears all entries from the address book.<br>
-Format: <code>clear</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="exit-code-exit-code"><a class="link" href="#exit-code-exit-code">3.2.7. Exit: <code>exit</code></a></h4>
-<div class="paragraph">
-<p>Exits the ThanePark application.<br>
-Format: <code>exit</code></p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="view-the-information-of-a-ride"><a class="link" href="#view-the-information-of-a-ride">3.3. View the information of a ride</a></h3>
-<div class="paragraph">
-<p>This section contains all commands related to viewing specific information on rides.</p>
-</div>
-<div class="sect3">
-<h4 id="viewing-all-available-attractions-code-viewall-code"><a class="link" href="#viewing-all-available-attractions-code-viewall-code">3.3.1. Viewing all available attractions: <code>viewall</code></a></h4>
+<h4 id="viewing-all-available-attractions-code-viewall-code"><a class="link" href="#viewing-all-available-attractions-code-viewall-code">1.1. Viewing all available attractions: <code>viewall</code></a></h4>
 <div class="paragraph">
 <p>Display all available attractions in a list according to the number of
 people that have taken the ride for the day in alphanumeric order if
@@ -341,7 +357,7 @@ Format: <code>viewall [status]</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="view-detailed-information-of-a-specific-ride-code-view-code"><a class="link" href="#view-detailed-information-of-a-specific-ride-code-view-code">3.3.2. View detailed information of a specific ride: <code>view</code></a></h4>
+<h4 id="view-detailed-information-of-a-specific-ride-code-view-code"><a class="link" href="#view-detailed-information-of-a-specific-ride-code-view-code">1.2. View detailed information of a specific ride: <code>view</code></a></h4>
 <div class="paragraph">
 <p>Display all available information about a single ride on the list of displayed rides.
 <code>index</code> field specifies the index of the ride that the user wants to view.<br>
@@ -349,20 +365,20 @@ Format: <code>view &lt;index&gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="quick-view-information-of-top-five-most-frequented-rides-code-quickview-code"><a class="link" href="#quick-view-information-of-top-five-most-frequented-rides-code-quickview-code">3.3.3. Quick view information of top five most frequented rides: <code>quickview</code></a></h4>
+<h4 id="quick-view-information-of-top-five-most-frequented-rides-code-quickview-code"><a class="link" href="#quick-view-information-of-top-five-most-frequented-rides-code-quickview-code">1.3. Quick view information of top five most frequented rides: <code>quickview</code></a></h4>
 <div class="paragraph">
 <p>Quick view information of the top 5 most frequented rides in the park.<br>
-Format: <code>quickview</code></p>
-</div>
+Format: <code>quickview</code>
+# end::view[]</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="storage-data-management"><a class="link" href="#storage-data-management">3.4. Storage/data management</a></h3>
+<h3 id="filter-the-list-of-rides"><a class="link" href="#filter-the-list-of-rides">1.4. Filter the list of rides</a></h3>
 <div class="paragraph">
 <p>This section contains all commands related to filtering and finding rides.</p>
 </div>
 <div class="sect3">
-<h4 id="filter-code-filter-code"><a class="link" href="#filter-code-filter-code">3.4.1. Filter: <code>filter</code></a></h4>
+<h4 id="filter-code-filter-code"><a class="link" href="#filter-code-filter-code">1.4.1. Filter: <code>filter</code></a></h4>
 <div class="paragraph">
 <p>Display all rides that fits the condition in a table.<br>
 Can only filter conditions that have numeric values i.e. Maintenance and WaitTime<br>
@@ -380,7 +396,7 @@ Filters attractions with waiting time less than 500 and more than 50 minutes.</p
 </div>
 </div>
 <div class="sect3">
-<h4 id="find-a-particular-attraction-code-find-code"><a class="link" href="#find-a-particular-attraction-code-find-code">3.4.2. Find a particular attraction: <code>find</code></a></h4>
+<h4 id="find-a-particular-attraction-code-find-code"><a class="link" href="#find-a-particular-attraction-code-find-code">1.4.2. Find a particular attraction: <code>find</code></a></h4>
 <div class="paragraph">
 <p>Find the rides that the user needs to check on. Case insensitive.<br>
 Can only find the name, the address, and the tags of the attractions.<br>
@@ -402,10 +418,8 @@ Finds and displays the list of attractions with addresses that contain the word 
 </div>
 </div>
 </div>
-</div>
-</div>
 <div class="sect1">
-<h2 id="faq"><a class="link" href="#faq">4. FAQ</a></h2>
+<h2 id="faq"><a class="link" href="#faq">5. FAQ</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
@@ -414,10 +428,8 @@ Finds and displays the list of attractions with addresses that contain the word 
 </div>
 </div>
 <div class="sect1">
-<h2 id="command-summary"><a class="link" href="#command-summary">5. Command Summary</a></h2>
+<h2 id="command-summary"><a class="link" href="#command-summary">6. Command Summary</a></h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="provided"><a class="link" href="#provided">5.1. Provided</a></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -446,13 +458,6 @@ e.g. delete 3</p>
 <li>
 <p><strong>Redo</strong>: <code>redo</code></p>
 </li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="added"><a class="link" href="#added">5.2. Added</a></h3>
-<div class="ulist">
-<ul>
 <li>
 <p><strong>Update</strong>: <code>update &lt;attraction&gt; &lt;tag&gt; &lt;value&gt;</code></p>
 </li>
@@ -477,5 +482,4 @@ e.g. delete 3</p>
 </ul>
 </div>
 </div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-18 02:11:29 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-26 03:36:06 UTC</div></div></div></body></html>
