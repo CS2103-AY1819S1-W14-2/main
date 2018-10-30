@@ -218,7 +218,7 @@ To resolve this, place your cursor over any of the code section highlighted in r
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Run the <code>seedu.address.MainApp</code> and try a few commands</p>
+<p>Run the <code>seedu.thanepark.MainApp</code> and try a few commands</p>
 </li>
 <li>
 <p><a href="#Testing">Run the tests</a> to ensure they all pass.</p>
@@ -893,6 +893,15 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="title">Figure 10. Activity Diagram for the Filter Feature</div>
 </div>
 <div class="paragraph">
+<p>The following diagram will show how the filter diagram works:<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/FilterSequenceDiagram.png" alt="FilterSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 11. Sequence Diagram for the Filter Feature</div>
+</div>
+<div class="paragraph">
 <p>The filter function is being implemented with the help of <code>FilterCommand</code> and <code>AttributePredicate</code> class. When the
 <code>ThaneParkParser</code> parses the user input and finds the filter command word <code>filter</code> it calls a new <code>FilterCommandParser</code> to
 parse the arguments from the user input.</p>
@@ -966,13 +975,13 @@ or when <kbd>TAB</kbd> is pressed inside the <strong>Command Box</strong>. See t
 <div class="content">
 <img src="images/AutocompleteSuggestActivityDiagram1.png" alt="AutocompleteSuggestActivityDiagram1" width="650">
 </div>
-<div class="title">Figure 11. Activity Diagram of user executing command</div>
+<div class="title">Figure 12. Activity Diagram of user executing command</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/AutocompleteSuggestActivityDiagram2.png" alt="AutocompleteSuggestActivityDiagram2" width="650">
 </div>
-<div class="title">Figure 12. Activity Diagram of user pressing tab</div>
+<div class="title">Figure 13. Activity Diagram of user pressing tab</div>
 </div>
 <div class="paragraph">
 <p>The application will then proceed with executing the <code>SuggestCommand</code>, which returns prefix-matched <code>Command</code> s.
@@ -983,7 +992,7 @@ These matching <code>Command</code> s are reflected in both <code>CommandResult<
 <div class="content">
 <img src="images/AutocompleteSuggestActivityDiagram3.png" alt="AutocompleteSuggestActivityDiagram3" width="650">
 </div>
-<div class="title">Figure 13. Activity Diagram of user pressing tab</div>
+<div class="title">Figure 14. Activity Diagram of user pressing tab</div>
 </div>
 </div>
 <div class="sect3">
@@ -1100,7 +1109,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 14. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 15. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 <div class="sect2">
@@ -1331,7 +1340,7 @@ See <a href="UsingGradle.html">UsingGradle.adoc</a> for more info on how to run 
 <p><em>System Tests</em> that test the entire App by simulating user actions on the GUI. These are in the <code>systemtests</code> package.</p>
 </li>
 <li>
-<p><em>Unit tests</em> that test the individual components. These are in <code>seedu.address.ui</code> package.</p>
+<p><em>Unit tests</em> that test the individual components. These are in <code>seedu.thanepark.ui</code> package.</p>
 </li>
 </ol>
 </div>
@@ -1342,15 +1351,15 @@ See <a href="UsingGradle.html">UsingGradle.adoc</a> for more info on how to run 
 <ol class="loweralpha" type="a">
 <li>
 <p><em>Unit tests</em> targeting the lowest level methods/classes.<br>
-e.g. <code>seedu.address.commons.StringUtilTest</code></p>
+e.g. <code>seedu.thanepark.commons.StringUtilTest</code></p>
 </li>
 <li>
 <p><em>Integration tests</em> that are checking the integration of multiple code units (those code units are assumed to be working).<br>
-e.g. <code>seedu.address.storage.StorageManagerTest</code></p>
+e.g. <code>seedu.thanepark.storage.StorageManagerTest</code></p>
 </li>
 <li>
 <p>Hybrids of unit and integration tests. These test are checking multiple code units as well as how the are connected together.<br>
-e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
+e.g. <code>seedu.thanepark.logic.LogicManagerTest</code></p>
 </li>
 </ol>
 </div>
@@ -2337,4 +2346,4 @@ An attraction/ride that is meant for visitors to patronize.</p>
 A place with rides for visitors to patronise.</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 02:45:45 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 14:15:44 UTC</div></div></div></body></html>
