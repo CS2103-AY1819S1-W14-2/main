@@ -14,14 +14,19 @@
 <li><a href="#quick-start">3. Quick Start</a></li>
 <li><a href="#Features">4. Features</a>
 <ul class="sectlevel2">
-<li><a href="#manage-commands">4.1. Manage commands</a></li>
-<li><a href="#manage-input-output-of-attractions">4.2. Manage input/output of attractions</a></li>
-<li><a href="#view-information-on-the-list-of-rides">4.3. View information on the list of rides</a></li>
-<li><a href="#find-the-relevant-list-of-rides">4.4. Find the relevant list of rides</a></li>
+<li><a href="#manage-attractions">4.1. Manage attractions</a></li>
+<li><a href="#user-help-and-accessibility">4.2. User help and accessibility</a></li>
+<li><a href="#manage-input-output-of-attractions">4.3. Manage input/output of attractions</a></li>
+<li><a href="#view-information-on-the-list-of-rides">4.4. View information on the list of rides</a></li>
+<li><a href="#find-the-relevant-list-of-rides">4.5. Find the relevant list of rides</a></li>
 </ul>
 </li>
 <li><a href="#faq">5. FAQ</a></li>
-<li><a href="#command-summary">6. Command Summary</a></li>
+<li><a href="#command-summary">6. Command Summary</a>
+<ul class="sectlevel2">
+<li><a href="#added">6.1. Added</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -143,12 +148,103 @@ Example: if the command specifies n/name p/address, p/address n/name is also acc
 </div>
 </div>
 <div class="sect2">
-<h3 id="manage-commands"><a class="link" href="#manage-commands">4.1. Manage commands</a></h3>
+<h3 id="manage-attractions"><a class="link" href="#manage-attractions">4.1. Manage attractions</a></h3>
+<div class="paragraph">
+<p>This section contains all commands related to managing attractions.</p>
+</div>
+<div class="sect3">
+<h4 id="add-attractions-code-add-code"><a class="link" href="#add-attractions-code-add-code">4.1.1. Add attractions: <code>add</code></a></h4>
+<div class="paragraph">
+<p>Add an attraction by name with the information.<br>
+Format: <code>add <code>&lt;attraction&gt;</code> <code>&lt;maintenance&gt;</code> <code>&lt;waitTime&gt;</code> <code>&lt;address&gt;</code> [tag(s)]</code></p>
+</div>
+<div class="paragraph">
+<p>A ride can have any number of tags (including 0).<br></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>add n/Transformers m/1 w/30 a/John street, block 123, #01-01</p>
+</li>
+<li>
+<p>add n/The Mummy m/3 w/45 a/311, Clementi Ave 2, #02-25 t/3D t/indoor</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="delete-attractions-code-delete-code"><a class="link" href="#delete-attractions-code-delete-code">4.1.2. Delete attractions: <code>delete</code></a></h4>
+<div class="paragraph">
+<p>Deletes the specified attraction from ThanePark.<br>
+Format: <code>delete &lt;index&gt;</code></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the ride at the specified index.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the list of displayed rides.</p>
+</li>
+<li>
+<p>The index must be a positive integer 1, 2, 3, …​</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>viewall</code><br>
+<code>delete 2</code><br>
+Deletes the 2nd ride in ThanePark.</p>
+</li>
+<li>
+<p><code>find Puss in Boots' Giant Journey</code><br>
+<code>delete 1</code><br>
+Deletes the 1st ride in the results of the find command.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="update-information-of-attraction-code-update-code"><a class="link" href="#update-information-of-attraction-code-update-code">4.1.3. Update information of attraction: <code>update</code></a></h4>
+<div class="paragraph">
+<p>Updates the information <code>&lt;tag&gt;</code> with <code>&lt;value&gt;</code> about the ride with <code>&lt;index&gt;</code>.<br>
+Format: <code>update &lt;index&gt; &lt;tag&gt; &lt;value&gt;</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="shutdown-attraction-code-shutdown-code"><a class="link" href="#shutdown-attraction-code-shutdown-code">4.1.4. Shutdown attraction: <code>shutdown</code></a></h4>
+<div class="paragraph">
+<p>Closes the ride for the day. Display statistics for the ride on that day.<br>
+Format: <code>shutdown &lt;index&gt;</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="open-attraction-code-open-code"><a class="link" href="#open-attraction-code-open-code">4.1.5. Open attraction: <code>open</code></a></h4>
+<div class="paragraph">
+<p>Opens the ride for the day. Display statistics for the ride on that day.<br>
+Format: <code>open &lt;index&gt;</code></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="user-help-and-accessibility"><a class="link" href="#user-help-and-accessibility">4.2. User help and accessibility</a></h3>
 <div class="paragraph">
 <p>This section contains all commands related to managing commands.</p>
 </div>
 <div class="sect3">
-<h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">4.1.1. Viewing help: <code>help</code></a></h4>
+<h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">4.2.1. Viewing help: <code>help</code></a></h4>
 <div class="paragraph">
 <p>Display short summary of important commands. <br>
 Format: <code>help [option]</code></p>
@@ -159,7 +255,7 @@ greater detail of the specified command. If invalid <code>option</code> is speci
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-history-of-previous-commands-code-history-code"><a class="link" href="#viewing-history-of-previous-commands-code-history-code">4.1.2. Viewing history of previous commands: <code>history</code></a></h4>
+<h4 id="viewing-history-of-previous-commands-code-history-code"><a class="link" href="#viewing-history-of-previous-commands-code-history-code">4.2.2. Viewing history of previous commands: <code>history</code></a></h4>
 <div class="paragraph">
 <p>Display previous commands during this session. Inputted
 commands from the past are logged into the system.<br>
@@ -167,7 +263,7 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="undoing-commands-code-undo-code"><a class="link" href="#undoing-commands-code-undo-code">4.1.3. Undoing commands: <code>undo</code></a></h4>
+<h4 id="undoing-commands-code-undo-code"><a class="link" href="#undoing-commands-code-undo-code">4.2.3. Undoing commands: <code>undo</code></a></h4>
 <div class="paragraph">
 <p>Undo previous command during current session.<br>
 Format: <code>undo</code></p>
@@ -198,7 +294,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </div>
 </div>
 <div class="sect3">
-<h4 id="redoing-previously-undone-commands-code-redo-code"><a class="link" href="#redoing-previously-undone-commands-code-redo-code">4.1.4. Redoing previously undone commands: <code>redo</code></a></h4>
+<h4 id="redoing-previously-undone-commands-code-redo-code"><a class="link" href="#redoing-previously-undone-commands-code-redo-code">4.2.4. Redoing previously undone commands: <code>redo</code></a></h4>
 <div class="paragraph">
 <p>Reverse the previously undone commands during current session.<br>
 Format: <code>redo</code></p>
@@ -230,7 +326,7 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect3">
-<h4 id="suggesting-commands-code-tab-code"><a class="link" href="#suggesting-commands-code-tab-code">4.1.5. Suggesting commands: <code>{tab}</code></a></h4>
+<h4 id="suggesting-commands-code-tab-code"><a class="link" href="#suggesting-commands-code-tab-code">4.2.5. Suggesting commands: <code>{tab}</code></a></h4>
 <div class="paragraph">
 <p>Non-tech savvy users wouldn’t need to remember commands and can
 just use <code>tab</code> s to complete their sentences, or get suggestions on what
@@ -239,14 +335,14 @@ Format: <code>{tab}</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">4.1.6. Clearing all entries : <code>clear</code></a></h4>
+<h4 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">4.2.6. Clearing all entries : <code>clear</code></a></h4>
 <div class="paragraph">
 <p>Clears all entries from the address book.<br>
 Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="exiting-thanepark-code-exit-code"><a class="link" href="#exiting-thanepark-code-exit-code">4.1.7. Exiting ThanePark: <code>exit</code></a></h4>
+<h4 id="exiting-thanepark-code-exit-code"><a class="link" href="#exiting-thanepark-code-exit-code">4.2.7. Exiting ThanePark: <code>exit</code></a></h4>
 <div class="paragraph">
 <p>Exits the ThanePark application.<br>
 Format: <code>exit</code></p>
@@ -254,12 +350,12 @@ Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="manage-input-output-of-attractions"><a class="link" href="#manage-input-output-of-attractions">4.2. Manage input/output of attractions</a></h3>
+<h3 id="manage-input-output-of-attractions"><a class="link" href="#manage-input-output-of-attractions">4.3. Manage input/output of attractions</a></h3>
 <div class="paragraph">
 <p>This section contains all commands related to managing attractions.</p>
 </div>
 <div class="sect3">
-<h4 id="adding-attractions-code-add-code"><a class="link" href="#adding-attractions-code-add-code">4.2.1. Adding attractions: <code>add</code></a></h4>
+<h4 id="adding-attractions-code-add-code"><a class="link" href="#adding-attractions-code-add-code">4.3.1. Adding attractions: <code>add</code></a></h4>
 <div class="paragraph">
 <p>Add an attraction by name with the information.<br>
 Format: <code>add <code>&lt;attraction&gt;</code> <code>&lt;maintenance&gt;</code> <code>&lt;waitTime&gt;</code> <code>&lt;address&gt;</code> [tag(s)]</code></p>
@@ -282,7 +378,7 @@ Format: <code>add <code>&lt;attraction&gt;</code> <code>&lt;maintenance&gt;</cod
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-attractions-code-delete-code"><a class="link" href="#deleting-attractions-code-delete-code">4.2.2. Deleting attractions: <code>delete</code></a></h4>
+<h4 id="deleting-attractions-code-delete-code"><a class="link" href="#deleting-attractions-code-delete-code">4.3.2. Deleting attractions: <code>delete</code></a></h4>
 <div class="paragraph">
 <p>Deletes the specified attraction from the ThanePark.<br>
 Format: <code>delete &lt;index&gt;</code></p>
@@ -319,21 +415,23 @@ Deletes the 1st ride in the results of the find command.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="updating-information-of-attraction-code-update-code"><a class="link" href="#updating-information-of-attraction-code-update-code">4.2.3. Updating information of attraction: <code>update</code></a></h4>
+<h4 id="updating-information-of-attraction-code-update-code"><a class="link" href="#updating-information-of-attraction-code-update-code">4.3.3. Updating information of attraction: <code>update</code></a></h4>
 <div class="paragraph">
-<p>Updates the information <code>&lt;tag&gt;</code> with <code>&lt;value&gt;</code> about the ride with <code>&lt;name&gt;</code>.<br>
-Format: <code>update &lt;index&gt; &lt;tag&gt; &lt;value&gt;</code></p>
+<p>Updates the information <code>&lt;tag&gt;</code> with <code>&lt;value&gt;</code> about the ride with <code>&lt;index&gt;</code>.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>update &lt;index&gt; &lt;tag&gt; &lt;value&gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="shutting-down-attraction-code-shutdown-code"><a class="link" href="#shutting-down-attraction-code-shutdown-code">4.2.4. Shutting down attraction: <code>shutdown</code></a></h4>
+<h4 id="shutting-down-attraction-code-shutdown-code"><a class="link" href="#shutting-down-attraction-code-shutdown-code">4.3.4. Shutting down attraction: <code>shutdown</code></a></h4>
 <div class="paragraph">
 <p>Close the ride for the day. Display statistics for the ride on that day.<br>
 Format: <code>shutdown &lt;index&gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="opening-attraction-code-open-code"><a class="link" href="#opening-attraction-code-open-code">4.2.5. Opening attraction: <code>open</code></a></h4>
+<h4 id="opening-attraction-code-open-code"><a class="link" href="#opening-attraction-code-open-code">4.3.5. Opening attraction: <code>open</code></a></h4>
 <div class="paragraph">
 <p>Open the ride for the day. Display statistics for the ride on that day.<br>
 Format: <code>open &lt;index&gt;</code></p>
@@ -341,19 +439,19 @@ Format: <code>open &lt;index&gt;</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="view-information-on-the-list-of-rides"><a class="link" href="#view-information-on-the-list-of-rides">4.3. View information on the list of rides</a></h3>
+<h3 id="view-information-on-the-list-of-rides"><a class="link" href="#view-information-on-the-list-of-rides">4.4. View information on the list of rides</a></h3>
 <div class="paragraph">
 <p>This section contains all commands related to viewing list on rides.</p>
 </div>
 <div class="sect3">
-<h4 id="viewing-all-available-rides-code-viewall-code"><a class="link" href="#viewing-all-available-rides-code-viewall-code">4.3.1. Viewing all available rides: <code>viewall</code></a></h4>
+<h4 id="viewing-all-available-rides-code-viewall-code"><a class="link" href="#viewing-all-available-rides-code-viewall-code">4.4.1. Viewing all available rides: <code>viewall</code></a></h4>
 <div class="paragraph">
 <p>Display all available rides in a list.<br>
 Format: <code>viewall</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-detailed-information-of-a-specific-ride-code-view-code"><a class="link" href="#viewing-detailed-information-of-a-specific-ride-code-view-code">4.3.2. Viewing detailed information of a specific ride: <code>view</code></a></h4>
+<h4 id="viewing-detailed-information-of-a-specific-ride-code-view-code"><a class="link" href="#viewing-detailed-information-of-a-specific-ride-code-view-code">4.4.2. Viewing detailed information of a specific ride: <code>view</code></a></h4>
 <div class="paragraph">
 <p>Display all available information about a single ride on the list of displayed rides.
 <code>index</code> field specifies the index of the ride that the user wants to view.<br>
@@ -373,7 +471,7 @@ The range of <code>index</code> should be between one and one million.
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-rides-by-their-status-code-viewstatus-code"><a class="link" href="#viewing-rides-by-their-status-code-viewstatus-code">4.3.3. Viewing rides by their status: <code>viewstatus</code></a></h4>
+<h4 id="viewing-rides-by-their-status-code-viewstatus-code"><a class="link" href="#viewing-rides-by-their-status-code-viewstatus-code">4.4.3. Viewing rides by their status: <code>viewstatus</code></a></h4>
 <div class="paragraph">
 <p>Display all rides according to the status of the rides.<br>
 Format: <code>viewstatus &lt;status&gt;</code></p>
@@ -393,12 +491,12 @@ There are only three statuses that are valid, namely open, shutdown and maintena
 </div>
 </div>
 <div class="sect2">
-<h3 id="find-the-relevant-list-of-rides"><a class="link" href="#find-the-relevant-list-of-rides">4.4. Find the relevant list of rides</a></h3>
+<h3 id="find-the-relevant-list-of-rides"><a class="link" href="#find-the-relevant-list-of-rides">4.5. Find the relevant list of rides</a></h3>
 <div class="paragraph">
 <p>This section contains all commands related to finding rides that is relevant to you.</p>
 </div>
 <div class="sect3">
-<h4 id="finding-rides-that-fits-the-given-condition-code-filter-code"><a class="link" href="#finding-rides-that-fits-the-given-condition-code-filter-code">4.4.1. Finding rides that fits the given condition: <code>filter</code></a></h4>
+<h4 id="finding-rides-that-fits-the-given-condition-code-filter-code"><a class="link" href="#finding-rides-that-fits-the-given-condition-code-filter-code">4.5.1. Finding rides that fits the given condition: <code>filter</code></a></h4>
 <div class="paragraph">
 <p>Display all rides that fits the condition in a table. It can only filter conditions that have numeric values i.e.
 <code>Maintenance</code> and <code>WaitTime</code>.<br>
@@ -437,7 +535,7 @@ Filters attractions with waiting time less than 500 and maintenance of more than
 </div>
 </div>
 <div class="sect3">
-<h4 id="finding-a-particular-attraction-code-find-code"><a class="link" href="#finding-a-particular-attraction-code-find-code">4.4.2. Finding a particular attraction: <code>find</code></a></h4>
+<h4 id="finding-a-particular-attraction-code-find-code"><a class="link" href="#finding-a-particular-attraction-code-find-code">4.5.2. Finding a particular attraction: <code>find</code></a></h4>
 <div class="paragraph">
 <p>Find the rides that the user needs to check on. Case insensitive.<br>
 Can only find the name, the address, and the tags of the attractions.<br>
@@ -502,104 +600,63 @@ and "family"</p>
 <div class="sect1">
 <h2 id="command-summary"><a class="link" href="#command-summary">6. Command Summary</a></h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>The following table summarizes all commands available in ThanePark:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Add</strong>: <code>add &lt;attraction&gt;</code> <code>&lt;maintenance&gt;</code> <code>&lt;waitTime&gt;</code> <code>&lt;address&gt;</code> <code>[tag(s)]</code><br>
+e.g. add n/Mummy m/3 w/45 a/311, Clementi Ave 2, #02-25 t/3D t/indoor</p>
+</li>
+<li>
+<p><strong>Delete</strong>: <code>delete &lt;index&gt;</code><br>
+e.g. delete 3</p>
+</li>
+<li>
+<p><strong>Exit</strong>: <code>exit</code></p>
+</li>
+<li>
+<p><strong>Find</strong>: <code>find &lt;attraction&gt;</code></p>
+</li>
+<li>
+<p><strong>Help</strong>: <code>help [option]</code></p>
+</li>
+<li>
+<p><strong>History</strong>: <code>history</code></p>
+</li>
+<li>
+<p><strong>Undo</strong>: <code>undo</code></p>
+</li>
+<li>
+<p><strong>Redo</strong>: <code>redo</code></p>
+</li>
+</ul>
 </div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 40%;">
-<col style="width: 40%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Command</th>
-<th class="tableblock halign-left valign-top">Format</th>
-<th class="tableblock halign-left valign-top">Example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Add ride</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add &lt;name of ride&gt; &lt;days since last maintenance&gt; &lt;waiting time&gt; &lt;address&gt; [tag&#8230;&#8203;]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add n/Mummy m/3 w/45 a/Lost World t/3D t/indoor</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Clear table</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">clear</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">clear</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Delete ride</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">delete &lt;index&gt;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">delete 2</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Exit ThanePark</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">exit</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">exit</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Filter rides</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">filter &lt;tag header&gt; &lt;condition&gt;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">filter m/ &gt; 3 w/ &lt; 60</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Find rides</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">find &lt;name of ride&gt; OR find &lt;tag header&gt; &lt;address&gt;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">find Mummy OR find a/ Mum</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Help</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">help [option]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">help more</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">History of commands</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">history</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">history</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Open ride</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">open &lt;index&gt;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">open 3</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Redo command</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">redo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">redo</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Shutdown ride</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">shutdown &lt;index&gt;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">shutdown 1</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Undo command</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">undo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">undo</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Update ride information</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">update &lt;index&gt; &lt;tag header&gt; &lt;new value&gt;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">update 2 a/ home</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">View ride information</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">view &lt;index&gt;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">view 2</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">View all rides</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">viewall</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">viewall</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">View rides by status</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">viewstatus &lt;status&gt;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">viewstatus open</p></td>
-</tr>
-</tbody>
-</table>
+<div class="sect2">
+<h3 id="added"><a class="link" href="#added">6.1. Added</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Update</strong>: <code>update &lt;index&gt; &lt;tag&gt; &lt;value&gt;</code></p>
+</li>
+<li>
+<p><strong>Open</strong>: <code>open &lt;index&gt;</code></p>
+</li>
+<li>
+<p><strong>Shutdown</strong>: <code>shutdown &lt;index&gt;</code></p>
+</li>
+<li>
+<p><strong>View</strong>: <code>view &lt;name&gt;</code></p>
+</li>
+<li>
+<p><strong>Quickview</strong>: <code>quickview</code></p>
+</li>
+<li>
+<p><strong>Filter</strong>: <code>filter &lt;tag&gt; &lt;condition&gt;</code></p>
+</li>
+<li>
+<p><strong>tab</strong>: <code>{tab}</code></p>
+</li>
+</ul>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 15:21:20 UTC</div></div></div></body></html>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 15:57:05 UTC</div></div></div></body></html>
