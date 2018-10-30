@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Thane Park - User Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level3">AB-3</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">ThanePark</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/CS2103-AY1819S1-W14-2/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Thane Park - User Guide</h1></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">ThanePark</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/CS2103-AY1819S1-W14-2/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Thane Park - User Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>By: <code>CS2103-AY1819S1-W14-2</code>      Since: <code>Sep 2018</code>      Licence: <code>MIT</code></p>
@@ -10,24 +10,18 @@
 <div id="toctitle"></div>
 <ul class="sectlevel1">
 <li><a href="#introduction">1. Introduction</a></li>
-<li><a href="#quick-start">2. Quick Start</a></li>
-<li><a href="#Features">3. Features</a>
+<li><a href="#about">2. About</a></li>
+<li><a href="#quick-start">3. Quick Start</a></li>
+<li><a href="#Features">4. Features</a>
 <ul class="sectlevel2">
-<li><a href="#manage-commands">3.1. Manage commands</a></li>
-<li><a href="#manage-input-output-of-attractions">3.2. Manage input/output of attractions</a></li>
-<li><a href="#view-the-list-of-rides">3.3. View the list of rides</a></li>
+<li><a href="#manage-commands">4.1. Manage commands</a></li>
+<li><a href="#manage-input-output-of-attractions">4.2. Manage input/output of attractions</a></li>
+<li><a href="#view-information-on-the-list-of-rides">4.3. View information on the list of rides</a></li>
+<li><a href="#find-the-relevant-list-of-rides">4.4. Find the relevant list of rides</a></li>
 </ul>
 </li>
-<li><a href="#tag-view">tag::view[]</a>
-<ul class="sectlevel3">
-<li><a href="#viewing-all-available-attractions-code-viewall-code">1.1. Viewing all available attractions: <code>viewall</code></a></li>
-<li><a href="#view-detailed-information-of-a-specific-ride-code-view-code">1.2. View detailed information of a specific ride: <code>view</code></a></li>
-<li><a href="#quick-view-information-of-top-five-most-frequented-rides-code-quickview-code">1.3. Quick view information of top five most frequented rides: <code>quickview</code></a></li>
-<li><a href="#filter-the-list-of-rides">1.4. Filter the list of rides</a></li>
 <li><a href="#faq">5. FAQ</a></li>
 <li><a href="#command-summary">6. Command Summary</a></li>
-</ul>
-</li>
 </ul>
 </div>
 </div>
@@ -35,17 +29,32 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>ThanePark is for those who <strong>prefer to use a desktop app for managing the rides in
-your theme park!</strong>. More importantly, ThanePark is <strong>optimized for those who prefer
-to work with a Command Line Interface</strong> (CLI) while still having the benefits of a
-Graphical User Interface (GUI). If you can type fast, ThanePark can get your
-ride information faster than traditional GUI apps. Interested? Jump
-to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
+<p>Welcome to ThanePark!
+ThanePark is a theme park management application that assists theme park managers and operators in obtaining ride information readily.
+Using the keyboard, you can easily access features such as creating rides, updating ride information, finding rides with short waiting time and more.</p>
+</div>
+<div class="paragraph">
+<p>Get started now by heading over to <a href="#quick-start">Section 3, &#8220;Quick Start&#8221;</a>. Enjoy!</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="quick-start"><a class="link" href="#quick-start">2. Quick Start</a></h2>
+<h2 id="about"><a class="link" href="#about">2. About</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This user guide introduces you to ThanePark, provides detailed instructions to set up and gives you an overview of the available features.
+No prior technical knowledge is required to use ThanePark.</p>
+</div>
+<div class="paragraph">
+<p>For frequently asked questions, check out <a href="#faq">Section 5, &#8220;FAQ&#8221;</a>.</p>
+</div>
+<div class="paragraph">
+<p>For a brief summary of all features, check out <a href="#command-summary">Section 6, &#8220;Command Summary&#8221;</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="quick-start"><a class="link" href="#quick-start">3. Quick Start</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Steps to set up ThanePark:</p>
@@ -65,7 +74,7 @@ to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get st
 <p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
 <div class="imageblock">
 <div class="content">
-<img src="images/Ui.png" alt="Ui" width="790">
+<img src="images/Ui.png" alt="Ui" width="800">
 </div>
 </div>
 </li>
@@ -77,11 +86,6 @@ to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get st
 <div class="paragraph">
 <p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.<br>
 e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window.</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>insert diagram here of help window</pre>
-</div>
 </div>
 <div class="paragraph">
 <p>Type some of these commands to try out ThanePark:</p>
@@ -97,15 +101,15 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </ul>
 </div>
 <div class="paragraph">
-<p>Refer to <a href="#Features">Section 3, &#8220;Features&#8221;</a> for details of each command.</p>
+<p>Refer to <a href="#Features">Section 4, &#8220;Features&#8221;</a> for details of each command.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="Features"><a class="link" href="#Features">3. Features</a></h2>
+<h2 id="Features"><a class="link" href="#Features">4. Features</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This section contains all commands used for ThanePark.</p>
+<p>This section contains information of all commands used in ThanePark.</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -127,25 +131,24 @@ Example: <code>help [more]</code></p>
 Example: <code>{tab}</code> is the TAB keystroke.</p>
 </li>
 <li>
-<p>Items ending with ellipses <code>&#8230;&#8203;</code> denotes variable arguments.<br>
+<p>Items ending with ellipses <code>&#8230;&#8203;</code> denotes variable number of arguments.<br>
 Example: <code>history [findargs&#8230;&#8203;]</code></p>
 </li>
 <li>
 <p>Parameters can be in any order<br>
-Example: if the command specifies
-  n/name p/address, p/address n/name is also acceptable.</p>
+Example: if the command specifies n/name p/address, p/address n/name is also acceptable.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="manage-commands"><a class="link" href="#manage-commands">3.1. Manage commands</a></h3>
+<h3 id="manage-commands"><a class="link" href="#manage-commands">4.1. Manage commands</a></h3>
 <div class="paragraph">
 <p>This section contains all commands related to managing commands.</p>
 </div>
 <div class="sect3">
-<h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1.1. Viewing help: <code>help</code></a></h4>
+<h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">4.1.1. Viewing help: <code>help</code></a></h4>
 <div class="paragraph">
 <p>Display short summary of important commands. <br>
 Format: <code>help [option]</code></p>
@@ -156,7 +159,7 @@ greater detail of the specified command. If invalid <code>option</code> is speci
 </div>
 </div>
 <div class="sect3">
-<h4 id="history-of-previous-commands-code-history-code"><a class="link" href="#history-of-previous-commands-code-history-code">3.1.2. History of previous commands: <code>history</code></a></h4>
+<h4 id="viewing-history-of-previous-commands-code-history-code"><a class="link" href="#viewing-history-of-previous-commands-code-history-code">4.1.2. Viewing history of previous commands: <code>history</code></a></h4>
 <div class="paragraph">
 <p>Display previous commands during this session. Inputted
 commands from the past are logged into the system.<br>
@@ -164,7 +167,7 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="undoing-commands-code-undo-code"><a class="link" href="#undoing-commands-code-undo-code">3.1.3. Undoing commands: <code>undo</code></a></h4>
+<h4 id="undoing-commands-code-undo-code"><a class="link" href="#undoing-commands-code-undo-code">4.1.3. Undoing commands: <code>undo</code></a></h4>
 <div class="paragraph">
 <p>Undo previous command during current session.<br>
 Format: <code>undo</code></p>
@@ -195,7 +198,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </div>
 </div>
 <div class="sect3">
-<h4 id="redoing-previously-undone-commands-code-redo-code"><a class="link" href="#redoing-previously-undone-commands-code-redo-code">3.1.4. Redoing previously undone commands: <code>redo</code></a></h4>
+<h4 id="redoing-previously-undone-commands-code-redo-code"><a class="link" href="#redoing-previously-undone-commands-code-redo-code">4.1.4. Redoing previously undone commands: <code>redo</code></a></h4>
 <div class="paragraph">
 <p>Reverse the previously undone commands during current session.<br>
 Format: <code>redo</code></p>
@@ -227,7 +230,7 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect3">
-<h4 id="autocomplete-suggest-code-tab-code"><a class="link" href="#autocomplete-suggest-code-tab-code">3.1.5. Autocomplete/Suggest: <code>{tab}</code></a></h4>
+<h4 id="suggesting-commands-code-tab-code"><a class="link" href="#suggesting-commands-code-tab-code">4.1.5. Suggesting commands: <code>{tab}</code></a></h4>
 <div class="paragraph">
 <p>Non-tech savvy users wouldn’t need to remember commands and can
 just use <code>tab</code> s to complete their sentences, or get suggestions on what
@@ -236,14 +239,14 @@ Format: <code>{tab}</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.1.6. Clearing all entries : <code>clear</code></a></h4>
+<h4 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">4.1.6. Clearing all entries : <code>clear</code></a></h4>
 <div class="paragraph">
 <p>Clears all entries from the address book.<br>
 Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="exit-code-exit-code"><a class="link" href="#exit-code-exit-code">3.1.7. Exit: <code>exit</code></a></h4>
+<h4 id="exiting-thanepark-code-exit-code"><a class="link" href="#exiting-thanepark-code-exit-code">4.1.7. Exiting ThanePark: <code>exit</code></a></h4>
 <div class="paragraph">
 <p>Exits the ThanePark application.<br>
 Format: <code>exit</code></p>
@@ -251,12 +254,12 @@ Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="manage-input-output-of-attractions"><a class="link" href="#manage-input-output-of-attractions">3.2. Manage input/output of attractions</a></h3>
+<h3 id="manage-input-output-of-attractions"><a class="link" href="#manage-input-output-of-attractions">4.2. Manage input/output of attractions</a></h3>
 <div class="paragraph">
 <p>This section contains all commands related to managing attractions.</p>
 </div>
 <div class="sect3">
-<h4 id="add-attractions-code-add-code"><a class="link" href="#add-attractions-code-add-code">3.2.1. Add attractions: <code>add</code></a></h4>
+<h4 id="adding-attractions-code-add-code"><a class="link" href="#adding-attractions-code-add-code">4.2.1. Adding attractions: <code>add</code></a></h4>
 <div class="paragraph">
 <p>Add an attraction by name with the information.<br>
 Format: <code>add <code>&lt;attraction&gt;</code> <code>&lt;maintenance&gt;</code> <code>&lt;waitTime&gt;</code> <code>&lt;address&gt;</code> [tag(s)]</code></p>
@@ -279,7 +282,7 @@ Format: <code>add <code>&lt;attraction&gt;</code> <code>&lt;maintenance&gt;</cod
 </div>
 </div>
 <div class="sect3">
-<h4 id="delete-attractions-code-delete-code"><a class="link" href="#delete-attractions-code-delete-code">3.2.2. Delete attractions: <code>delete</code></a></h4>
+<h4 id="deleting-attractions-code-delete-code"><a class="link" href="#deleting-attractions-code-delete-code">4.2.2. Deleting attractions: <code>delete</code></a></h4>
 <div class="paragraph">
 <p>Deletes the specified attraction from the ThanePark.<br>
 Format: <code>delete &lt;index&gt;</code></p>
@@ -316,69 +319,86 @@ Deletes the 1st ride in the results of the find command.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="update-information-of-attraction-code-update-code"><a class="link" href="#update-information-of-attraction-code-update-code">3.2.3. Update information of attraction: <code>update</code></a></h4>
+<h4 id="updating-information-of-attraction-code-update-code"><a class="link" href="#updating-information-of-attraction-code-update-code">4.2.3. Updating information of attraction: <code>update</code></a></h4>
 <div class="paragraph">
 <p>Updates the information <code>&lt;tag&gt;</code> with <code>&lt;value&gt;</code> about the ride with <code>&lt;name&gt;</code>.<br>
-Format: <code>update &lt;attraction&gt; &lt;tag&gt; &lt;value&gt;</code></p>
+Format: <code>update &lt;index&gt; &lt;tag&gt; &lt;value&gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="shutdown-attraction-code-shutdown-code"><a class="link" href="#shutdown-attraction-code-shutdown-code">3.2.4. Shutdown attraction: <code>shutdown</code></a></h4>
+<h4 id="shutting-down-attraction-code-shutdown-code"><a class="link" href="#shutting-down-attraction-code-shutdown-code">4.2.4. Shutting down attraction: <code>shutdown</code></a></h4>
 <div class="paragraph">
 <p>Close the ride for the day. Display statistics for the ride on that day.<br>
-Format: <code>shutdown &lt;attraction&gt;</code></p>
+Format: <code>shutdown &lt;index&gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="open-attraction-code-open-code"><a class="link" href="#open-attraction-code-open-code">3.2.5. Open attraction: <code>open</code></a></h4>
+<h4 id="opening-attraction-code-open-code"><a class="link" href="#opening-attraction-code-open-code">4.2.5. Opening attraction: <code>open</code></a></h4>
 <div class="paragraph">
 <p>Open the ride for the day. Display statistics for the ride on that day.<br>
-Format: <code>open &lt;attraction&gt;</code></p>
+Format: <code>open &lt;index&gt;</code></p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="view-the-list-of-rides"><a class="link" href="#view-the-list-of-rides">3.3. View the list of rides</a></h3>
+<h3 id="view-information-on-the-list-of-rides"><a class="link" href="#view-information-on-the-list-of-rides">4.3. View information on the list of rides</a></h3>
 <div class="paragraph">
 <p>This section contains all commands related to viewing list on rides.</p>
 </div>
-</div>
-</div>
-</div>
-<h1 id="tag-view" class="sect0"><a class="link" href="#tag-view">tag::view[]</a></h1>
 <div class="sect3">
-<h4 id="viewing-all-available-attractions-code-viewall-code"><a class="link" href="#viewing-all-available-attractions-code-viewall-code">1.1. Viewing all available attractions: <code>viewall</code></a></h4>
+<h4 id="viewing-all-available-rides-code-viewall-code"><a class="link" href="#viewing-all-available-rides-code-viewall-code">4.3.1. Viewing all available rides: <code>viewall</code></a></h4>
 <div class="paragraph">
-<p>Display all available attractions in a list according to the number of
-people that have taken the ride for the day in alphanumeric order if
-optional fields are not specified. <code>status</code> field specifies whether the user
-want to view opened or closed rides.<br>
-Format: <code>viewall [status]</code></p>
+<p>Display all available rides in a list.<br>
+Format: <code>viewall</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="view-detailed-information-of-a-specific-ride-code-view-code"><a class="link" href="#view-detailed-information-of-a-specific-ride-code-view-code">1.2. View detailed information of a specific ride: <code>view</code></a></h4>
+<h4 id="viewing-detailed-information-of-a-specific-ride-code-view-code"><a class="link" href="#viewing-detailed-information-of-a-specific-ride-code-view-code">4.3.2. Viewing detailed information of a specific ride: <code>view</code></a></h4>
 <div class="paragraph">
 <p>Display all available information about a single ride on the list of displayed rides.
 <code>index</code> field specifies the index of the ride that the user wants to view.<br>
 Format: <code>view &lt;index&gt;</code></p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The range of <code>index</code> should be between one and one million.
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect3">
-<h4 id="quick-view-information-of-top-five-most-frequented-rides-code-quickview-code"><a class="link" href="#quick-view-information-of-top-five-most-frequented-rides-code-quickview-code">1.3. Quick view information of top five most frequented rides: <code>quickview</code></a></h4>
+<h4 id="viewing-rides-by-their-status-code-viewstatus-code"><a class="link" href="#viewing-rides-by-their-status-code-viewstatus-code">4.3.3. Viewing rides by their status: <code>viewstatus</code></a></h4>
 <div class="paragraph">
-<p>Quick view information of the top 5 most frequented rides in the park.<br>
-Format: <code>quickview</code>
-# end::view[]</p>
+<p>Display all rides according to the status of the rides.<br>
+Format: <code>viewstatus &lt;status&gt;</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+There are only three statuses that are valid, namely open, shutdown and maintenance.
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="filter-the-list-of-rides"><a class="link" href="#filter-the-list-of-rides">1.4. Filter the list of rides</a></h3>
+<h3 id="find-the-relevant-list-of-rides"><a class="link" href="#find-the-relevant-list-of-rides">4.4. Find the relevant list of rides</a></h3>
 <div class="paragraph">
-<p>This section contains all commands related to filtering and finding rides.</p>
+<p>This section contains all commands related to finding rides that is relevant to you.</p>
 </div>
 <div class="sect3">
-<h4 id="filter-code-filter-code"><a class="link" href="#filter-code-filter-code">1.4.1. Filter: <code>filter</code></a></h4>
+<h4 id="finding-rides-that-fits-the-given-condition-code-filter-code"><a class="link" href="#finding-rides-that-fits-the-given-condition-code-filter-code">4.4.1. Finding rides that fits the given condition: <code>filter</code></a></h4>
 <div class="paragraph">
 <p>Display all rides that fits the condition in a table. It can only filter conditions that have numeric values i.e.
 <code>Maintenance</code> and <code>WaitTime</code>.<br>
@@ -417,7 +437,7 @@ Filters attractions with waiting time less than 500 and maintenance of more than
 </div>
 </div>
 <div class="sect3">
-<h4 id="find-a-particular-attraction-code-find-code"><a class="link" href="#find-a-particular-attraction-code-find-code">1.4.2. Find a particular attraction: <code>find</code></a></h4>
+<h4 id="finding-a-particular-attraction-code-find-code"><a class="link" href="#finding-a-particular-attraction-code-find-code">4.4.2. Finding a particular attraction: <code>find</code></a></h4>
 <div class="paragraph">
 <p>Find the rides that the user needs to check on. Case insensitive.<br>
 Can only find the name, the address, and the tags of the attractions.<br>
@@ -468,6 +488,8 @@ and "family"</p>
 </div>
 </div>
 </div>
+</div>
+</div>
 <div class="sect1">
 <h2 id="faq"><a class="link" href="#faq">5. FAQ</a></h2>
 <div class="sectionbody">
@@ -480,56 +502,104 @@ and "family"</p>
 <div class="sect1">
 <h2 id="command-summary"><a class="link" href="#command-summary">6. Command Summary</a></h2>
 <div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Add</strong>: <code>add &lt;attraction&gt;</code> <code>&lt;maintenance&gt;</code> <code>&lt;waitTime&gt;</code> <code>&lt;address&gt;</code> <code>[tag(s)]</code><br>
-e.g. add n/Mummy m/3 w/45 a/311, Clementi Ave 2, #02-25 t/3D t/indoor</p>
-</li>
-<li>
-<p><strong>Delete</strong>: <code>delete &lt;index&gt;</code><br>
-e.g. delete 3</p>
-</li>
-<li>
-<p><strong>Exit</strong>: <code>exit</code></p>
-</li>
-<li>
-<p><strong>Find</strong>: <code>find &lt;attraction&gt;</code></p>
-</li>
-<li>
-<p><strong>Help</strong>: <code>help [option]</code></p>
-</li>
-<li>
-<p><strong>History</strong>: <code>history</code></p>
-</li>
-<li>
-<p><strong>Undo</strong>: <code>undo</code></p>
-</li>
-<li>
-<p><strong>Redo</strong>: <code>redo</code></p>
-</li>
-<li>
-<p><strong>Update</strong>: <code>update &lt;attraction&gt; &lt;tag&gt; &lt;value&gt;</code></p>
-</li>
-<li>
-<p><strong>Open</strong>: <code>open &lt;attraction&gt;</code></p>
-</li>
-<li>
-<p><strong>Shutdown</strong>: <code>shutdown &lt;attraction&gt;</code></p>
-</li>
-<li>
-<p><strong>View</strong>: <code>view &lt;name&gt;</code></p>
-</li>
-<li>
-<p><strong>Quickview</strong>: <code>quickview</code></p>
-</li>
-<li>
-<p><strong>Filter</strong>: <code>filter &lt;tag&gt; &lt;condition&gt;</code></p>
-</li>
-<li>
-<p><strong>tab</strong>: <code>{tab}</code></p>
-</li>
-</ul>
+<div class="paragraph">
+<p>The following table summarizes all commands available in ThanePark:</p>
 </div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 40%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Command</th>
+<th class="tableblock halign-left valign-top">Format</th>
+<th class="tableblock halign-left valign-top">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add ride</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add &lt;name of ride&gt; &lt;days since last maintenance&gt; &lt;waiting time&gt; &lt;address&gt; [tag&#8230;&#8203;]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add n/Mummy m/3 w/45 a/Lost World t/3D t/indoor</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Clear table</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clear</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clear</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Delete ride</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delete &lt;index&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delete 2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Exit ThanePark</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">exit</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">exit</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter rides</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">filter &lt;tag header&gt; &lt;condition&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">filter m/ &gt; 3 w/ &lt; 60</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Find rides</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">find &lt;name of ride&gt; OR find &lt;tag header&gt; &lt;address&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">find Mummy OR find a/ Mum</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Help</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">help [option]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">help more</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">History of commands</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">history</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">history</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Open ride</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">open &lt;index&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">open 3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Redo command</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">redo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">redo</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shutdown ride</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">shutdown &lt;index&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">shutdown 1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Undo command</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">undo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">undo</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Update ride information</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">update &lt;index&gt; &lt;tag header&gt; &lt;new value&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">update 2 a/ home</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">View ride information</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view &lt;index&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view 2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">View all rides</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">viewall</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">viewall</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">View rides by status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">viewstatus &lt;status&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">viewstatus open</p></td>
+</tr>
+</tbody>
+</table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 14:15:44 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 15:21:20 UTC</div></div></div></body></html>

@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>ThanePark - Developer Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level3">AB-3</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">ThanePark</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/CS2103-AY1819S1-W14-2/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>ThanePark - Developer Guide</h1></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">ThanePark</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/CS2103-AY1819S1-W14-2/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>ThanePark - Developer Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>By: <code>Team CS2103-W14-2</code>      Since: <code>Sep 2018</code>      Licence: <code>MIT</code></p>
@@ -32,38 +32,39 @@
 <li><a href="#implementation">5. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#undo-redo-feature">5.1. Undo/Redo feature</a></li>
-<li><a href="#proposed-data-encryption">5.2. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">5.3. Logging</a></li>
-<li><a href="#Implementation-Configuration">5.4. Configuration</a></li>
-<li><a href="#filter-feature">5.5. Filter Feature</a></li>
-<li><a href="#autocomplete-suggest-feature">5.6. Autocomplete/Suggest feature</a></li>
+<li><a href="#filter-feature">5.2. Filter Feature</a></li>
+<li><a href="#autocomplete-suggest-feature">5.3. Autocomplete/Suggest Feature</a></li>
+<li><a href="#view-status-feature">5.4. View Status Feature</a></li>
+<li><a href="#proposed-data-encryption">5.5. [Proposed] Data Encryption</a></li>
+<li><a href="#logging">5.6. Logging</a></li>
+<li><a href="#Implementation-Configuration">5.7. Configuration</a></li>
 </ul>
 </li>
-<li><a href="#documentation">Documentation</a>
+<li><a href="#documentation">6. Documentation</a>
 <ul class="sectlevel2">
-<li><a href="#editing-documentation">Editing Documentation</a></li>
-<li><a href="#publishing-documentation">Publishing Documentation</a></li>
-<li><a href="#converting-documentation-to-pdf-format">Converting Documentation to PDF format</a></li>
-<li><a href="#Docs-SiteWideDocSettings">Site-wide Documentation Settings</a></li>
-<li><a href="#Docs-PerFileDocSettings">Per-file Documentation Settings</a></li>
-<li><a href="#site-template">Site Template</a></li>
+<li><a href="#editing-documentation">6.1. Editing Documentation</a></li>
+<li><a href="#publishing-documentation">6.2. Publishing Documentation</a></li>
+<li><a href="#converting-documentation-to-pdf-format">6.3. Converting Documentation to PDF format</a></li>
+<li><a href="#Docs-SiteWideDocSettings">6.4. Site-wide Documentation Settings</a></li>
+<li><a href="#Docs-PerFileDocSettings">6.5. Per-file Documentation Settings</a></li>
+<li><a href="#site-template">6.6. Site Template</a></li>
 </ul>
 </li>
-<li><a href="#Testing">6. Testing</a>
+<li><a href="#Testing">7. Testing</a>
 <ul class="sectlevel2">
-<li><a href="#running-tests">6.1. Running Tests</a></li>
-<li><a href="#types-of-tests">6.2. Types of tests</a></li>
-<li><a href="#troubleshooting-testing">6.3. Troubleshooting Testing</a></li>
+<li><a href="#running-tests">7.1. Running Tests</a></li>
+<li><a href="#types-of-tests">7.2. Types of tests</a></li>
+<li><a href="#troubleshooting-testing">7.3. Troubleshooting Testing</a></li>
 </ul>
 </li>
-<li><a href="#dev-ops">Dev Ops</a>
+<li><a href="#dev-ops">8. Dev Ops</a>
 <ul class="sectlevel2">
-<li><a href="#build-automation">Build Automation</a></li>
-<li><a href="#continuous-integration">Continuous Integration</a></li>
-<li><a href="#coverage-reporting">Coverage Reporting</a></li>
-<li><a href="#documentation-previews">Documentation Previews</a></li>
-<li><a href="#making-a-release">Making a Release</a></li>
-<li><a href="#managing-dependencies">Managing Dependencies</a></li>
+<li><a href="#build-automation">8.1. Build Automation</a></li>
+<li><a href="#continuous-integration">8.2. Continuous Integration</a></li>
+<li><a href="#coverage-reporting">8.3. Coverage Reporting</a></li>
+<li><a href="#documentation-previews">8.4. Documentation Previews</a></li>
+<li><a href="#making-a-release">8.5. Making a Release</a></li>
+<li><a href="#managing-dependencies">8.6. Managing Dependencies</a></li>
 </ul>
 </li>
 <li><a href="#product-scope">Appendix A: Product Scope</a></li>
@@ -83,10 +84,17 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Welcome to the documentation for ThanePark. The purpose of this documentation is to assist you in their
-transition to begin developmental work on this application. If you are a developer looking to <strong>adopt this application</strong> for their
-own uses, go to <a href="#setting-up"><strong><code>Setting up</code></strong></a>. If you wish to <strong>contribute to the current application</strong>, go to <a href="#dev-ops"><strong><code>Developing the application</code></strong></a>.
-If you wish to <strong>update documentation</strong> of this application, go to <a href="#documentation"><strong><code>Documentation</code></strong></a>.</p>
+<p>Welcome to ThanePark!
+The purpose of this documentation is to assist you in your transition to begin developmental work on ThanePark.</p>
+</div>
+<div class="paragraph">
+<p>If you are a developer looking to adopt ThanePark for your own uses, go to <a href="#setting-up"><strong><code>Setting up</code></strong></a>.</p>
+</div>
+<div class="paragraph">
+<p>If you wish to contribute to ThanePark, go to <a href="#dev-ops"><strong><code>Developing the application</code></strong></a>.</p>
+</div>
+<div class="paragraph">
+<p>If you wish to update documentation of ThanePark, go to <a href="#documentation"><strong><code>Documentation</code></strong></a>.</p>
 </div>
 </div>
 </div>
@@ -94,8 +102,8 @@ If you wish to <strong>update documentation</strong> of this application, go to 
 <h2 id="about"><a class="link" href="#about">2. About</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>ThanePark is <strong>a desktop application</strong> for <strong>theme park management</strong>. The application is optimized for <strong>keyboard-oriented</strong>
-users and retains <strong>user-friendly graphics</strong> that informs users of their decisions <strong>in a glance</strong>.</p>
+<p>ThanePark is a desktop application for theme park management. The application is optimized for keyboard-oriented
+users and retains user-friendly graphics that informs users of their decisions in a glance.</p>
 </div>
 </div>
 </div>
@@ -347,7 +355,7 @@ Having both Travis and AppVeyor ensures your App works on both Unix-based platfo
 <h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">4.1. Architecture</a></h3>
 <div class="imageblock">
 <div class="content">
-<img src="images/Architecture.png" alt="Architecture" width="600">
+<img src="images/Architecture.png" alt="Architecture" width="800">
 </div>
 <div class="title">Figure 1. Architecture Diagram</div>
 </div>
@@ -758,7 +766,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram" width="650">
+<img src="images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram" width="800">
 </div>
 </div>
 </div>
@@ -833,59 +841,9 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">5.2. [Proposed] Data Encryption</a></h3>
-<div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">5.3. Logging</a></h3>
-<div class="paragraph">
-<p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 5.4, &#8220;Configuration&#8221;</a>)</p>
-</li>
-<li>
-<p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
-</li>
-<li>
-<p>Currently log messages are output through: <code>Console</code> and to a <code>.log</code> file.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>Logging Levels</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>SEVERE</code> : Critical problem detected which may possibly cause the termination of the application</p>
-</li>
-<li>
-<p><code>WARNING</code> : Can continue, but with caution</p>
-</li>
-<li>
-<p><code>INFO</code> : Information showing the noteworthy actions by the App</p>
-</li>
-<li>
-<p><code>FINE</code> : Details that is not usually noteworthy but may be useful in debugging e.g. print the actual list instead of just its size</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">5.4. Configuration</a></h3>
-<div class="paragraph">
-<p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="filter-feature"><a class="link" href="#filter-feature">5.5. Filter Feature</a></h3>
+<h3 id="filter-feature"><a class="link" href="#filter-feature">5.2. Filter Feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">5.5.1. Current Implementation</a></h4>
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">5.2.1. Current Implementation</a></h4>
 <div class="imageblock">
 <div class="content">
 <img src="images/FilterActivityDiagram.png" alt="FilterActivityDiagram" width="800">
@@ -924,26 +882,13 @@ would be returned after each ride is tested with the predicate.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">5.5.2. Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">5.2.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-data-structure-to-support-filter-commands"><a class="link" href="#aspect-data-structure-to-support-filter-commands">Aspect: Data structure to support filter commands</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1:</strong> Gives the entire string condition to the RideContainsConditionPredicate to test.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easier to implement as classes no need to abstracted</p>
-</li>
-<li>
-<p>Cons: RideContainsConditionPredicate would carry out parsing functions which would make it less cohesive</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2(Current Choice):</strong> Abstracting attributes that contain numeric values into a separate class and creating a
+<p><strong>Alternative 1(Current Choice):</strong> Abstracting attributes that contain numeric values into a separate class and creating a
 AttributePredicate to test the attribute</p>
 <div class="ulist">
 <ul>
@@ -956,15 +901,28 @@ AttributePredicate to test the attribute</p>
 </ul>
 </div>
 </li>
+<li>
+<p><strong>Alternative 2:</strong> Gives the entire string condition to the RideContainsConditionPredicate to test.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easier to implement as classes no need to abstracted</p>
+</li>
+<li>
+<p>Cons: RideContainsConditionPredicate would carry out parsing functions which would make it less cohesive</p>
+</li>
+</ul>
+</div>
+</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="autocomplete-suggest-feature"><a class="link" href="#autocomplete-suggest-feature">5.6. Autocomplete/Suggest feature</a></h3>
+<h3 id="autocomplete-suggest-feature"><a class="link" href="#autocomplete-suggest-feature">5.3. Autocomplete/Suggest Feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">5.6.1. Current Implementation</a></h4>
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">5.3.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The <strong>autocomplete/suggest</strong> mechanism is facilitated by <code>SuggestCommand</code>.
 It extends <code>Command</code> and serves as a special kind of <code>Command</code> that cannot be directly invoked by the <code>LogicManager</code>.
@@ -973,13 +931,13 @@ or when <kbd>TAB</kbd> is pressed inside the <strong>Command Box</strong>. See t
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/AutocompleteSuggestActivityDiagram1.png" alt="AutocompleteSuggestActivityDiagram1" width="650">
+<img src="images/AutocompleteSuggestActivityDiagram1.png" alt="AutocompleteSuggestActivityDiagram1" width="800">
 </div>
 <div class="title">Figure 12. Activity Diagram of user executing command</div>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/AutocompleteSuggestActivityDiagram2.png" alt="AutocompleteSuggestActivityDiagram2" width="650">
+<img src="images/AutocompleteSuggestActivityDiagram2.png" alt="AutocompleteSuggestActivityDiagram2" width="800">
 </div>
 <div class="title">Figure 13. Activity Diagram of user pressing tab</div>
 </div>
@@ -990,15 +948,15 @@ These matching <code>Command</code> s are reflected in both <code>CommandResult<
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/AutocompleteSuggestActivityDiagram3.png" alt="AutocompleteSuggestActivityDiagram3" width="650">
+<img src="images/AutocompleteSuggestActivityDiagram3.png" alt="AutocompleteSuggestActivityDiagram3" width="800">
 </div>
 <div class="title">Figure 14. Activity Diagram of user pressing tab</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">5.6.2. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">5.3.2. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-handling-kbd-tab-kbd-autocomplete"><a class="link" href="#aspect-handling-kbd-tab-kbd-autocomplete">Aspect: Handling <kbd>TAB</kbd> autocomplete</a></h5>
+<h5 id="aspect-handling-kbd-tab-kbd-autocomplete"><a class="link" href="#aspect-handling-kbd-tab-kbd-autocomplete">Aspect: Handling <kbd>Tab</kbd> autocomplete</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1035,10 +993,126 @@ for result listing of results in <code>ResultDisplay</code>.</p>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="view-status-feature"><a class="link" href="#view-status-feature">5.4. View Status Feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">5.4.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The view status function is being implemented with the help of <code>ViewStatusCommand</code> and <code>RideStatusPredicate</code> class.
+When the <code>ThaneParkParser</code> parses the user input and finds the view status command word <strong>viewstatus</strong>, it calls a new <code>ViewStatusCommandParser</code> to parse the arguments from the user input.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ViewStatusActivityDiagram.png" alt="ViewStatusActivityDiagram" width="800">
+</div>
+<div class="title">Figure 15. Activity Diagram of <code>ViewStatusCommandParser</code></div>
+</div>
+<div class="paragraph">
+<p>As seen in the diagram above, the <code>ViewStatusCommandParser</code> class checks the arguments for keywords relating to the status of the rides.
+If there are more than one strings found or the argument string is not one of the three statuses,
+it will throw a <code>ParseException</code>, letting the user know that the command format is wrong.
+Conversely, it will compare the argument with the statuses and create a <code>Status</code> enumeration.</p>
+</div>
+<div class="paragraph">
+<p>A new <code>RideStatusPredicate</code> is instantiated with the <code>Status</code> enumeration.
+The <code>ViewStatusCommandParser</code> will return a new <code>ViewStatusCommand</code> containing <code>RideStatusPredicate</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>LogicManager</code> execute the command, and uses the <code>RideStatusPredicate</code> to filter the list of rides for rides that fulfill the required predicate(s).
+A list of filtered rides would be returned.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">5.4.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-data-structure-to-support-view-status-command"><a class="link" href="#aspect-data-structure-to-support-view-status-command">Aspect: Data structure to support view status command</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1(Current choice):</strong> Handle checking of status by passing the <code>Status</code> enumeration to <code>RideStatusPredicate</code> to test.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Code is more cohesive as each class is more focused.</p>
+</li>
+<li>
+<p>Cons: More classes are required to implement the check.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Handle checking of status in ViewStatusCommand by using a lambda expression to express the predicate.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easier to implement as less classes are needed.</p>
+</li>
+<li>
+<p>Cons: Reduced modularity as predicate logic is not abstracted.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">5.5. [Proposed] Data Encryption</a></h3>
+<div class="paragraph">
+<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">5.6. Logging</a></h3>
+<div class="paragraph">
+<p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 5.7, &#8220;Configuration&#8221;</a>)</p>
+</li>
+<li>
+<p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
+</li>
+<li>
+<p>Currently log messages are output through: <code>Console</code> and to a <code>.log</code> file.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Logging Levels</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>SEVERE</code> : Critical problem detected which may possibly cause the termination of the application</p>
+</li>
+<li>
+<p><code>WARNING</code> : Can continue, but with caution</p>
+</li>
+<li>
+<p><code>INFO</code> : Information showing the noteworthy actions by the App</p>
+</li>
+<li>
+<p><code>FINE</code> : Details that is not usually noteworthy but may be useful in debugging e.g. print the actual list instead of just its size</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">5.7. Configuration</a></h3>
+<div class="paragraph">
+<p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="documentation"><a class="link" href="#documentation">Documentation</a></h2>
+<h2 id="documentation"><a class="link" href="#documentation">6. Documentation</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Asciidoc was used for writing documentation.</p>
@@ -1069,20 +1143,20 @@ be found in the <a href="https://github.com/CS2103-AY1819S1-W14-2/main/docs/diag
 </table>
 </div>
 <div class="sect2">
-<h3 id="editing-documentation"><a class="link" href="#editing-documentation">Editing Documentation</a></h3>
+<h3 id="editing-documentation"><a class="link" href="#editing-documentation">6.1. Editing Documentation</a></h3>
 <div class="paragraph">
 <p>See <a href="UsingGradle.html#rendering-asciidoc-files">UsingGradle.adoc</a> to learn how to render <code>.adoc</code> files locally to preview the end result of your edits.
 Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows you to preview the changes you have made to your <code>.adoc</code> files in real-time.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="publishing-documentation"><a class="link" href="#publishing-documentation">Publishing Documentation</a></h3>
+<h3 id="publishing-documentation"><a class="link" href="#publishing-documentation">6.2. Publishing Documentation</a></h3>
 <div class="paragraph">
 <p>See <a href="UsingTravis.html#deploying-github-pages">UsingTravis.adoc</a> to learn how to deploy GitHub Pages using Travis.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="converting-documentation-to-pdf-format"><a class="link" href="#converting-documentation-to-pdf-format">Converting Documentation to PDF format</a></h3>
+<h3 id="converting-documentation-to-pdf-format"><a class="link" href="#converting-documentation-to-pdf-format">6.3. Converting Documentation to PDF format</a></h3>
 <div class="paragraph">
 <p>We use <a href="https://www.google.com/chrome/browser/desktop/">Google Chrome</a> for converting documentation to PDF format, as Chrome&#8217;s PDF engine preserves hyperlinks used in webpages.</p>
 </div>
@@ -1109,11 +1183,11 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 15. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 16. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Docs-SiteWideDocSettings"><a class="link" href="#Docs-SiteWideDocSettings">Site-wide Documentation Settings</a></h3>
+<h3 id="Docs-SiteWideDocSettings"><a class="link" href="#Docs-SiteWideDocSettings">6.4. Site-wide Documentation Settings</a></h3>
 <div class="paragraph">
 <p>The <a href="https://github.com/CS2103-AY1819S1-W14-2/main/build.gradle"><code>build.gradle</code></a> file specifies some project-specific <a href="https://asciidoctor.org/docs/user-manual/#attributes">asciidoc attributes</a> which affects how all documentation files within this project are rendered.</p>
 </div>
@@ -1172,7 +1246,7 @@ This will render the SE-EDU navigation bar at the top of the page, and add some 
 </table>
 </div>
 <div class="sect2">
-<h3 id="Docs-PerFileDocSettings"><a class="link" href="#Docs-PerFileDocSettings">Per-file Documentation Settings</a></h3>
+<h3 id="Docs-PerFileDocSettings"><a class="link" href="#Docs-PerFileDocSettings">6.5. Per-file Documentation Settings</a></h3>
 <div class="paragraph">
 <p>Each <code>.adoc</code> file may also specify some file-specific <a href="https://asciidoctor.org/docs/user-manual/#attributes">asciidoc attributes</a> which affects how the file is rendered.</p>
 </div>
@@ -1229,7 +1303,7 @@ One of: <code>UserGuide</code>, <code>DeveloperGuide</code>, <code>LearningOutco
 </table>
 </div>
 <div class="sect2">
-<h3 id="site-template"><a class="link" href="#site-template">Site Template</a></h3>
+<h3 id="site-template"><a class="link" href="#site-template">6.6. Site Template</a></h3>
 <div class="paragraph">
 <p>The files in <a href="https://github.com/CS2103-AY1819S1-W14-2/main/docs/stylesheets"><code>docs/stylesheets</code></a> are the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS stylesheets</a> of the site.
 You can modify them to change some properties of the site&#8217;s design.</p>
@@ -1258,13 +1332,13 @@ The SE-EDU team does not provide support for modified template files.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="Testing"><a class="link" href="#Testing">6. Testing</a></h2>
+<h2 id="Testing"><a class="link" href="#Testing">7. Testing</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This section covers what you need to know about running and designing automated tests for further development on this application.</p>
 </div>
 <div class="sect2">
-<h3 id="running-tests"><a class="link" href="#running-tests">6.1. Running Tests</a></h3>
+<h3 id="running-tests"><a class="link" href="#running-tests">7.1. Running Tests</a></h3>
 <div class="paragraph">
 <p>There are three ways to run tests.</p>
 </div>
@@ -1326,7 +1400,7 @@ See <a href="UsingGradle.html">UsingGradle.adoc</a> for more info on how to run 
 </div>
 </div>
 <div class="sect2">
-<h3 id="types-of-tests"><a class="link" href="#types-of-tests">6.2. Types of tests</a></h3>
+<h3 id="types-of-tests"><a class="link" href="#types-of-tests">7.2. Types of tests</a></h3>
 <div class="paragraph">
 <p>We have two types of tests:</p>
 </div>
@@ -1368,7 +1442,7 @@ e.g. <code>seedu.thanepark.logic.LogicManagerTest</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="troubleshooting-testing"><a class="link" href="#troubleshooting-testing">6.3. Troubleshooting Testing</a></h3>
+<h3 id="troubleshooting-testing"><a class="link" href="#troubleshooting-testing">7.3. Troubleshooting Testing</a></h3>
 <div class="paragraph">
 <p><strong>Problem: <code>HelpWindowTest</code> fails with a <code>NullPointerException</code>.</strong></p>
 </div>
@@ -1386,34 +1460,34 @@ e.g. <code>seedu.thanepark.logic.LogicManagerTest</code></p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="dev-ops"><a class="link" href="#dev-ops">Dev Ops</a></h2>
+<h2 id="dev-ops"><a class="link" href="#dev-ops">8. Dev Ops</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="build-automation"><a class="link" href="#build-automation">Build Automation</a></h3>
+<h3 id="build-automation"><a class="link" href="#build-automation">8.1. Build Automation</a></h3>
 <div class="paragraph">
 <p>See <a href="UsingGradle.html">UsingGradle.adoc</a> to learn how to use Gradle for build automation.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="continuous-integration"><a class="link" href="#continuous-integration">Continuous Integration</a></h3>
+<h3 id="continuous-integration"><a class="link" href="#continuous-integration">8.2. Continuous Integration</a></h3>
 <div class="paragraph">
 <p>We use <a href="https://travis-ci.org/">Travis CI</a> and <a href="https://www.appveyor.com/">AppVeyor</a> to perform <em>Continuous Integration</em> on our projects. See <a href="UsingTravis.html">UsingTravis.adoc</a> and <a href="UsingAppVeyor.html">UsingAppVeyor.adoc</a> for more details.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="coverage-reporting"><a class="link" href="#coverage-reporting">Coverage Reporting</a></h3>
+<h3 id="coverage-reporting"><a class="link" href="#coverage-reporting">8.3. Coverage Reporting</a></h3>
 <div class="paragraph">
 <p>We use <a href="https://coveralls.io/">Coveralls</a> to track the code coverage of our projects. See <a href="UsingCoveralls.html">UsingCoveralls.adoc</a> for more details.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="documentation-previews"><a class="link" href="#documentation-previews">Documentation Previews</a></h3>
+<h3 id="documentation-previews"><a class="link" href="#documentation-previews">8.4. Documentation Previews</a></h3>
 <div class="paragraph">
 <p>When a pull request has changes to asciidoc files, you can use <a href="https://www.netlify.com/">Netlify</a> to see a preview of how the HTML version of those asciidoc files will look like when the pull request is merged. See <a href="UsingNetlify.html">UsingNetlify.adoc</a> for more details.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="making-a-release"><a class="link" href="#making-a-release">Making a Release</a></h3>
+<h3 id="making-a-release"><a class="link" href="#making-a-release">8.5. Making a Release</a></h3>
 <div class="paragraph">
 <p>Here are the steps to create a new release.</p>
 </div>
@@ -1435,7 +1509,7 @@ e.g. <code>seedu.thanepark.logic.LogicManagerTest</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="managing-dependencies"><a class="link" href="#managing-dependencies">Managing Dependencies</a></h3>
+<h3 id="managing-dependencies"><a class="link" href="#managing-dependencies">8.6. Managing Dependencies</a></h3>
 <div class="paragraph">
 <p>A project often depends on third-party libraries. For example, Address Book depends on the <a href="http://wiki.fasterxml.com/JacksonHome">Jackson library</a> for XML parsing. Managing these <em>dependencies</em> can be automated using Gradle. For example, Gradle can download the dependencies automatically, which is better than these alternatives.<br>
 a. Include those libraries in the repo (this bloats the repo size)<br>
@@ -2188,7 +2262,7 @@ Use case ends.</p>
 <div class="paragraph">
 <p>none</p>
 </div>
-<h3 id="use-case-quickview" class="discrete">Use case: Quickview</h3>
+<h3 id="use-case-view-status-of-rides" class="discrete">Use case: View status of rides</h3>
 <div class="paragraph">
 <p><strong>System</strong>: ThanePark<br>
 <strong>Actor</strong> All<br>
@@ -2197,7 +2271,7 @@ Use case ends.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to view all attractions.</p>
+<p>User requests to view attractions by status.</p>
 </li>
 <li>
 <p>ThanePark shows a summarized view sorted by queue status.</p>
@@ -2346,4 +2420,4 @@ An attraction/ride that is meant for visitors to patronize.</p>
 A place with rides for visitors to patronise.</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 14:15:44 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 15:21:20 UTC</div></div></div></body></html>
