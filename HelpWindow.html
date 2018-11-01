@@ -15,10 +15,9 @@
 <li><a href="#Features">4. Features</a>
 <ul class="sectlevel2">
 <li><a href="#manage-attractions">4.1. Manage attractions</a></li>
-<li><a href="#user-help-and-accessibility">4.2. User help and accessibility</a></li>
-<li><a href="#manage-input-output-of-attractions">4.3. Manage input/output of attractions</a></li>
-<li><a href="#view-information-on-the-list-of-rides">4.4. View information on the list of rides</a></li>
-<li><a href="#find-the-relevant-list-of-rides">4.5. Find the relevant list of rides</a></li>
+<li><a href="#get-help-and-accessibility">4.2. Get help and accessibility</a></li>
+<li><a href="#view-information-on-the-list-of-rides">4.3. View information on the list of rides</a></li>
+<li><a href="#find-the-relevant-list-of-rides">4.4. Find the relevant list of rides</a></li>
 </ul>
 </li>
 <li><a href="#faq">5. FAQ</a></li>
@@ -79,7 +78,7 @@ No prior technical knowledge is required to use ThanePark.</p>
 <p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
 <div class="imageblock">
 <div class="content">
-<img src="images/Ui.png" alt="Ui" width="800">
+<img src="images/startup.png" alt="startup" width="800">
 </div>
 </div>
 </li>
@@ -133,14 +132,14 @@ Example: <code>help [more]</code></p>
 </li>
 <li>
 <p>Items in curly brackets <code>{}</code> denotes keystroke.<br>
-Example: <code>{tab}</code> is the TAB keystroke.</p>
+Example: <code>{tab}</code> is the <kbd>TAB</kbd> keystroke.</p>
 </li>
 <li>
 <p>Items ending with ellipses <code>&#8230;&#8203;</code> denotes variable number of arguments.<br>
 Example: <code>history [findargs&#8230;&#8203;]</code></p>
 </li>
 <li>
-<p>Parameters can be in any order<br>
+<p>Parameters with prefix <code>/</code> can be in any order<br>
 Example: if the command specifies n/name p/address, p/address n/name is also acceptable.</p>
 </li>
 </ul>
@@ -237,33 +236,383 @@ Format: <code>shutdown &lt;index&gt;</code></p>
 Format: <code>open &lt;index&gt;</code></p>
 </div>
 </div>
+<div class="sect3">
+<h4 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">4.1.6. Clearing all entries : <code>clear</code></a></h4>
+<div class="paragraph">
+<p>Clears all entries from the address book.<br>
+Format: <code>clear</code></p>
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="user-help-and-accessibility"><a class="link" href="#user-help-and-accessibility">4.2. User help and accessibility</a></h3>
+<h3 id="get-help-and-accessibility"><a class="link" href="#get-help-and-accessibility">4.2. Get help and accessibility</a></h3>
 <div class="paragraph">
-<p>This section contains all commands related to managing commands.</p>
+<p>This section contains all commands related to providing user help and accessibility.</p>
 </div>
 <div class="sect3">
 <h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">4.2.1. Viewing help: <code>help</code></a></h4>
 <div class="paragraph">
-<p>Display short summary of important commands. <br>
-Format: <code>help [option]</code></p>
+<p>Display short summary of important commands. A summarized help
+sheet should appear as shown below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ui_screenshots/history-example-1.png" alt="history example 1" width="790">
+</div>
 </div>
 <div class="paragraph">
-<p>Displays a full list of important commands with a more detailed description if more is supplied as an <code>option</code>. If a specific command is supplied as <code>option</code>, show
-greater detail of the specified command. If invalid <code>option</code> is specified, will show default help message.</p>
+<p>Format: <code>help</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Extended usage of <code>help</code> command: <code>help [option]</code>. If invalid <code>[option]</code>
+is specified, an error message will be shown (soon a default help message will be shown).
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>help more</code>: Opens the help window to show full usage of ThanePark.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ui_screenshots/history-example-1.png" alt="history example 1" width="790">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>help &lt;command word&gt;</code>: Opens the help window and scrolls to specified command word usage.
+Example: <code>help add</code></p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ui_screenshots/history-example-1.png" alt="history example 1" width="790">
+</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-history-of-previous-commands-code-history-code"><a class="link" href="#viewing-history-of-previous-commands-code-history-code">4.2.2. Viewing history of previous commands: <code>history</code></a></h4>
+<h4 id="suggesting-commands-code-tab-code"><a class="link" href="#suggesting-commands-code-tab-code">4.2.2. Suggesting commands: <code>{tab}</code></a></h4>
 <div class="paragraph">
-<p>Display previous commands during this session. Inputted
-commands from the past are logged into the system.<br>
-Format: <code>history</code></p>
+<p>Displays suggested list of commands when <kbd>TAB</kbd> is pressed.<br>
+Format: <kbd>TAB</kbd></p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+The full functionality of suggesting commands can be quite heavy.
+Skip to <a href="#suggest_examples">examples</a> to view common usage.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Extended usage of suggesting commands:
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 59%;">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 40%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Action</th>
+<th class="tableblock halign-left valign-top">State of application</th>
+<th class="tableblock halign-left valign-top">Expected Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><kbd>TAB</kbd></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="ulist">
+<ul>
+<li>
+<p><code>CommandBox</code> contains half complete command</p>
+</li>
+<li>
+<p><strong>Only 1</strong> command word match to first prefix in <code>CommandBox</code></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="ulist">
+<ul>
+<li>
+<p>Strip all text behind first prefix in <code>CommandBox</code>.</p>
+</li>
+<li>
+<p>Replace prefix with matching command word in <code>CommandBox</code>.</p>
+</li>
+<li>
+<p>Display matching command word in result panel.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><kbd>TAB</kbd></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="ulist">
+<ul>
+<li>
+<p><code>CommandBox</code> contains half complete command</p>
+</li>
+<li>
+<p><strong>More than 1</strong> command word match to first prefix in <code>CommandBox</code></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="ulist">
+<ul>
+<li>
+<p>Display all matching command words in result panel.</p>
+</li>
+<li>
+<p>No change in <code>CommandBox</code>.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><kbd>TAB</kbd></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="ulist">
+<ul>
+<li>
+<p><code>CommandBox</code> contains half complete command</p>
+</li>
+<li>
+<p><strong>No</strong> command word match to first prefix in <code>CommandBox</code></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="ulist">
+<ul>
+<li>
+<p>No visible change is reflected.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><kbd>TAB</kbd></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="ulist">
+<ul>
+<li>
+<p><code>CommandBox</code> contains nothing</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="ulist">
+<ul>
+<li>
+<p>No visible change is reflected.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><kbd>TAB</kbd></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="ulist">
+<ul>
+<li>
+<p><code>CommandBox</code> starts with a complete command word</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="ulist">
+<ul>
+<li>
+<p>Strip all text behind command word in <code>CommandBox</code>.</p>
+</li>
+<li>
+<p>Command in <code>CommandBox</code> will not be executed.</p>
+</li>
+<li>
+<p>Command word will be shown in result panel.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><kbd>ENTER</kbd></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="ulist">
+<ul>
+<li>
+<p><code>CommandBox</code> contains half complete command</p>
+</li>
+<li>
+<p><strong>Only 1</strong> command word match to first prefix in <code>CommandBox</code></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="ulist">
+<ul>
+<li>
+<p>Strip all text behind first prefix in <code>CommandBox</code>.</p>
+</li>
+<li>
+<p>Replace prefix with matching command word in <code>CommandBox</code>.</p>
+</li>
+<li>
+<p>Display matching command word in result panel.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><kbd>ENTER</kbd></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="ulist">
+<ul>
+<li>
+<p><code>CommandBox</code> contains half complete command</p>
+</li>
+<li>
+<p><strong>More than 1</strong> command word match to first prefix in <code>CommandBox</code></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="ulist">
+<ul>
+<li>
+<p>Display all matching command words in result panel.</p>
+</li>
+<li>
+<p>Remove all text in <code>CommandBox</code>.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><kbd>ENTER</kbd></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="ulist">
+<ul>
+<li>
+<p><code>CommandBox</code> contains half complete command</p>
+</li>
+<li>
+<p><strong>No</strong> command word match to first prefix in <code>CommandBox</code></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="ulist">
+<ul>
+<li>
+<p>Error is shown in result panel.</p>
+</li>
+<li>
+<p><code>CommandBox</code> text turns red.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><kbd>ENTER</kbd></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="ulist">
+<ul>
+<li>
+<p><code>CommandBox</code> starts with a complete command word</p>
+</li>
+<li>
+<p>Command arguments are <strong>invalid</strong></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="ulist">
+<ul>
+<li>
+<p>Suggested command usage is shown in result panel.</p>
+</li>
+<li>
+<p><code>CommandBox</code> text turns red.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div id="suggest_examples" class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>he</code><br>
+<kbd>TAB</kbd> (Completes the <code>help</code> command word.)<br></p>
+</li>
+<li>
+<p><code>histor more</code><br>
+<kbd>ENTER</kbd> (Corrects the <code>history</code> command word. Strips <code>more</code> from the command)<br></p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="undoing-commands-code-undo-code"><a class="link" href="#undoing-commands-code-undo-code">4.2.3. Undoing commands: <code>undo</code></a></h4>
+<h4 id="viewing-history-of-previous-commands-code-history-code"><a class="link" href="#viewing-history-of-previous-commands-code-history-code">4.2.3. Viewing history of previous commands: <code>history</code></a></h4>
+<div class="paragraph">
+<p>Display previous commands during this session.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>history</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Extended usage of <code>history</code>:<br>
+Use <code>history more</code> to generate a report of all cumulative command history.
+A window similar to the one below should show up.
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ui_screenshots/history-example-1.png" alt="history example 1" width="790">
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+ThanePark stores the command history in <code>commandHistory.xml</code>. If the storage file size exceeds 5MB,
+no new command history will be logged. Additionally, if the file format is changed, the program will
+restart the collation of history.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="undoing-commands-code-undo-code"><a class="link" href="#undoing-commands-code-undo-code">4.2.4. Undoing commands: <code>undo</code></a></h4>
 <div class="paragraph">
 <p>Undo previous command during current session.<br>
 Format: <code>undo</code></p>
@@ -279,7 +628,7 @@ Format: <code>undo</code></p>
 <code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
 </li>
 <li>
-<p><code>select 1</code><br>
+<p><code>view 1</code><br>
 <code>list</code><br>
 <code>undo</code><br>
 The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
@@ -294,7 +643,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </div>
 </div>
 <div class="sect3">
-<h4 id="redoing-previously-undone-commands-code-redo-code"><a class="link" href="#redoing-previously-undone-commands-code-redo-code">4.2.4. Redoing previously undone commands: <code>redo</code></a></h4>
+<h4 id="redoing-previously-undone-commands-code-redo-code"><a class="link" href="#redoing-previously-undone-commands-code-redo-code">4.2.5. Redoing previously undone commands: <code>redo</code></a></h4>
 <div class="paragraph">
 <p>Reverse the previously undone commands during current session.<br>
 Format: <code>redo</code></p>
@@ -326,23 +675,7 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect3">
-<h4 id="suggesting-commands-code-tab-code"><a class="link" href="#suggesting-commands-code-tab-code">4.2.5. Suggesting commands: <code>{tab}</code></a></h4>
-<div class="paragraph">
-<p>Non-tech savvy users wouldn’t need to remember commands and can
-just use <code>tab</code> s to complete their sentences, or get suggestions on what
-commands start with their specified prefix.<br>
-Format: <code>{tab}</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">4.2.6. Clearing all entries : <code>clear</code></a></h4>
-<div class="paragraph">
-<p>Clears all entries from the address book.<br>
-Format: <code>clear</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="exiting-thanepark-code-exit-code"><a class="link" href="#exiting-thanepark-code-exit-code">4.2.7. Exiting ThanePark: <code>exit</code></a></h4>
+<h4 id="exiting-thanepark-code-exit-code"><a class="link" href="#exiting-thanepark-code-exit-code">4.2.6. Exiting ThanePark: <code>exit</code></a></h4>
 <div class="paragraph">
 <p>Exits the ThanePark application.<br>
 Format: <code>exit</code></p>
@@ -350,108 +683,19 @@ Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="manage-input-output-of-attractions"><a class="link" href="#manage-input-output-of-attractions">4.3. Manage input/output of attractions</a></h3>
-<div class="paragraph">
-<p>This section contains all commands related to managing attractions.</p>
-</div>
-<div class="sect3">
-<h4 id="adding-attractions-code-add-code"><a class="link" href="#adding-attractions-code-add-code">4.3.1. Adding attractions: <code>add</code></a></h4>
-<div class="paragraph">
-<p>Add an attraction by name with the information.<br>
-Format: <code>add <code>&lt;attraction&gt;</code> <code>&lt;maintenance&gt;</code> <code>&lt;waitTime&gt;</code> <code>&lt;address&gt;</code> [tag(s)]</code></p>
-</div>
-<div class="paragraph">
-<p>A ride can have any number of tags (including 0).<br></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>add n/Transformers m/1 w/30 a/John street, block 123, #01-01</p>
-</li>
-<li>
-<p>add n/The Mummy m/3 w/45 a/311, Clementi Ave 2, #02-25 t/3D t/indoor</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="deleting-attractions-code-delete-code"><a class="link" href="#deleting-attractions-code-delete-code">4.3.2. Deleting attractions: <code>delete</code></a></h4>
-<div class="paragraph">
-<p>Deletes the specified attraction from the ThanePark.<br>
-Format: <code>delete &lt;index&gt;</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Deletes the ride at the specified index.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the list of displayed rides.</p>
-</li>
-<li>
-<p>The index must be a positive integer 1, 2, 3, …​</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>viewall</code><br>
-<code>delete 2</code><br>
-Deletes the 2nd ride in ThanePark.</p>
-</li>
-<li>
-<p><code>find Puss in Boots' Giant Journey</code><br>
-<code>delete 1</code><br>
-Deletes the 1st ride in the results of the find command.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="updating-information-of-attraction-code-update-code"><a class="link" href="#updating-information-of-attraction-code-update-code">4.3.3. Updating information of attraction: <code>update</code></a></h4>
-<div class="paragraph">
-<p>Updates the information <code>&lt;tag&gt;</code> with <code>&lt;value&gt;</code> about the ride with <code>&lt;index&gt;</code>.<br></p>
-</div>
-<div class="paragraph">
-<p>Format: <code>update &lt;index&gt; &lt;tag&gt; &lt;value&gt;</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="shutting-down-attraction-code-shutdown-code"><a class="link" href="#shutting-down-attraction-code-shutdown-code">4.3.4. Shutting down attraction: <code>shutdown</code></a></h4>
-<div class="paragraph">
-<p>Close the ride for the day. Display statistics for the ride on that day.<br>
-Format: <code>shutdown &lt;index&gt;</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="opening-attraction-code-open-code"><a class="link" href="#opening-attraction-code-open-code">4.3.5. Opening attraction: <code>open</code></a></h4>
-<div class="paragraph">
-<p>Open the ride for the day. Display statistics for the ride on that day.<br>
-Format: <code>open &lt;index&gt;</code></p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="view-information-on-the-list-of-rides"><a class="link" href="#view-information-on-the-list-of-rides">4.4. View information on the list of rides</a></h3>
+<h3 id="view-information-on-the-list-of-rides"><a class="link" href="#view-information-on-the-list-of-rides">4.3. View information on the list of rides</a></h3>
 <div class="paragraph">
 <p>This section contains all commands related to viewing list on rides.</p>
 </div>
 <div class="sect3">
-<h4 id="viewing-all-available-rides-code-viewall-code"><a class="link" href="#viewing-all-available-rides-code-viewall-code">4.4.1. Viewing all available rides: <code>viewall</code></a></h4>
+<h4 id="viewing-all-available-rides-code-viewall-code"><a class="link" href="#viewing-all-available-rides-code-viewall-code">4.3.1. Viewing all available rides: <code>viewall</code></a></h4>
 <div class="paragraph">
 <p>Display all available rides in a list.<br>
 Format: <code>viewall</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-detailed-information-of-a-specific-ride-code-view-code"><a class="link" href="#viewing-detailed-information-of-a-specific-ride-code-view-code">4.4.2. Viewing detailed information of a specific ride: <code>view</code></a></h4>
+<h4 id="viewing-detailed-information-of-a-specific-ride-code-view-code"><a class="link" href="#viewing-detailed-information-of-a-specific-ride-code-view-code">4.3.2. Viewing detailed information of a specific ride: <code>view</code></a></h4>
 <div class="paragraph">
 <p>Display all available information about a single ride on the list of displayed rides.
 <code>index</code> field specifies the index of the ride that the user wants to view.<br>
@@ -471,7 +715,7 @@ The range of <code>index</code> should be between one and one million.
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-rides-by-their-status-code-viewstatus-code"><a class="link" href="#viewing-rides-by-their-status-code-viewstatus-code">4.4.3. Viewing rides by their status: <code>viewstatus</code></a></h4>
+<h4 id="viewing-rides-by-their-status-code-viewstatus-code"><a class="link" href="#viewing-rides-by-their-status-code-viewstatus-code">4.3.3. Viewing rides by their status: <code>viewstatus</code></a></h4>
 <div class="paragraph">
 <p>Display all rides according to the status of the rides.<br>
 Format: <code>viewstatus &lt;status&gt;</code></p>
@@ -491,12 +735,12 @@ There are only three statuses that are valid, namely open, shutdown and maintena
 </div>
 </div>
 <div class="sect2">
-<h3 id="find-the-relevant-list-of-rides"><a class="link" href="#find-the-relevant-list-of-rides">4.5. Find the relevant list of rides</a></h3>
+<h3 id="find-the-relevant-list-of-rides"><a class="link" href="#find-the-relevant-list-of-rides">4.4. Find the relevant list of rides</a></h3>
 <div class="paragraph">
 <p>This section contains all commands related to finding rides that is relevant to you.</p>
 </div>
 <div class="sect3">
-<h4 id="finding-rides-that-fits-the-given-condition-code-filter-code"><a class="link" href="#finding-rides-that-fits-the-given-condition-code-filter-code">4.5.1. Finding rides that fits the given condition: <code>filter</code></a></h4>
+<h4 id="finding-rides-that-fits-the-given-condition-code-filter-code"><a class="link" href="#finding-rides-that-fits-the-given-condition-code-filter-code">4.4.1. Finding rides that fits the given condition: <code>filter</code></a></h4>
 <div class="paragraph">
 <p>Display all rides that fits the condition in a table. It can only filter conditions that have numeric values i.e.
 <code>Maintenance</code> and <code>WaitTime</code>.<br>
@@ -535,7 +779,7 @@ Filters attractions with waiting time less than 500 and maintenance of more than
 </div>
 </div>
 <div class="sect3">
-<h4 id="finding-a-particular-attraction-code-find-code"><a class="link" href="#finding-a-particular-attraction-code-find-code">4.5.2. Finding a particular attraction: <code>find</code></a></h4>
+<h4 id="finding-a-particular-attraction-code-find-code"><a class="link" href="#finding-a-particular-attraction-code-find-code">4.4.2. Finding a particular attraction: <code>find</code></a></h4>
 <div class="paragraph">
 <p>Find the rides that the user needs to check on. Case insensitive.<br>
 Can only find the name, the address, and the tags of the attractions.<br>
@@ -653,10 +897,10 @@ e.g. delete 3</p>
 <p><strong>Filter</strong>: <code>filter &lt;tag&gt; &lt;condition&gt;</code></p>
 </li>
 <li>
-<p><strong>tab</strong>: <code>{tab}</code></p>
+<p><strong>tab</strong>: <kbd>TAB</kbd></p>
 </li>
 </ul>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-31 15:15:16 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-01 01:48:35 UTC</div></div></div></body></html>

@@ -33,7 +33,7 @@
 <ul class="sectlevel2">
 <li><a href="#undo-redo-feature">5.1. Undo/Redo feature</a></li>
 <li><a href="#filter-feature">5.2. Filter Feature</a></li>
-<li><a href="#autocomplete-suggest-feature">5.3. Autocomplete/Suggest Feature</a></li>
+<li><a href="#accessibility-feature">5.3. Accessibility feature</a></li>
 <li><a href="#view-status-feature">5.4. View Status Feature</a></li>
 <li><a href="#proposed-data-encryption">5.5. [Proposed] Data Encryption</a></li>
 <li><a href="#logging">5.6. Logging</a></li>
@@ -920,10 +920,42 @@ AttributePredicate to test the attribute</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="autocomplete-suggest-feature"><a class="link" href="#autocomplete-suggest-feature">5.3. Autocomplete/Suggest Feature</a></h3>
+<h3 id="accessibility-feature"><a class="link" href="#accessibility-feature">5.3. Accessibility feature</a></h3>
 <div class="sect3">
 <h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">5.3.1. Current Implementation</a></h4>
 <div class="paragraph">
+<p>The accessibility feature is responsible for making ThanePark application easier to use.
+It can be decomposed into the following components:<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#accessibility_help"><strong>Help</strong></a></p>
+</li>
+<li>
+<p><a href="#accessibility_autocomplete"><strong>Autocomplete/Suggest</strong></a></p>
+</li>
+<li>
+<p><a href="#accessibility_history"><strong>Command History retrieval</strong></a></p>
+</li>
+<li>
+<p><a href="#accessibility_UI"><strong>UI changes</strong></a></p>
+</li>
+</ul>
+</div>
+<div id="accessibility_help" class="paragraph">
+<p>The <strong>help</strong> mechanism is facilitated by the <code>ShowHelpRequestEvent</code>.
+When the user executes a <code>HelpCommand</code>, the required level of help is encoded in <code>ShowHelpRequest</code>.
+This event is subscribed to by <code>MainWindow</code>, which will load the respective help page in the required window
+(<code>BrowserPanel</code> or <code>HistoryWindow</code>). These interactions are illustrated in the class diagram below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AutocompleteSuggestActivityDiagram1.png" alt="AutocompleteSuggestActivityDiagram1" width="800">
+</div>
+<div class="title">Figure 12. Class Diagram of help mechanism</div>
+</div>
+<div id="accessibility_autocomplete" class="paragraph">
 <p>The <strong>autocomplete/suggest</strong> mechanism is facilitated by <code>SuggestCommand</code>.
 It extends <code>Command</code> and serves as a special kind of <code>Command</code> that cannot be directly invoked by the <code>LogicManager</code>.
 A new instance of <code>SuggestCommand</code> is created whenever <code>ThaneParkParser</code> fails to find a matching CommandWord,
@@ -933,13 +965,13 @@ or when <kbd>TAB</kbd> is pressed inside the <strong>Command Box</strong>. See t
 <div class="content">
 <img src="images/AutocompleteSuggestActivityDiagram1.png" alt="AutocompleteSuggestActivityDiagram1" width="800">
 </div>
-<div class="title">Figure 12. Activity Diagram of user executing command</div>
+<div class="title">Figure 13. Activity Diagram of user executing command</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/AutocompleteSuggestActivityDiagram2.png" alt="AutocompleteSuggestActivityDiagram2" width="800">
 </div>
-<div class="title">Figure 13. Activity Diagram of user pressing tab</div>
+<div class="title">Figure 14. Activity Diagram of user pressing tab</div>
 </div>
 <div class="paragraph">
 <p>The application will then proceed with executing the <code>SuggestCommand</code>, which returns prefix-matched <code>Command</code> s.
@@ -950,7 +982,33 @@ These matching <code>Command</code> s are reflected in both <code>CommandResult<
 <div class="content">
 <img src="images/AutocompleteSuggestActivityDiagram3.png" alt="AutocompleteSuggestActivityDiagram3" width="800">
 </div>
-<div class="title">Figure 14. Activity Diagram of user pressing tab</div>
+<div class="title">Figure 15. Activity Diagram of user pressing tab</div>
+</div>
+<div id="accessibility_history" class="paragraph">
+<p>The <strong>history</strong> mechanism is facilitated by <code>CommandHistory</code> and <code>CommandsLogCenter</code>.
+<code>CommandHistory</code> maintains the history as a list of user inputs during the session,
+and interfaces with <code>CommandsLogCenter</code> to handle the retrieval and persistent storage
+of user inputs executed across sessions.</p>
+</div>
+<div class="paragraph">
+<p>Given below are 2 example usage scenarios to illustrate the behavior of the <strong>history</strong> mechanism.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Example scenario 1: User requests for current session&#8217;s history.<br>
+Step 1. User executes <code>history</code>.<br>
+Step 2. The list of user inputs in the current session is retrieved from <code>CommandHistory</code>.<br>
+Step 3. A <code>NewResultAvailableEvent</code> is raised within the <code>Logic</code> component.
+Step 4. The result panel displays the list of user inputs upon notification by the event.</p>
+</li>
+<li>
+<p>Example scenario 2: User requests for cumulative history.<br></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>When the cumulative history of all commands is requested,</p>
 </div>
 </div>
 <div class="sect3">
@@ -1005,7 +1063,7 @@ When the <code>ThaneParkParser</code> parses the user input and finds the view s
 <div class="content">
 <img src="images/ViewStatusActivityDiagram.png" alt="ViewStatusActivityDiagram" width="800">
 </div>
-<div class="title">Figure 15. Activity Diagram of <code>ViewStatusCommandParser</code></div>
+<div class="title">Figure 16. Activity Diagram of <code>ViewStatusCommandParser</code></div>
 </div>
 <div class="paragraph">
 <p>As seen in the diagram above, the <code>ViewStatusCommandParser</code> class checks the arguments for keywords relating to the status of the rides.
@@ -1183,7 +1241,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 16. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 17. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 <div class="sect2">
@@ -2465,15 +2523,15 @@ Use case ends.</p>
 <dd>
 <p>Windows, Linux, Unix, OS-X</p>
 </dd>
+<dt class="hdlist1"><a id="attraction-ride"></a> Attraction/ Ride</dt>
+<dd>
+<p>An attraction/ride that is meant for visitors to patronize.</p>
+</dd>
+<dt class="hdlist1"><a id="themepark"></a> Theme/ Amusement park</dt>
+<dd>
+<p>A place with rides for visitors to patronise.</p>
+</dd>
 </dl>
 </div>
-<div class="paragraph">
-<p><a id="attraction-ride"></a> Attraction/ride:
-An attraction/ride that is meant for visitors to patronize.</p>
 </div>
-<div class="paragraph">
-<p><a id="themepark"></a> Theme/ Amusement park:
-A place with rides for visitors to patronise.</p>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-31 15:15:16 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-01 01:48:35 UTC</div></div></div></body></html>

@@ -10,7 +10,11 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook - Level 4 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>ThanePark is a <strong>theme park management</strong> application primarily designed for theme park operators.
+ThanePark caters for <strong>keyboard-oriented</strong> users by integrating primary functionalities into a <strong>Command Line Interface</strong> (CLI),
+yet it displays useful information at a glance through utilisation of JavaFX to render the <strong>Graphical User Interface</strong> (GUI).
+Currently it only supports operation on desktops/laptops.
+It is primarily written in Java and jointly developed by 4 aspiring Software Engineers in <strong>NUS CS2103 module</strong>.</p>
 </div>
 </div>
 </div>
@@ -20,20 +24,24 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added</p>
+<p><strong>Major enhancement</strong>: Developed features that improve the accessibility of the ThanePark application to <strong>improve user productivity</strong>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does:</p>
+<p>What it does: It facilitates finding help on specific commands, assist users in completing commands,
+provide a mechanism to log and retrieve command history and gives users important information at a glance.</p>
 </li>
 <li>
-<p>Justification:</p>
+<p>Justification: The primary role of theme park operators is to manage the ride they are stationed at.
+By making the application easier to use, operators will not find using the application a chore, can quickly
+perform required actions and focus on managing their ride.</p>
 </li>
 <li>
-<p>Highlights:</p>
+<p>Highlights: This enhancement affects existing commands and can be easily extended on addition of new commands. There
+is an added challenge of reducing dependencies across the <code>Logic</code>, <code>Model</code>, <code>Storage</code> and <code>UI</code> components of ThanePark.</p>
 </li>
 <li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Credits: <a href="https://github.com/tipsy/j2html">j2html</a> library to aid formatting of HTML reports.</p>
 </li>
 </ul>
 </div>
@@ -50,7 +58,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.1</code> - <code>v1.2</code> (2 releases) on GitHub</p>
+<p>Managed releases <code>v1.1</code> - <code>v1.3</code> (3 releases) on GitHub</p>
 </li>
 </ul>
 </div>
@@ -60,17 +68,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Documentation:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Updated the GUI color scheme (Pull requests )</p>
 </li>
 </ul>
 </div>
@@ -80,7 +78,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#48</a>, <a href="https://github.com">#82</a>, <a href="https://github.com">#78</a></p>
+<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/CS2103-AY1819S1-W14-2/main/pull/12">#12</a>, <a href="https://github.com/CS2103-AY1819S1-W14-2/main/pull/48">#48</a>, <a href="https://github.com/CS2103-AY1819S1-W14-2/main/pull/82">#82</a>, <a href="https://github.com/CS2103-AY1819S1-W14-2/main/pull/99">#99</a></p>
 </li>
 <li>
 <p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">94</a>, <a href="https://github.com">89</a>)</p>
@@ -99,7 +97,7 @@
 <p>Set up Travis CI, coveralls and autodoc to the project</p>
 </li>
 <li>
-<p>Integrated a third party library (j2html) to the project (<a href="https://github.com">#79</a>)</p>
+<p>Integrated a third party library (j2html) to the project (<a href="https://github.com/CS2103-AY1819S1-W14-2/main/pull/79">#79</a>)</p>
 </li>
 </ul>
 </div>
@@ -139,11 +137,41 @@
 </tr>
 </tbody>
 </table>
-<div class="sect2">
-<h3 id="autocomplete-suggest-feature"><a class="link" href="#autocomplete-suggest-feature">Autocomplete/Suggest Feature</a></h3>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
+<p>The accessibility feature is responsible for making ThanePark application easier to use.
+It can be decomposed into the following components:<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#accessibility_help"><strong>Help</strong></a></p>
+</li>
+<li>
+<p><a href="#accessibility_autocomplete"><strong>Autocomplete/Suggest</strong></a></p>
+</li>
+<li>
+<p><a href="#accessibility_history"><strong>Command History retrieval</strong></a></p>
+</li>
+<li>
+<p><a href="#accessibility_UI"><strong>UI changes</strong></a></p>
+</li>
+</ul>
+</div>
+<div id="accessibility_help" class="paragraph">
+<p>The <strong>help</strong> mechanism is facilitated by the <code>ShowHelpRequestEvent</code>.
+When the user executes a <code>HelpCommand</code>, the required level of help is encoded in <code>ShowHelpRequest</code>.
+This event is subscribed to by <code>MainWindow</code>, which will load the respective help page in the required window
+(<code>BrowserPanel</code> or <code>HistoryWindow</code>). These interactions are illustrated in the class diagram below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AutocompleteSuggestActivityDiagram1.png" alt="AutocompleteSuggestActivityDiagram1" width="800">
+</div>
+<div class="title">Figure 1. Class Diagram of help mechanism</div>
+</div>
+<div id="accessibility_autocomplete" class="paragraph">
 <p>The <strong>autocomplete/suggest</strong> mechanism is facilitated by <code>SuggestCommand</code>.
 It extends <code>Command</code> and serves as a special kind of <code>Command</code> that cannot be directly invoked by the <code>LogicManager</code>.
 A new instance of <code>SuggestCommand</code> is created whenever <code>ThaneParkParser</code> fails to find a matching CommandWord,
@@ -153,13 +181,13 @@ or when <kbd>TAB</kbd> is pressed inside the <strong>Command Box</strong>. See t
 <div class="content">
 <img src="../images/AutocompleteSuggestActivityDiagram1.png" alt="AutocompleteSuggestActivityDiagram1" width="800">
 </div>
-<div class="title">Figure 1. Activity Diagram of user executing command</div>
+<div class="title">Figure 2. Activity Diagram of user executing command</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/AutocompleteSuggestActivityDiagram2.png" alt="AutocompleteSuggestActivityDiagram2" width="800">
 </div>
-<div class="title">Figure 2. Activity Diagram of user pressing tab</div>
+<div class="title">Figure 3. Activity Diagram of user pressing tab</div>
 </div>
 <div class="paragraph">
 <p>The application will then proceed with executing the <code>SuggestCommand</code>, which returns prefix-matched <code>Command</code> s.
@@ -170,7 +198,33 @@ These matching <code>Command</code> s are reflected in both <code>CommandResult<
 <div class="content">
 <img src="../images/AutocompleteSuggestActivityDiagram3.png" alt="AutocompleteSuggestActivityDiagram3" width="800">
 </div>
-<div class="title">Figure 3. Activity Diagram of user pressing tab</div>
+<div class="title">Figure 4. Activity Diagram of user pressing tab</div>
+</div>
+<div id="accessibility_history" class="paragraph">
+<p>The <strong>history</strong> mechanism is facilitated by <code>CommandHistory</code> and <code>CommandsLogCenter</code>.
+<code>CommandHistory</code> maintains the history as a list of user inputs during the session,
+and interfaces with <code>CommandsLogCenter</code> to handle the retrieval and persistent storage
+of user inputs executed across sessions.</p>
+</div>
+<div class="paragraph">
+<p>Given below are 2 example usage scenarios to illustrate the behavior of the <strong>history</strong> mechanism.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Example scenario 1: User requests for current session&#8217;s history.<br>
+Step 1. User executes <code>history</code>.<br>
+Step 2. The list of user inputs in the current session is retrieved from <code>CommandHistory</code>.<br>
+Step 3. A <code>NewResultAvailableEvent</code> is raised within the <code>Logic</code> component.
+Step 4. The result panel displays the list of user inputs upon notification by the event.</p>
+</li>
+<li>
+<p>Example scenario 2: User requests for cumulative history.<br></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>When the cumulative history of all commands is requested,</p>
 </div>
 </div>
 <div class="sect3">
@@ -213,5 +267,4 @@ for result listing of results in <code>ResultDisplay</code>.</p>
 </div>
 </div>
 </div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-31 15:15:16 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-01 01:48:35 UTC</div></div></div></body></html>
