@@ -1,19 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Lai Keen Lok - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">ThanePark</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/CS2103-AY1819S1-W14-2/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Lai Keen Lok - Project Portfolio</h1><div id="toc" class="toc"><div id="toctitle"></div><ul class="sectlevel1">
-<li><a href="#overview">1. Overview</a></li>
-<li><a href="#summary-of-contributions">2. Summary of contributions</a></li>
-<li><a href="#contributions-to-the-user-guide">3. Contributions to the User Guide</a>
-<ul class="sectlevel2">
-<li><a href="#find-the-relevant-list-of-rides">3.1. Find the relevant list of rides</a></li>
-</ul>
-</li>
-<li><a href="#contributions-to-the-developer-guide">4. Contributions to the Developer Guide</a>
-<ul class="sectlevel2">
-<li><a href="#filter-feature">4.1. Filter Feature</a></li>
-</ul>
-</li>
-</ul></div></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">ThanePark</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/CS2103-AY1819S1-W14-2/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Lai Keen Lok - Project Portfolio</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <h2 id="project-thane-park" class="discrete">PROJECT: Thane Park</h2>
 <hr>
@@ -23,26 +10,31 @@
 <h2 id="overview"><a class="link" href="#overview">1. Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This portfolio is meant to document my contributions to this project Thane Park.<br>
-Thane Park is a desktop application used for managing the rides and attractions in a theme park. The user interacts with
-it using a Command Line Interface (CLI), and it has a Graphical User Interface (GUI) created with JavaFX. It is written
-Java and has about 10 kLoc.<br>
-My role in the project is to manage the tests and storage in the application. I&#8217;ve also added and enhanced a couple of
-features, namely Filter and Find.</p>
+<p>This portfolio is meant to document my work done for  my software engineering module in NUS School of Computing,
+more specifically the contributions to this project Thane Park.<br></p>
+</div>
+<div class="paragraph">
+<p>Thane Park is a desktop application used for managing the rides and attractions in a theme park. The theme park manager
+and operators interacts with it using a Command Line Interface (CLI), and it has a Graphical User Interface (GUI) created
+with JavaFX. It is written in Java and has about 10 kLoc.<br></p>
+</div>
+<div class="paragraph">
+<p>My role in the project is to manage the tests and storage in the application. I have also added and enhanced a couple of
+features, namely <code>Filter</code> and <code>Find</code>.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">2. Summary of contributions</a></h2>
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">2. Summary of Contributions</a></h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to filter data entries stored in the application</strong></p>
+<p><strong>Major enhancement</strong>: Added <strong>the ability to filter data entries stored in the application</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: Allows users to filter entries based on the conditions that they can input.</p>
+<p>What it does: This feature allows users to filter entries based on the conditions that they can input.</p>
 </li>
 <li>
 <p>Justification: This feature significantly improves the application because now, users don&#8217;t need to know the exact number
@@ -50,11 +42,11 @@ or name of the ride that they want. They can simple specify a range and then the
 that is within the range specified.</p>
 </li>
 <li>
-<p>Highlights: This enhancement involved introduction a new predicate class, <code>RideContainsConditionPredicate</code>, to allow users to input a range of values to
-compare values with the existing data.<br>
-The attributes of the rides that contains numeric values are also abstracted out to create a new interface <code>Attribute</code> that
-the classes <code>Maintenance</code> and <code>WaitTime</code> implement. This allows the implementation of the predicate class <code>AttributePredicate</code>,
-which enables it to store the user input and compare the values with the <code>Maintenance</code> and <code>WaitTime</code> of a ride class.</p>
+<p>Highlights: This enhancement introduces a new predicate class, <code>RideContainsConditionPredicate</code>, to allow
+users to input a range of values to compare values with the existing data.The attributes of the rides that contains numeric
+values are also abstracted out to create a new interface <code>Attribute</code> that the classes <code>Maintenance</code> and <code>WaitTime</code> implement.
+This allows the implementation of the predicate class <code>AttributePredicate</code>, which enables it to store the user input and
+compare the values with the <code>Maintenance</code> and <code>WaitTime</code> of a ride class.</p>
 </li>
 <li>
 <p>Credits: The filter is based on the way find feature works, with a <code>RideContainsConditionPredicate</code> instead of a
@@ -64,10 +56,10 @@ which enables it to store the user input and compare the values with the <code>M
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p><strong>Minor enhancement</strong>: <code>Find</code> can parse "address" and "tags" in addition to "a/" and "t/".</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>]</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -75,6 +67,12 @@ which enables it to store the user input and compare the values with the <code>M
 <ul>
 <li>
 <p>Enhancements to existing features: Find can now search tags and addresses in addition to the names of the rides</p>
+</li>
+<li>
+<p>Project management: Reviewed Pull Requests(PR) on github.</p>
+</li>
+<li>
+<p>Refactored <code>Address Book</code> to <code>Thane Park</code> in the code.</p>
 </li>
 </ul>
 </div>
@@ -108,12 +106,20 @@ which enables it to store the user input and compare the values with the <code>M
 <h4 id="finding-rides-that-fits-the-given-condition-code-filter-code"><a class="link" href="#finding-rides-that-fits-the-given-condition-code-filter-code">3.1.1. Finding rides that fits the given condition: <code>filter</code></a></h4>
 <div class="paragraph">
 <p>Display all rides that fits the condition in a table. It can only filter conditions that have numeric values i.e.
-<code>Maintenance</code> and <code>WaitTime</code>.<br>
-Format: <code>filter &lt;tag&gt; &lt;condition&gt; [[tag] [condition]&#8230;&#8203;]</code><br>
-Can include more conditions as desired.<br></p>
+<code>Maintenance</code> and <code>WaitTime</code>.<br></p>
 </div>
 <div class="paragraph">
-<p>Example:</p>
+<p>Format: <code>filter &lt;tag&gt; &lt;condition&gt; [[tag] [condition]&#8230;&#8203;]</code><br>
+Can include more conditions as desired.<br></p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Examples:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -126,32 +132,48 @@ Filters attractions with waiting time less than 500 minutes. If no changes were 
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/ui_screenshots/filter-example-1.png" alt="filter example 1" width="790">
+<img src="../images/ui_screenshots/filter-example-1.png" alt="filter example 1" width="600">
 </div>
 </div>
 <div class="ulist">
 <ul>
 <li>
 <p><code>filter w/ &lt; 10 m/ &gt; 50</code><br>
-Filters attractions with waiting time less than 500 and maintenance of more than 50 days.</p>
+Filters attractions with waiting time less than 500 and maintenance of more than 50 days.
+The result should be as follows:</p>
 </li>
 </ul>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/ui_screenshots/filter-example-2.png" alt="filter example 2" width="790">
+<img src="../images/ui_screenshots/filter-example-2.png" alt="filter example 2" width="600">
 </div>
-</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect3">
 <h4 id="finding-a-particular-attraction-code-find-code"><a class="link" href="#finding-a-particular-attraction-code-find-code">3.1.2. Finding a particular attraction: <code>find</code></a></h4>
 <div class="paragraph">
 <p>Find the rides that the user needs to check on. Case insensitive.<br>
-Can only find the name, the address, and the tags of the attractions.<br>
-Format: <code>find &lt;[name] [[tag][keyword]&#8230;&#8203;]&gt;</code><br>
-Must include arguments when finding.<br>
-Here are some examples with images to let you follow along.<br>
-Examples:</p>
+Can only find the name, the zone, and the tags of the attractions.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>find &lt;[name] [[tag][keyword]&#8230;&#8203;]&gt;</code><br>
+Must include arguments when finding.<br></p>
+</div>
+<div class="paragraph">
+<p>Here are some examples with images to let you follow along.<br></p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Examples:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -163,7 +185,7 @@ Finds and displays the list of attractions in ThanePark with the name "accelerat
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/ui_screenshots/find-example-1.png" alt="find example 1" width="790">
+<img src="../images/ui_screenshots/find-example-1.png" alt="find example 1" width="600">
 </div>
 </div>
 <div class="ulist">
@@ -176,13 +198,13 @@ Finds and displays the list of attractions with addresses that contain the word 
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/ui_screenshots/find-example-2.png" alt="find example 2" width="790">
+<img src="../images/ui_screenshots/find-example-2.png" alt="find example 2" width="600">
 </div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>find address street t/friends tag family</code><br>
+<p><code>find zone street t/friends tag family</code><br>
 Finds and displays the list of attractions with addresses that contain the word "street" and the tags "friends"
 and "family"</p>
 </li>
@@ -190,9 +212,12 @@ and "family"</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/ui_screenshots/find-example-3.png" alt="find example 3" width="790">
+<img src="../images/ui_screenshots/find-example-3.png" alt="find example 3" width="600">
 </div>
-</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -212,8 +237,14 @@ and "family"</p>
 </table>
 <div class="sect2">
 <h3 id="filter-feature"><a class="link" href="#filter-feature">4.1. Filter Feature</a></h3>
+<div class="paragraph">
+<p>This section documents how filter is implemented and how it works.</p>
+</div>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">4.1.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The execution of filter is simple and linear as the following activity diagram would show:</p>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/FilterActivityDiagram.png" alt="FilterActivityDiagram" width="800">
@@ -221,7 +252,7 @@ and "family"</p>
 <div class="title">Figure 1. Activity Diagram for the Filter Feature</div>
 </div>
 <div class="paragraph">
-<p>The following diagram will show how the filter diagram works:<br></p>
+<p>The following sequence diagram will show how the filter diagram works:<br></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -230,13 +261,13 @@ and "family"</p>
 <div class="title">Figure 2. Sequence Diagram for the Filter Feature</div>
 </div>
 <div class="paragraph">
-<p>The filter function is being implemented with the help of <code>FilterCommand</code> and <code>AttributePredicate</code> class. When the
+<p>The filter function is implemented with the help of <code>FilterCommand</code> and <code>AttributePredicate</code> class. When the
 <code>ThaneParkParser</code> parses the user input and finds the filter command word <code>filter</code> it calls a new <code>FilterCommandParser</code> to
 parse the arguments from the user input.</p>
 </div>
 <div class="paragraph">
 <p>It checks if there are any of the maintenance or waiting time prefix in the arguments. If any of the prefixes are present,
-an <code>AttributePredicate</code> is created with the operator (‘&lt;’ or ‘&gt;’) and the attribute they are checking for (ie
+an <code>AttributePredicate</code> is created with the operator (‘&lt;', ‘&gt;’, '&lt; =' or '&gt; =') and the attribute they are checking for (ie
 <code>Maintenance</code> or <code>WaitTime</code>). The AttributePredicates are added to a list. The user can add any amount of predicates that
 they want, like 3 predicates e.g. <code>filter w/&lt; 50 w/ &gt; 5 m/&gt;10</code> and the list would contain 3 predicates and if the user
 decides to input only one predicate, the list will only contain one.</p>
@@ -246,7 +277,7 @@ decides to input only one predicate, the list will only contain one.</p>
 return a new <code>FilterCommand</code> with the <code>RideContainsConditionPredicate</code> in it.</p>
 </div>
 <div class="paragraph">
-<p>The LogicManager execute the command, and the <code>RideContainsConditionPredicate</code> will be set as the predicate to filter
+<p>The <code>LogicManager</code> execute the command, and the <code>RideContainsConditionPredicate</code> will be set as the predicate to filter
 the list of rides and it will check if the ride fulfils the required predicate(s). After that a list of filtered rides
 would be returned after each ride is tested with the predicate.</p>
 </div>
@@ -263,10 +294,10 @@ AttributePredicate to test the attribute</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easier to add more numeric attributes and minimal changes required to filter new attributes</p>
+<p>Pros: More numeric attributes can be easily added  and minimal changes are required to filter new attributes</p>
 </li>
 <li>
-<p>Cons: Need to implement more classes to handle</p>
+<p>Cons: More classes would need to be implemented to handle the</p>
 </li>
 </ul>
 </div>
@@ -276,7 +307,7 @@ AttributePredicate to test the attribute</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easier to implement as classes no need to abstracted</p>
+<p>Pros: This would be easier to implement as classes no need to abstracted</p>
 </li>
 <li>
 <p>Cons: RideContainsConditionPredicate would carry out parsing functions which would make it less cohesive</p>
@@ -290,4 +321,4 @@ AttributePredicate to test the attribute</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-01 01:48:35 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-02 06:34:01 UTC</div></div></div></body></html>
