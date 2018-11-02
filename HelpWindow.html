@@ -14,18 +14,14 @@
 <li><a href="#quick-start">3. Quick Start</a></li>
 <li><a href="#Features">4. Features</a>
 <ul class="sectlevel2">
-<li><a href="#manage-attractions">4.1. Manage attractions</a></li>
+<li><a href="#manage-attractions">4.1. Manage Attractions</a></li>
 <li><a href="#get-help-and-accessibility">4.2. Get help and accessibility</a></li>
 <li><a href="#view-information-on-the-list-of-rides">4.3. View information on the list of rides</a></li>
 <li><a href="#find-the-relevant-list-of-rides">4.4. Find the relevant list of rides</a></li>
 </ul>
 </li>
 <li><a href="#faq">5. FAQ</a></li>
-<li><a href="#command-summary">6. Command Summary</a>
-<ul class="sectlevel2">
-<li><a href="#added">6.1. Added</a></li>
-</ul>
-</li>
+<li><a href="#command-summary">6. Command Summary</a></li>
 </ul>
 </div>
 </div>
@@ -83,6 +79,28 @@ No prior technical knowledge is required to use ThanePark.</p>
 </div>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p>If you left click on the any ride in the list, it will show the ride information in a window
+similar to below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Ui.png" alt="Ui" width="800">
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+You will not be able to customise the image for rides. This feature will only be implemented in <code>v2.0</code>.
+Similarly, the <code>About</code> button on the navigation bar opens a help window.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Congratulations! You have successfully set up ThanePark!</p>
@@ -147,7 +165,7 @@ Example: if the command specifies n/name p/zone, p/zone n/name is also acceptabl
 </div>
 </div>
 <div class="sect2">
-<h3 id="manage-attractions"><a class="link" href="#manage-attractions">4.1. Manage attractions</a></h3>
+<h3 id="manage-attractions"><a class="link" href="#manage-attractions">4.1. Manage Attractions</a></h3>
 <div class="paragraph">
 <p>This section contains all commands related to managing attractions.</p>
 </div>
@@ -253,11 +271,11 @@ Format: <code>clear</code></p>
 <h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">4.2.1. Viewing help: <code>help</code></a></h4>
 <div class="paragraph">
 <p>Display short summary of important commands. A summarized help
-sheet should appear as shown below.</p>
+sheet should appear as shown below.<br></p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/ui_screenshots/history-example-1.png" alt="history example 1" width="790">
+<img src="images/ui_screenshots/help-example-1.png" alt="help example 1" width="400">
 </div>
 </div>
 <div class="paragraph">
@@ -270,11 +288,21 @@ sheet should appear as shown below.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Extended usage of <code>help</code> command: <code>help [option]</code>. If invalid <code>[option]</code>
-is specified, an error message will be shown (soon a default help message will be shown).
+Extended usage of <code>help</code> command: <code>help [option]</code>. <code>[option]</code> can take on the value of
+<code>more</code> or any command word. If provided <code>[option]</code> is invalid, an error message will be
+shown (soon a default help message will be shown).
 </td>
 </tr>
 </table>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Examples:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -285,27 +313,32 @@ is specified, an error message will be shown (soon a default help message will b
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/ui_screenshots/history-example-1.png" alt="history example 1" width="790">
+<img src="images/ui_screenshots/help-example-2.png" alt="help example 2" width="600">
 </div>
-</div>
-<div class="ulist">
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="ulist">
 <ul>
 <li>
-<p><code>help &lt;command word&gt;</code>: Opens the help window and scrolls to specified command word usage.
-Example: <code>help add</code></p>
+<p><code>help add</code>: Opens the help window and scrolls to <code>add</code> command word usage.</p>
 </li>
 </ul>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/ui_screenshots/history-example-1.png" alt="history example 1" width="790">
+<img src="images/ui_screenshots/help-example-3.png" alt="help example 3" width="600">
 </div>
-</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect3">
 <h4 id="suggesting-commands-code-tab-code"><a class="link" href="#suggesting-commands-code-tab-code">4.2.2. Suggesting commands: <code>{tab}</code></a></h4>
 <div class="paragraph">
 <p>Displays suggested list of commands when <kbd>TAB</kbd> is pressed.<br>
+<br>
 Format: <kbd>TAB</kbd></p>
 </div>
 <div class="admonitionblock warning">
@@ -333,7 +366,7 @@ Extended usage of suggesting commands:
 </tr>
 </table>
 </div>
-<table class="tableblock frame-all grid-all" style="width: 59%;">
+<table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 40%;">
@@ -553,7 +586,13 @@ Extended usage of suggesting commands:
 </tr>
 </tbody>
 </table>
-<div id="suggest_examples" class="paragraph">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div id="suggest_examples" class="paragraph">
 <p>Examples:</p>
 </div>
 <div class="ulist">
@@ -567,15 +606,17 @@ Extended usage of suggesting commands:
 <kbd>ENTER</kbd> (Corrects the <code>history</code> command word. Strips <code>more</code> from the command)<br></p>
 </li>
 </ul>
-</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect3">
 <h4 id="viewing-history-of-previous-commands-code-history-code"><a class="link" href="#viewing-history-of-previous-commands-code-history-code">4.2.3. Viewing history of previous commands: <code>history</code></a></h4>
 <div class="paragraph">
-<p>Display previous commands during this session.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>history</code></p>
+<p>Display previous user inputs during this session. Does not include the executed <code>history</code> itself.<br>
+<br>
+Format: <code>history</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -586,15 +627,9 @@ Extended usage of suggesting commands:
 <td class="content">
 Extended usage of <code>history</code>:<br>
 Use <code>history more</code> to generate a report of all cumulative command history.
-A window similar to the one below should show up.
 </td>
 </tr>
 </table>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/ui_screenshots/history-example-1.png" alt="history example 1" width="790">
-</div>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -610,14 +645,50 @@ restart the collation of history.
 </tr>
 </table>
 </div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>history</code> (Shows user inputs in current session.)</p>
+</li>
+<li>
+<p><code>history more</code> (A window similar to the one below should show up:)</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="imageblock">
+<div class="content">
+<img src="images/ui_screenshots/history-example-1.png" alt="history example 1" width="600">
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect3">
 <h4 id="undoing-commands-code-undo-code"><a class="link" href="#undoing-commands-code-undo-code">4.2.4. Undoing commands: <code>undo</code></a></h4>
 <div class="paragraph">
 <p>Undo previous command during current session.<br>
+<br>
 Format: <code>undo</code></p>
 </div>
-<div class="paragraph">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Examples:</p>
 </div>
 <div class="ulist">
@@ -640,15 +711,25 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 <code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
 </li>
 </ul>
-</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect3">
 <h4 id="redoing-previously-undone-commands-code-redo-code"><a class="link" href="#redoing-previously-undone-commands-code-redo-code">4.2.5. Redoing previously undone commands: <code>redo</code></a></h4>
 <div class="paragraph">
 <p>Reverse the previously undone commands during current session.<br>
+<br>
 Format: <code>redo</code></p>
 </div>
-<div class="paragraph">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Examples:</p>
 </div>
 <div class="ulist">
@@ -672,12 +753,16 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 <code>redo</code> (reapplies the <code>clear</code> command)<br></p>
 </li>
 </ul>
-</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect3">
 <h4 id="exiting-thanepark-code-exit-code"><a class="link" href="#exiting-thanepark-code-exit-code">4.2.6. Exiting ThanePark: <code>exit</code></a></h4>
 <div class="paragraph">
 <p>Exits the ThanePark application.<br>
+<br>
 Format: <code>exit</code></p>
 </div>
 </div>
@@ -871,63 +956,101 @@ and "family"</p>
 <div class="sect1">
 <h2 id="command-summary"><a class="link" href="#command-summary">6. Command Summary</a></h2>
 <div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Add</strong>: <code>add &lt;attraction&gt;</code> <code>&lt;maintenance&gt;</code> <code>&lt;waitTime&gt;</code> <code>&lt;zone&gt;</code> <code>[tag(s)]</code><br>
-e.g. add n/Mummy m/3 w/45 a/311, Clementi Ave 2, #02-25 t/3D t/indoor</p>
-</li>
-<li>
-<p><strong>Delete</strong>: <code>delete &lt;index&gt;</code><br>
-e.g. delete 3</p>
-</li>
-<li>
-<p><strong>Exit</strong>: <code>exit</code></p>
-</li>
-<li>
-<p><strong>Find</strong>: <code>find &lt;attraction&gt;</code></p>
-</li>
-<li>
-<p><strong>Help</strong>: <code>help [option]</code></p>
-</li>
-<li>
-<p><strong>History</strong>: <code>history</code></p>
-</li>
-<li>
-<p><strong>Undo</strong>: <code>undo</code></p>
-</li>
-<li>
-<p><strong>Redo</strong>: <code>redo</code></p>
-</li>
-</ul>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Action</th>
+<th class="tableblock halign-left valign-top">Syntax</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Manage Attractions</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Add</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>add &lt;attraction&gt;</code> <code>&lt;maintenance&gt;</code> <code>&lt;waitTime&gt;</code> <code>&lt;address&gt;</code> <code>[tag(s)]</code><br>
+  e.g. add n/Mummy m/3 w/45 a/311, Clementi Ave 2, #02-25 t/3D t/indoor</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Delete</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>delete &lt;index&gt;</code><br>
+  e.g. delete 3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Update</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>update &lt;index&gt; &lt;tag&gt; &lt;value&gt;</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Shutdown</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>shutdown &lt;index&gt;</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Open</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>open &lt;index&gt;</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Clear</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>clear</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Get help and accessibility</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Help</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>help [option]</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Autocomplete</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><kbd>TAB</kbd></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>History</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>history [option]</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Undo</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>undo</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Redo</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>redo</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Exit</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>exit</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>View information on the list of rides</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>View all</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>viewall</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>View</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>view</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>View status</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>viewstatus &lt;name&gt;</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Find the relevant list of rides</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Filter</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>filter &lt;tag&gt; &lt;condition&gt; [[tag] [condition]…​]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Find</strong></p></td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="sect2">
-<h3 id="added"><a class="link" href="#added">6.1. Added</a></h3>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Update</strong>: <code>update &lt;index&gt; &lt;tag&gt; &lt;value&gt;</code></p>
-</li>
-<li>
-<p><strong>Open</strong>: <code>open &lt;index&gt;</code></p>
-</li>
-<li>
-<p><strong>Shutdown</strong>: <code>shutdown &lt;index&gt;</code></p>
-</li>
-<li>
-<p><strong>View</strong>: <code>view &lt;name&gt;</code></p>
-</li>
-<li>
-<p><strong>Quickview</strong>: <code>quickview</code></p>
-</li>
-<li>
-<p><strong>Filter</strong>: <code>filter &lt;tag&gt; &lt;condition&gt;</code></p>
-</li>
-<li>
-<p><strong>tab</strong>: <kbd>TAB</kbd></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-02 06:34:01 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-02 07:21:18 UTC</div></div></div></body></html>
