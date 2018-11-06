@@ -1,6 +1,9 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Untitled</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="header"></div><div id="content"><table class="tableblock frame-all grid-all spread">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="header"></div><div id="content"><div class="paragraph">
+<p>Command syntax summary, enter <code>help more</code> for full manual.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -11,22 +14,19 @@
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>add &lt;attraction&gt;</code> <code>&lt;maintenance&gt;</code> <code>&lt;waitTime&gt;</code> <code>&lt;address&gt;</code> <code>[tag(s)]</code><br></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add &lt;attraction&gt; &lt;maintenance&gt; &lt;waitTime&gt; &lt;address&gt; [tag(s)] delete &lt;index&gt;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>delete &lt;index&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">update &lt;index&gt; &lt;tag&gt; &lt;value&gt;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>update &lt;index&gt; &lt;tag&gt; &lt;value&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">shutdown &lt;index&gt;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>shutdown &lt;index&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">open &lt;index&gt;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>open &lt;index&gt;</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>clear</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clear</p></td>
 </tr>
 </tbody>
 </table>
@@ -41,22 +41,22 @@
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>help [option]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">help [option]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Autocomplete: <kbd>TAB</kbd></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>history [option]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">history [option]</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>undo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">undo</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>redo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">redo</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>exit</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">exit</p></td>
 </tr>
 </tbody>
 </table>
@@ -71,13 +71,13 @@
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>viewall</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">viewall</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>view &lt;index&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view &lt;index&gt;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>viewstatus &lt;status&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">viewstatus &lt;status&gt;</p></td>
 </tr>
 </tbody>
 </table>
@@ -92,10 +92,10 @@
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>filter &lt;tag&gt; &lt;condition&gt; [[tag] [condition]…​]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">filter &lt;tag&gt; &lt;condition&gt; [[tag] [condition]…​]</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>find &lt;[name] [[tag][keyword]…​]&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">find &lt;[name] [[tag][keyword]…​]&gt;</p></td>
 </tr>
 </tbody>
-</table></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-06 14:31:51 UTC</div></div></div></body></html>
+</table></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-06 14:45:52 UTC</div></div></div></body></html>
