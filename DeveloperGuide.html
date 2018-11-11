@@ -35,9 +35,10 @@
 <li><a href="#filter-feature">5.2. Filter Feature</a></li>
 <li><a href="#accessibility-feature">5.3. Accessibility feature</a></li>
 <li><a href="#view-status-feature">5.4. View Status Feature</a></li>
-<li><a href="#proposed-data-encryption">5.5. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">5.6. Logging</a></li>
-<li><a href="#Implementation-Configuration">5.7. Configuration</a></li>
+<li><a href="#open-shutdown-feature">5.5. Open/Shutdown Feature</a></li>
+<li><a href="#proposed-data-encryption">5.6. [Proposed] Data Encryption</a></li>
+<li><a href="#logging">5.7. Logging</a></li>
+<li><a href="#Implementation-Configuration">5.8. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">6. Documentation</a>
@@ -1133,20 +1134,103 @@ A list of filtered rides would be returned.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">5.5. [Proposed] Data Encryption</a></h3>
+<h3 id="open-shutdown-feature"><a class="link" href="#open-shutdown-feature">5.5. Open/Shutdown Feature</a></h3>
+<div class="paragraph">
+<p>This section documents how open/shutdown features are implemented and how they work. Note that <code>open</code> and <code>shutdown</code>
+features are very similar to each other.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">5.5.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>OpenActivityDiagram</code> below show the execution flow of <code>OpenCommand</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/OpenActivityDiagram.png" alt="OpenActivityDiagram" width="800">
+</div>
+<div class="title">Figure 17. Activity Diagram of <code>OpenCommand</code></div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram will show how the open/shutdown feature works:<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/OpenSequenceDiagram.png" alt="OpenSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 18. Sequence Diagram for the Open Feature</div>
+</div>
+<div class="paragraph">
+<p>As seen in the diagram above, the <code>open</code> function is implemented with the help of <code>OpenCommand</code> and
+<code>UpdateRideDescriptor</code> class. When the <code>ThaneParkParser</code> parses the user input and finds the open command word <code>open</code>,
+it calls a new <code>OpenCommandParser</code> to parse the arguments from the user input.</p>
+</div>
+<div class="paragraph">
+<p>Next, the <code>OpenCommandParser</code> will parse the arguments from the user input into an <code>index</code> and
+return a new <code>OpenCommand</code> with the <code>index</code> as the parameter.</p>
+</div>
+<div class="paragraph">
+<p>Finally, the <code>LogicManager</code> will execute the <code>open</code> command, and the <code>index</code> will be used to find the <code>ride</code> from the
+list.
+After that, the <code>open</code> command will change the status of the ride to <code>Open</code> by utilising the <code>UpdateRideDescriptor</code>
+class.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">5.5.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-data-structure-to-support-open-shutdown-commands"><a class="link" href="#aspect-data-structure-to-support-open-shutdown-commands">Aspect: Data structure to support open/shutdown commands</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1(Current choice):</strong> Change the status of the ride inside the <code>open</code> command and include the
+<code>UpdateRideDescriptor</code> in the <code>open</code> command as well.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: This would be easier to implement as <code>UpdateRideDescriptor</code> class no need to abstracted out from the
+<code>openCommand</code> class.</p>
+</li>
+<li>
+<p>Cons: <code>UpdateRideDescriptor</code> will modify the status of rides inside the <code>openCommand</code> class which will make the
+<code>openCommand</code> class less cohesive.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Abstracting <code>UpdateRideDescriptor</code> into a separate class and modify the status of rides in the
+separate class instead of <code>openCommand</code> class.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: The <code>openCommand</code> will be more cohesive.</p>
+</li>
+<li>
+<p>Cons: More classes would need to be implemented to modify the status of rides.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">5.6. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">5.6. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">5.7. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 5.7, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 5.8, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1177,7 +1261,7 @@ A list of filtered rides would be returned.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">5.7. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">5.8. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -1256,7 +1340,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 17. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 19. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 <div class="sect2">
@@ -2549,4 +2633,4 @@ Use case ends.</p>
 </dl>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 14:44:26 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 15:58:20 UTC</div></div></div></body></html>

@@ -1,95 +1,112 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Leong Eng Sea - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">ThanePark</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/CS2103-AY1819S1-W14-2/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Leong Eng Sea - Project Portfolio</h1></div><div id="content"><div class="sect1">
-<h2 id="project-thanepark"><a class="link" href="#project-thanepark">PROJECT: ThanePark</a></h2>
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">ThanePark</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/CS2103-AY1819S1-W14-2/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Leong Eng Sea - Project Portfolio</h1><div id="toc" class="toc"><div id="toctitle"></div><ul class="sectlevel1">
+<li><a href="#overview">1. Overview</a></li>
+<li><a href="#summary-of-contributions">2. Summary of contributions</a></li>
+<li><a href="#contributions-to-the-user-guide">3. Contributions to the User Guide</a>
+<ul class="sectlevel3">
+<li><a href="#adding-attractions-code-add-code">3.1. Adding attractions: <code>add</code></a></li>
+<li><a href="#deleting-attractions-code-delete-code">3.2. Deleting attractions: <code>delete</code></a></li>
+<li><a href="#updating-information-of-attraction-code-update-code">3.3. Updating information of attraction: <code>update</code></a></li>
+<li><a href="#shutting-down-attraction-code-shutdown-code">3.4. Shutting down attraction: <code>shutdown</code></a></li>
+<li><a href="#opening-attraction-code-open-code">3.5. Opening attraction: <code>open</code></a></li>
+</ul>
+</li>
+<li><a href="#contributions-to-the-developer-guide">4. Contributions to the Developer Guide</a>
+<ul class="sectlevel2">
+<li><a href="#open-shutdown-feature">4.1. Open/Shutdown Feature</a></li>
+</ul>
+</li>
+</ul></div></div><div id="content"><div id="preamble">
 <div class="sectionbody">
+<h2 id="project-thanepark" class="discrete">PROJECT: ThanePark</h2>
 <hr>
 </div>
 </div>
 <div class="sect1">
-<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<h2 id="overview"><a class="link" href="#overview">1. Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>ThanePark is a desktop application for theme park management. The application is optimized for keyboard-oriented users and retains user-friendly graphics that informs users of their decisions in a glance.</p>
+<p>The purpose of this portfolio is to document my contributions to the software engineering module(CS2103T) project,
+ThanePark.</p>
+</div>
+<div class="paragraph">
+<p>ThanePark is a desktop application for theme park management. The application is optimized for keyboard-oriented users
+and retains user-friendly graphics that informs users of their decisions in a glance.
+Theme park operators can interact with it by using a Command Line Interface(CLI). It also has a Graphical User Interface
+(GUI) created with JavaFX.
+ThanePark is mostly written in Java and has about ten thousands of code.</p>
+</div>
+<div class="paragraph">
+<p>My part in the project is to implement <code>open</code> and <code>shutdown</code> commands so that operators can open and close the rides
+easily.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">2. Summary of contributions</a></h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to open/shutdown rides</strong></p>
+<p><strong>Major enhancement</strong>: added <strong>the ability to open and shutdown rides in ThanePark</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to open/shutdown all rides one at a time.</p>
+<p>What it does: allows the user to open and shutdown rides easily.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can open/shutdown rides in commands.</p>
+<p>Justification: This feature improves the product significantly because a user can open/shutdown rides with a single
+command.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
+<p>Highlights: This enhancement introduces a new enum class, <code>Status</code>. It allows the user to know whether the rides are
+in <code>open</code>, <code>shutdown</code>, or <code>maintenance</code> status.</p>
 </li>
 <li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Credits: The <code>open</code> and <code>shutdown</code> features are based on the way <code>update</code> feature works, with the help of
+<code>UpdateRideDescriptor</code>.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: Refactor add,delete and update commands.</p>
+<p><strong>Minor enhancement</strong>: Refactor <code>add</code>, <code>delete</code> and <code>update</code> commands.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1819s1.github.io/cs2103-dashboard/#=undefined&amp;search=leongengsea">Functional
+code</a>]</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Project management:
-<strong>*</strong></p>
-</li>
-<li>
-<p>Enhancements to existing features:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Refactor add,delete and update commands.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
 <p>Documentation:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide</p>
-</li>
-</ul>
-</div>
+<p>Update the user guide for the <code>open</code> and <code>shutdown</code> features.</p>
 </li>
 <li>
-<p>Community:</p>
+<p>Update the developer guide for the implementation of the <code>open</code> feature with sequence and activity diagrams of how
+the <code>open</code> command works.</p>
 </li>
 <li>
-<p>Tools:</p>
+<p>Update project portfolio page(PPP).</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
+</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">3. Contributions to the User Guide</a></h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -97,14 +114,100 @@
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting
+ end-users.</em></p></td>
 </tr>
 </tbody>
 </table>
+<div class="sect3">
+<h4 id="adding-attractions-code-add-code"><a class="link" href="#adding-attractions-code-add-code">3.1. Adding attractions: <code>add</code></a></h4>
+<div class="paragraph">
+<p>Add an attraction by name with the information.<br>
+Format: <code>add <code>&lt;attraction&gt;</code> <code>&lt;maintenance&gt;</code> <code>&lt;waitTime&gt;</code> <code>&lt;zone&gt;</code> [tag(s)]</code></p>
+</div>
+<div class="paragraph">
+<p>A ride can have any number of tags (including 0).<br></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>add n/Transformers m/1 w/30 a/John street, block 123, #01-01</p>
+</li>
+<li>
+<p>add n/The Mummy m/3 w/45 a/311, Clementi Ave 2, #02-25 t/3D t/indoor</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-attractions-code-delete-code"><a class="link" href="#deleting-attractions-code-delete-code">3.2. Deleting attractions: <code>delete</code></a></h4>
+<div class="paragraph">
+<p>Deletes the specified attraction from ThanePark.<br>
+Format: <code>delete &lt;index&gt;</code></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the ride at the specified index.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the list of displayed rides.</p>
+</li>
+<li>
+<p>The index must be a positive integer 1, 2, 3, …​</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>viewall</code><br>
+<code>delete 2</code><br>
+Deletes the 2nd ride in ThanePark.</p>
+</li>
+<li>
+<p><code>find Puss in Boots' Giant Journey</code><br>
+<code>delete 1</code><br>
+Deletes the 1st ride in the results of the find command.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="updating-information-of-attraction-code-update-code"><a class="link" href="#updating-information-of-attraction-code-update-code">3.3. Updating information of attraction: <code>update</code></a></h4>
+<div class="paragraph">
+<p>Updates the information <code>&lt;tag&gt;</code> with <code>&lt;value&gt;</code> about the ride with <code>&lt;index&gt;</code>.<br>
+Format: <code>update &lt;index&gt; &lt;tag&gt; &lt;value&gt;</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="shutting-down-attraction-code-shutdown-code"><a class="link" href="#shutting-down-attraction-code-shutdown-code">3.4. Shutting down attraction: <code>shutdown</code></a></h4>
+<div class="paragraph">
+<p>Closes the ride for the day. Display statistics for the ride on that day.<br>
+Format: <code>shutdown &lt;index&gt;</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="opening-attraction-code-open-code"><a class="link" href="#opening-attraction-code-open-code">3.5. Opening attraction: <code>open</code></a></h4>
+<div class="paragraph">
+<p>Opens the ride for the day. Display statistics for the ride on that day.<br>
+Format: <code>open &lt;index&gt;</code></p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">4. Contributions to the Developer Guide</a></h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -112,18 +215,93 @@
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical
+ documentation and the technical depth of my contributions to the project.</em></p></td>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="sect1">
-<h2 id="project"><a class="link" href="#project">PROJECT:</a></h2>
-<div class="sectionbody">
-<hr>
+<div class="sect2">
+<h3 id="open-shutdown-feature"><a class="link" href="#open-shutdown-feature">4.1. Open/Shutdown Feature</a></h3>
 <div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
+<p>This section documents how open/shutdown features are implemented and how they work. Note that <code>open</code> and <code>shutdown</code>
+features are very similar to each other.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">4.1.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>OpenActivityDiagram</code> below show the execution flow of <code>OpenCommand</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/OpenActivityDiagram.png" alt="OpenActivityDiagram" width="800">
+</div>
+<div class="title">Figure 1. Activity Diagram of <code>OpenCommand</code></div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram will show how the open/shutdown feature works:<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/OpenSequenceDiagram.png" alt="OpenSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 2. Sequence Diagram for the Open Feature</div>
+</div>
+<div class="paragraph">
+<p>As seen in the diagram above, the <code>open</code> function is implemented with the help of <code>OpenCommand</code> and
+<code>UpdateRideDescriptor</code> class. When the <code>ThaneParkParser</code> parses the user input and finds the open command word <code>open</code>,
+it calls a new <code>OpenCommandParser</code> to parse the arguments from the user input.</p>
+</div>
+<div class="paragraph">
+<p>Next, the <code>OpenCommandParser</code> will parse the arguments from the user input into an <code>index</code> and
+return a new <code>OpenCommand</code> with the <code>index</code> as the parameter.</p>
+</div>
+<div class="paragraph">
+<p>Finally, the <code>LogicManager</code> will execute the <code>open</code> command, and the <code>index</code> will be used to find the <code>ride</code> from the
+list.
+After that, the <code>open</code> command will change the status of the ride to <code>Open</code> by utilising the <code>UpdateRideDescriptor</code>
+class.</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 14:44:26 UTC</div></div></div></body></html>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">4.1.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-data-structure-to-support-open-shutdown-commands"><a class="link" href="#aspect-data-structure-to-support-open-shutdown-commands">Aspect: Data structure to support open/shutdown commands</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1(Current choice):</strong> Change the status of the ride inside the <code>open</code> command and include the
+<code>UpdateRideDescriptor</code> in the <code>open</code> command as well.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: This would be easier to implement as <code>UpdateRideDescriptor</code> class no need to abstracted out from the
+<code>openCommand</code> class.</p>
+</li>
+<li>
+<p>Cons: <code>UpdateRideDescriptor</code> will modify the status of rides inside the <code>openCommand</code> class which will make the
+<code>openCommand</code> class less cohesive.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Abstracting <code>UpdateRideDescriptor</code> into a separate class and modify the status of rides in the
+separate class instead of <code>openCommand</code> class.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: The <code>openCommand</code> will be more cohesive.</p>
+</li>
+<li>
+<p>Cons: More classes would need to be implemented to modify the status of rides.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 15:58:20 UTC</div></div></div></body></html>
