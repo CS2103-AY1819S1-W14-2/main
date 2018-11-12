@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">ThanePark</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/CS2103-AY1819S1-W14-2/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>ThanePark - Developer Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By: <code>Team CS2103-W14-2</code>      Since: <code>Sep 2018</code>      Licence: <code>MIT</code></p>
+<p>By: <code>CS2103-AY1819S1-W14-2</code>      Since: <code>Sep 2018</code>      Licence: <code>MIT</code></p>
 </div>
 </div>
 <div id="toc" class="toc">
@@ -31,14 +31,13 @@
 </li>
 <li><a href="#implementation">5. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#undo-redo-feature">5.1. Undo/Redo feature</a></li>
-<li><a href="#filter-feature">5.2. Filter Feature</a></li>
-<li><a href="#accessibility-feature">5.3. Accessibility feature</a></li>
-<li><a href="#view-status-feature">5.4. View Status Feature</a></li>
-<li><a href="#open-shutdown-feature">5.5. Open/Shutdown Feature</a></li>
-<li><a href="#proposed-data-encryption">5.6. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">5.7. Logging</a></li>
-<li><a href="#Implementation-Configuration">5.8. Configuration</a></li>
+<li><a href="#filter-feature">5.1. Filter Feature</a></li>
+<li><a href="#command-management-feature">5.2. Command Management Feature</a></li>
+<li><a href="#view-status-feature">5.3. View Status Feature</a></li>
+<li><a href="#open-shutdown-feature">5.4. Open/Shutdown Feature</a></li>
+<li><a href="#undo-redo-feature">5.5. Undo/Redo feature</a></li>
+<li><a href="#logging">5.6. Logging</a></li>
+<li><a href="#Implementation-Configuration">5.7. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">6. Documentation</a>
@@ -640,9 +639,520 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Thane Park</c
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">5.1. Undo/Redo feature</a></h3>
+<h3 id="filter-feature"><a class="link" href="#filter-feature">5.1. Filter Feature</a></h3>
+<div class="paragraph">
+<p>This section documents how <code>filter</code> is implemented and how it works.</p>
+</div>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">5.1.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The execution of the <code>filter</code> command is simple and linear as the following activity diagram would show:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/FilterActivityDiagram.png" alt="FilterActivityDiagram" width="800">
+</div>
+<div class="title">Figure 10. Activity Diagram for the Filter Feature</div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram will show how the <code>filter</code> command works:<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/FilterSequenceDiagram.png" alt="FilterSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 11. Sequence Diagram for the Filter Feature</div>
+</div>
+<div class="paragraph">
+<p>The feature is implemented with the help of <code>FilterCommand</code> and <code>AttributePredicate</code> class. When the
+<code>ThaneParkParser</code> parses the user input and finds the filter command word <code>filter</code> it calls a new <code>FilterCommandParser</code> to
+parse the arguments from the user input.</p>
+</div>
+<div class="paragraph">
+<p>It checks if there are any of the maintenance or waiting time prefix in the arguments. If any of the prefixes are present,
+an <code>AttributePredicate</code> is created with the operator (‘&lt;', ‘&gt;’, '&lt; =' or '&gt; =' or '==') and the <code>NumericAttribute</code> they
+are checking for (ie <code>Maintenance</code> or <code>WaitTime</code>). The <code>AttributePredicate</code>s are added to a list. The user can add any
+amount of predicates that they want, like 3 predicates e.g. <code>filter w/&lt; 50 w/ &gt; 5 m/&gt;10</code> and the list would contain 3
+predicates and if the user decides to input only one predicate, the list will only contain one.<br></p>
+</div>
+<div class="paragraph">
+<p>A new <code>RideContainsConditionPredicate</code> is instantiated with the list of <code>AttributePredicate</code>s. The <code>FilterCommandParser</code> will
+return a new <code>FilterCommand</code> with the <code>RideContainsConditionPredicate</code> in it.</p>
+</div>
+<div class="paragraph">
+<p>The <code>LogicManager</code> executes the command, and the <code>RideContainsConditionPredicate</code> will be set as the predicate to filter
+the list of rides and it will check if the ride fulfils the required predicate(s). The <code>RideContainsConditionPredicate</code>
+will test if each ride fulfills the required conditions using this method:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> <span class="type">boolean</span> test(Ride ride) {
+        <span class="keyword">return</span> attributePredicates.stream().allMatch(p -&gt; {
+            NumericAttribute attributeToTest = p.getAttribute();
+            NumericAttribute rideAttributeToTest = ride.getAttribute(attributeToTest);
+            <span class="keyword">return</span> p.test(rideAttributeToTest);
+        });
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So it should be pretty simple to add new <code>NumericAttribute</code>s to the rides like ratings if you wish to with minimal
+changes to other classes, as long as relevant methods are added to <code>FilterCommandParser</code> to handle the new <code>NumericAttribute</code>s.
+After all of the rides in the application are tested, a list of filtered rides would be returned and shown to the user.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">5.1.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-data-structure-to-support-filter-commands"><a class="link" href="#aspect-data-structure-to-support-filter-commands">Aspect: Data structure to support filter commands</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1(Current Choice):</strong> Abstract attributes that contain numeric values into a separate class and create a
+AttributePredicate to test the attribute</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: More numeric attributes can be easily added  and minimal changes are required to filter new attributes</p>
+</li>
+<li>
+<p>Cons: More classes would need to be implemented to handle this feature</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Give the entire string condition to the RideContainsConditionPredicate to test.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Classes do not need to abstracted, and thus would be easier to implement</p>
+</li>
+<li>
+<p>Cons: RideContainsConditionPredicate would carry out parsing functions which would make it less cohesive</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="command-management-feature"><a class="link" href="#command-management-feature">5.2. Command Management Feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">5.2.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The Command Management feature is responsible for making ThanePark application easier to use.
+It can be decomposed into the following segments:<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#accessibility_help"><strong>Help</strong></a></p>
+</li>
+<li>
+<p><a href="#accessibility_autocomplete"><strong>Autocomplete</strong></a></p>
+</li>
+<li>
+<p><a href="#accessibility_history"><strong>Command History retrieval</strong></a></p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="accessibility_help"><a class="link" href="#accessibility_help">Help</a></h5>
+<div class="paragraph">
+<p>The <strong>help</strong> mechanism is facilitated by the <code>ShowHelpRequestEvent</code>.
+When the user executes a <code>HelpCommand</code>, the required level of help is encoded in <code>ShowHelpRequest</code>.
+This event type is subscribed to by <code>MainWindow</code>, which will load the respective help page in the required window
+(<code>BrowserPanel</code> or <code>HelpWindow</code>). Most of these classes belong to the User Interface (UI) component.
+These interactions are illustrated in the class diagram below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/HelpClassDiagram.png" alt="HelpClassDiagram" width="800">
+</div>
+<div class="title">Figure 12. Class Diagram of help mechanism</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="accessibility_autocomplete"><a class="link" href="#accessibility_autocomplete">Autocomplete</a></h5>
+<div class="paragraph">
+<p>The <strong>autocomplete</strong> mechanism is facilitated by <code>SuggestCommand</code>.
+It extends <code>Command</code> and serves as a special kind of <code>Command</code> that cannot be directly invoked by the <code>LogicManager</code>.
+A new instance of <code>SuggestCommand</code> is created whenever <code>ThaneParkParser</code> fails to find a matching CommandWord,
+or when <kbd>TAB</kbd> is pressed inside the <strong>Command Box</strong>. See the 2 figures below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AutocompleteSuggestActivityDiagram1.png" alt="AutocompleteSuggestActivityDiagram1" width="800">
+</div>
+<div class="title">Figure 13. Activity Diagram of user executing command</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AutocompleteSuggestActivityDiagram2.png" alt="AutocompleteSuggestActivityDiagram2" width="800">
+</div>
+<div class="title">Figure 14. Activity Diagram of user pressing tab</div>
+</div>
+<div class="paragraph">
+<p>The application will then proceed with executing the <code>SuggestCommand</code>, which returns prefix-matched <code>Command</code> s.
+These matching <code>Command</code> s are reflected in both <code>CommandResult</code> and <code>ShowHelpRequestEvent</code>, which will in turn update
+<code>ResultDisplay</code> and <code>CommandBox</code> text. See figure below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AutocompleteSuggestActivityDiagram3.png" alt="AutocompleteSuggestActivityDiagram3" width="800">
+</div>
+<div class="title">Figure 15. Activity Diagram of user pressing tab</div>
+</div>
+<div class="paragraph">
+<p>You can easily add other pattern matching heuristics such as <code>nearest word distance</code> by implementing the following interface, <code>PatternMatcher</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">interface</span> <span class="class">PatternMatcher</span> {
+    <span class="comment">/**
+     * Matches a list of items as Strings against a given pattern.
+     */</span>
+    <span class="directive">public</span> <span class="predefined-type">String</span><span class="type">[]</span> matchPattern(<span class="predefined-type">String</span><span class="type">[]</span> items, <span class="predefined-type">String</span> pattern);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A possible implementation of a prefix matcher is shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">PrefixMatcher</span> <span class="directive">implements</span> PatternMatcher {
+    <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> PATTERN_PREFIX = <span class="string"><span class="delimiter">&quot;</span><span class="content">^%1$s.*</span><span class="delimiter">&quot;</span></span>;
+    <span class="comment">/**
+     * Default constructor
+     */</span>
+    <span class="directive">public</span> PrefixMatcher() {
+        ;
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="predefined-type">String</span><span class="type">[]</span> matchPattern(<span class="predefined-type">String</span><span class="type">[]</span> items, <span class="predefined-type">String</span> pattern) {
+        <span class="keyword">return</span> <span class="predefined-type">Arrays</span>.stream(items).filter(s
+            -&gt; s.matches(<span class="predefined-type">String</span>.format(PATTERN_PREFIX, pattern))).toArray(<span class="predefined-type">String</span><span class="type">[]</span>::<span class="keyword">new</span>);
+    }
+
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="accessibility_history"><a class="link" href="#accessibility_history">History</a></h5>
+<div class="paragraph">
+<p>The <strong>history</strong> mechanism is facilitated by <code>CommandHistory</code> and <code>CommandsLogCenter</code>.
+<code>CommandHistory</code> maintains the history as a list of user inputs during the session,
+and interfaces with <code>CommandsLogCenter</code> to handle the retrieval and persistent storage
+of user inputs executed across sessions.</p>
+</div>
+<div class="paragraph">
+<p>Given below are 2 example usage scenarios to illustrate the behavior of the <strong>history</strong> mechanism.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Example scenario 1: User requests for current session&#8217;s history.<br>
+Step 1. User executes <code>history</code>.<br>
+Step 2. The list of user inputs in the current session is retrieved from <code>CommandHistory</code>.<br>
+Step 3. A <code>NewResultAvailableEvent</code> is raised within the <code>Logic</code> component.
+Step 4. The result panel displays the list of user inputs upon notification by the event.</p>
+</li>
+<li>
+<p>Example scenario 2: User requests for cumulative history.<br></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>When the cumulative history of all commands is requested through <code>history more</code> command, a <code>HTML</code> report is generated.
+The process of generating a <code>HTML</code> report upon execution of <code>history more</code> is illustrated in the Sequence Diagram below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/HistorySequenceDiagram.png" alt="HistorySequenceDiagram" width="800">
+</div>
+<div class="title">Figure 16. Sequence Diagram of HTML report generation since command</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">5.2.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-handling-ui-interactions-in-help"><a class="link" href="#aspect-handling-ui-interactions-in-help">Aspect: Handling UI interactions in help</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Subscribe <code>MainWindow</code> to <code>ShowHelpRequestEvent</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Cohesive. Every <code>UI</code> component affected by <code>ShowHelpRequestEvent</code> are handled through <code>MainWindow</code>.</p>
+</li>
+<li>
+<p>Cons: Difficult to implement. Interactions between <code>MainWindow</code> and its child <code>UI</code> components must be carefully handled.
+Easy to cause bugs if not handled appropriately.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Subscribe <code>BrowserPanel</code>, <code>HelpWindow</code> and <code>RideListPanel</code> to <code>ShowHelpRequestEvent</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement. These <code>UI</code> components can directly perform whatever is required.</p>
+</li>
+<li>
+<p>Cons: High dependency. When a modification to <code>ShowHelpRequestEvent</code> is required, all of these classes may need to be modified.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-handling-autocomplete-text-replacement"><a class="link" href="#aspect-handling-autocomplete-text-replacement">Aspect: Handling autocomplete text replacement</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Handle autocomplete text replacement through <code>SuggestCommandEvent</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Flexible. Easy to modify text replacement behavior through <code>SuggestCommandEvent</code>. Can be used by
+both <kbd>Tab</kbd> and <kbd>Enter</kbd>. Open for extension to other keystrokes or actions that lead to autocompletion.</p>
+</li>
+<li>
+<p>Cons: Difficult to implement as it requires some understanding of the <code>EventsCenter</code> and handling of the various
+Event types in the application.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Handle autocomplete through the existing <code>NewResultAvailableEvent</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement. Can modify <code>NewResultAvailableEvent</code> to easily satisfy most requirements.</p>
+</li>
+<li>
+<p>Cons: Difficult to extend. When modifying behavior of text autocompletion, modification of
+both <code>CommandBox</code> and <code>ResultDisplay</code> may be required.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-storing-command-history"><a class="link" href="#aspect-storing-command-history">Aspect: Storing command history</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Store every command entry in a separate xml file.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Flexible. Able to format the file with little constraint to meet storage requirements.</p>
+</li>
+<li>
+<p>Cons: Low code reuse. Does not utilise the existing <code>LogsCenter</code> for ThanePark.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Store command entries using the existing <code>LogsCenter</code> for ThanePark.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: High code reuse. Developers know that all logging within the ThanePark is done by <code>LogsCenter</code>.</p>
+</li>
+<li>
+<p>Cons: High dependency and difficult to implement. When a modification to <code>LogsCenter</code> is required,
+the modification of command history storage may be required. Additionally, the parsing of command history
+from the existing <code>LogsCenter</code> logs may require substantial modifications.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="view-status-feature"><a class="link" href="#view-status-feature">5.3. View Status Feature</a></h3>
+<div class="paragraph">
+<p>This section documents how <code>viewstatus</code> is being implemented.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">5.3.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The view status feature is implemented with the help of <code>ViewStatusCommand</code> and <code>RideStatusPredicate</code> classes.
+As seen in the sequence diagram below, when the <code>ThaneParkParser</code> class parses the user input of <code>viewstatus</code>,
+it calls a new <code>ViewStatusCommandParser</code> to parse the arguments from the user input.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ViewStatusSequenceDiagram.png" alt="ViewStatusSequenceDiagram" width="550">
+</div>
+<div class="title">Figure 17. Sequence Diagram of the View Status feature</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ViewStatusActivityDiagram.png" alt="ViewStatusActivityDiagram" width="550">
+</div>
+<div class="title">Figure 18. Activity Diagram of <code>ViewStatusCommandParser</code></div>
+</div>
+<div class="paragraph">
+<p>As seen in the diagram above, the <code>ViewStatusCommandParser</code> class checks the arguments for keywords relating to the status of the rides.
+If there are more than one strings found or the argument string is not one of the three statuses,
+it will throw a <code>ParseException</code>, letting the user know that the command format is wrong.
+Conversely, it will compare the argument with the statuses and create a <code>Status</code> enumeration.</p>
+</div>
+<div class="paragraph">
+<p>A new <code>RideStatusPredicate</code> is instantiated with the <code>Status</code> enumeration.
+The <code>ViewStatusCommandParser</code> will return a new <code>ViewStatusCommand</code> containing <code>RideStatusPredicate</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>LogicManager</code> execute the command, and uses the <code>RideStatusPredicate</code> to filter the list of rides for rides that fulfill the required predicate(s).
+A list of filtered rides would be returned.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">5.3.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-data-structure-to-support-view-status-command"><a class="link" href="#aspect-data-structure-to-support-view-status-command">Aspect: Data structure to support view status command</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1(Current choice):</strong> Handle checking of status by passing the <code>Status</code> enumeration to <code>RideStatusPredicate</code> to test.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Code is more cohesive as each class is more focused.</p>
+</li>
+<li>
+<p>Cons: More classes are required to implement the check.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Handle checking of status in ViewStatusCommand by using a lambda expression to express the predicate.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easier to implement as less classes are needed.</p>
+</li>
+<li>
+<p>Cons: Reduced modularity as predicate logic is not abstracted.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="open-shutdown-feature"><a class="link" href="#open-shutdown-feature">5.4. Open/Shutdown Feature</a></h3>
+<div class="paragraph">
+<p>This section documents how open/shutdown features are implemented and how they work. Note that <code>open</code> and <code>shutdown</code>
+features are very similar to each other.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">5.4.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>OpenActivityDiagram</code> below show the execution flow of <code>OpenCommand</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/OpenActivityDiagram.png" alt="OpenActivityDiagram" width="800">
+</div>
+<div class="title">Figure 19. Activity Diagram of <code>OpenCommand</code></div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram will show how the open/shutdown feature works:<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/OpenSequenceDiagram.png" alt="OpenSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 20. Sequence Diagram for the Open Feature</div>
+</div>
+<div class="paragraph">
+<p>As seen in the diagram above, the <code>open</code> function is implemented with the help of <code>OpenCommand</code> and
+<code>UpdateRideDescriptor</code> class. When the <code>ThaneParkParser</code> parses the user input and finds the open command word <code>open</code>,
+it calls a new <code>OpenCommandParser</code> to parse the arguments from the user input.</p>
+</div>
+<div class="paragraph">
+<p>Next, the <code>OpenCommandParser</code> will parse the arguments from the user input into an <code>index</code> and
+return a new <code>OpenCommand</code> with the <code>index</code> as the parameter.</p>
+</div>
+<div class="paragraph">
+<p>Finally, the <code>LogicManager</code> will execute the <code>open</code> command, and the <code>index</code> will be used to find the <code>ride</code> from the
+list.
+After that, the <code>open</code> command will change the status of the ride to <code>Open</code> by utilising the <code>UpdateRideDescriptor</code>
+class.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">5.4.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-data-structure-to-support-open-shutdown-commands"><a class="link" href="#aspect-data-structure-to-support-open-shutdown-commands">Aspect: Data structure to support open/shutdown commands</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1(Current choice):</strong> Change the status of the ride inside the <code>open</code> command and include the
+<code>UpdateRideDescriptor</code> in the <code>open</code> command as well.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: This would be easier to implement as <code>UpdateRideDescriptor</code> class no need to abstracted out from the
+<code>openCommand</code> class.</p>
+</li>
+<li>
+<p>Cons: <code>UpdateRideDescriptor</code> will modify the status of rides inside the <code>openCommand</code> class which will make the
+<code>openCommand</code> class less cohesive.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Abstracting <code>UpdateRideDescriptor</code> into a separate class and modify the status of rides in the
+separate class instead of <code>openCommand</code> class.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: The <code>openCommand</code> will be more cohesive.</p>
+</li>
+<li>
+<p>Cons: More classes would need to be implemented to modify the status of rides.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">5.5. Undo/Redo feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">5.5.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>VersionedThanePark</code>.
 It extends <code>ThanePark</code> with an undo/redo history, stored internally as an <code>ThaneParkStateList</code> and <code>currentStatePointer</code>.
@@ -772,7 +1282,7 @@ If the <code>currentStatePointer</code> is at index <code>ThaneParkStateList.siz
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">5.1.2. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">5.5.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -842,421 +1352,14 @@ If the <code>currentStatePointer</code> is at index <code>ThaneParkStateList.siz
 </div>
 </div>
 <div class="sect2">
-<h3 id="filter-feature"><a class="link" href="#filter-feature">5.2. Filter Feature</a></h3>
-<div class="paragraph">
-<p>This section documents how <code>filter</code> is implemented and how it works.</p>
-</div>
-<div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">5.2.1. Current Implementation</a></h4>
-<div class="paragraph">
-<p>The execution of the <code>filter</code> command is simple and linear as the following activity diagram would show:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/FilterActivityDiagram.png" alt="FilterActivityDiagram" width="800">
-</div>
-<div class="title">Figure 10. Activity Diagram for the Filter Feature</div>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram will show how the <code>filter</code> command works:<br></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/FilterSequenceDiagram.png" alt="FilterSequenceDiagram" width="800">
-</div>
-<div class="title">Figure 11. Sequence Diagram for the Filter Feature</div>
-</div>
-<div class="paragraph">
-<p>The feature is implemented with the help of <code>FilterCommand</code> and <code>AttributePredicate</code> class. When the
-<code>ThaneParkParser</code> parses the user input and finds the filter command word <code>filter</code> it calls a new <code>FilterCommandParser</code> to
-parse the arguments from the user input.</p>
-</div>
-<div class="paragraph">
-<p>It checks if there are any of the maintenance or waiting time prefix in the arguments. If any of the prefixes are present,
-an <code>AttributePredicate</code> is created with the operator (‘&lt;', ‘&gt;’, '&lt; =' or '&gt; =' or '==') and the <code>NumericAttribute</code> they
-are checking for (ie <code>Maintenance</code> or <code>WaitTime</code>). The <code>AttributePredicate</code>s are added to a list. The user can add any
-amount of predicates that they want, like 3 predicates e.g. <code>filter w/&lt; 50 w/ &gt; 5 m/&gt;10</code> and the list would contain 3
-predicates and if the user decides to input only one predicate, the list will only contain one.<br></p>
-</div>
-<div class="paragraph">
-<p>A new <code>RideContainsConditionPredicate</code> is instantiated with the list of <code>AttributePredicate</code>s. The <code>FilterCommandParser</code> will
-return a new <code>FilterCommand</code> with the <code>RideContainsConditionPredicate</code> in it.</p>
-</div>
-<div class="paragraph">
-<p>The <code>LogicManager</code> executes the command, and the <code>RideContainsConditionPredicate</code> will be set as the predicate to filter
-the list of rides and it will check if the ride fulfils the required predicate(s). The <code>RideContainsConditionPredicate</code>
-will test if each ride fulfills the required conditions using this method:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> <span class="type">boolean</span> test(Ride ride) {
-        <span class="keyword">return</span> attributePredicates.stream().allMatch(p -&gt; {
-            NumericAttribute attributeToTest = p.getAttribute();
-            NumericAttribute rideAttributeToTest = ride.getAttribute(attributeToTest);
-            <span class="keyword">return</span> p.test(rideAttributeToTest);
-        });
-    }</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>So it should be pretty simple to add new <code>NumericAttribute</code>s to the rides like ratings if you wish to with minimal
-changes to other classes, as long as relevant methods are added to <code>FilterCommandParser</code> to handle the new <code>NumericAttribute</code>s.
-After all of the rides in the application are tested, a list of filtered rides would be returned and shown to the user.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">5.2.2. Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-data-structure-to-support-filter-commands"><a class="link" href="#aspect-data-structure-to-support-filter-commands">Aspect: Data structure to support filter commands</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1(Current Choice):</strong> Abstract attributes that contain numeric values into a separate class and create a
-AttributePredicate to test the attribute</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: More numeric attributes can be easily added  and minimal changes are required to filter new attributes</p>
-</li>
-<li>
-<p>Cons: More classes would need to be implemented to handle this feature</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Give the entire string condition to the RideContainsConditionPredicate to test.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Classes do not need to abstracted, and thus would be easier to implement</p>
-</li>
-<li>
-<p>Cons: RideContainsConditionPredicate would carry out parsing functions which would make it less cohesive</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="accessibility-feature"><a class="link" href="#accessibility-feature">5.3. Accessibility feature</a></h3>
-<div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">5.3.1. Current Implementation</a></h4>
-<div class="paragraph">
-<p>The accessibility feature is responsible for making ThanePark application easier to use.
-It can be decomposed into the following components:<br></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="#accessibility_help"><strong>Help</strong></a></p>
-</li>
-<li>
-<p><a href="#accessibility_autocomplete"><strong>Autocomplete/Suggest</strong></a></p>
-</li>
-<li>
-<p><a href="#accessibility_history"><strong>Command History retrieval</strong></a></p>
-</li>
-<li>
-<p><a href="#accessibility_UI"><strong>UI changes</strong></a></p>
-</li>
-</ul>
-</div>
-<div class="sect4">
-<h5 id="accessibility_help"><a class="link" href="#accessibility_help">Help</a></h5>
-<div class="paragraph">
-<p>The <strong>help</strong> mechanism is facilitated by the <code>ShowHelpRequestEvent</code>.
-When the user executes a <code>HelpCommand</code>, the required level of help is encoded in <code>ShowHelpRequest</code>.
-This event is subscribed to by <code>MainWindow</code>, which will load the respective help page in the required window
-(<code>BrowserPanel</code> or <code>HistoryWindow</code>). These interactions are illustrated in the class diagram below:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/AutocompleteSuggestActivityDiagram1.png" alt="AutocompleteSuggestActivityDiagram1" width="800">
-</div>
-<div class="title">Figure 12. Class diagram of help mechanism</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="accessibility_autocomplete"><a class="link" href="#accessibility_autocomplete">Autocomplete</a></h5>
-<div class="paragraph">
-<p>The <strong>autocomplete/suggest</strong> mechanism is facilitated by <code>SuggestCommand</code>.
-It extends <code>Command</code> and serves as a special kind of <code>Command</code> that cannot be directly invoked by the <code>LogicManager</code>.
-A new instance of <code>SuggestCommand</code> is created whenever <code>ThaneParkParser</code> fails to find a matching CommandWord,
-or when <kbd>TAB</kbd> is pressed inside the <strong>Command Box</strong>. See the 2 figures below:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/AutocompleteSuggestActivityDiagram1.png" alt="AutocompleteSuggestActivityDiagram1" width="800">
-</div>
-<div class="title">Figure 13. Activity diagram of user executing command</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/AutocompleteSuggestActivityDiagram2.png" alt="AutocompleteSuggestActivityDiagram2" width="800">
-</div>
-<div class="title">Figure 14. Activity diagram of user pressing tab</div>
-</div>
-<div class="paragraph">
-<p>The application will then proceed with executing the <code>SuggestCommand</code>, which returns prefix-matched <code>Command</code> s.
-These matching <code>Command</code> s are reflected in both <code>CommandResult</code> and <code>ShowHelpRequestEvent</code>, which will in turn update
-<code>ResultDisplay</code> and <code>CommandBox</code> text. See figure below:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/AutocompleteSuggestActivityDiagram3.png" alt="AutocompleteSuggestActivityDiagram3" width="800">
-</div>
-<div class="title">Figure 15. Activity diagram of user pressing tab</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="accessibility_history"><a class="link" href="#accessibility_history">History</a></h5>
-<div class="paragraph">
-<p>The <strong>history</strong> mechanism is facilitated by <code>CommandHistory</code> and <code>CommandsLogCenter</code>.
-<code>CommandHistory</code> maintains the history as a list of user inputs during the session,
-and interfaces with <code>CommandsLogCenter</code> to handle the retrieval and persistent storage
-of user inputs executed across sessions.</p>
-</div>
-<div class="paragraph">
-<p>Given below are 2 example usage scenarios to illustrate the behavior of the <strong>history</strong> mechanism.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Example scenario 1: User requests for current session&#8217;s history.<br>
-Step 1. User executes <code>history</code>.<br>
-Step 2. The list of user inputs in the current session is retrieved from <code>CommandHistory</code>.<br>
-Step 3. A <code>NewResultAvailableEvent</code> is raised within the <code>Logic</code> component.
-Step 4. The result panel displays the list of user inputs upon notification by the event.</p>
-</li>
-<li>
-<p>Example scenario 2: User requests for cumulative history.<br></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>When the cumulative history of all commands is requested,</p>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">5.3.2. Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-handling-kbd-tab-kbd-autocomplete"><a class="link" href="#aspect-handling-kbd-tab-kbd-autocomplete">Aspect: Handling <kbd>Tab</kbd> autocomplete</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Handle autocomplete through events and <code>SuggestCommand</code>.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Flexible. Easy to modify event behaviors for <code>SuggestCommandEvent</code> and <code>NewResultAvailableEvent</code>. Modular design that
-can be easily reused to create other autocomplete features.</p>
-</li>
-<li>
-<p>Cons: Difficult to implement as it requires some understanding of the <code>EventsCenter</code> and handling of the various
-Event types in the application.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Handle everything in <code>CommandBox</code>.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to implement.</p>
-</li>
-<li>
-<p>Cons: Difficult to extend. When modifying behavior of <code>CommandBox</code> text autocompletion, may have to modify behavior
-for result listing of results in <code>ResultDisplay</code>.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="view-status-feature"><a class="link" href="#view-status-feature">5.4. View Status Feature</a></h3>
-<div class="paragraph">
-<p>This section documents how <code>viewstatus</code> is being implemented.</p>
-</div>
-<div class="sect3">
-<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">5.4.1. Current Implementation</a></h4>
-<div class="paragraph">
-<p>The view status feature is implemented with the help of <code>ViewStatusCommand</code> and <code>RideStatusPredicate</code> classes.
-As seen in the sequence diagram below, when the <code>ThaneParkParser</code> class parses the user input of <code>viewstatus</code>,
-it calls a new <code>ViewStatusCommandParser</code> to parse the arguments from the user input.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/ViewStatusSequenceDiagram.png" alt="ViewStatusSequenceDiagram" width="550">
-</div>
-<div class="title">Figure 16. Sequence Diagram of the View Status feature</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/ViewStatusActivityDiagram.png" alt="ViewStatusActivityDiagram" width="550">
-</div>
-<div class="title">Figure 17. Activity Diagram of <code>ViewStatusCommandParser</code></div>
-</div>
-<div class="paragraph">
-<p>As seen in the diagram above, the <code>ViewStatusCommandParser</code> class checks the arguments for keywords relating to the status of the rides.
-If there are more than one strings found or the argument string is not one of the three statuses,
-it will throw a <code>ParseException</code>, letting the user know that the command format is wrong.
-Conversely, it will compare the argument with the statuses and create a <code>Status</code> enumeration.</p>
-</div>
-<div class="paragraph">
-<p>A new <code>RideStatusPredicate</code> is instantiated with the <code>Status</code> enumeration.
-The <code>ViewStatusCommandParser</code> will return a new <code>ViewStatusCommand</code> containing <code>RideStatusPredicate</code>.</p>
-</div>
-<div class="paragraph">
-<p>The <code>LogicManager</code> execute the command, and uses the <code>RideStatusPredicate</code> to filter the list of rides for rides that fulfill the required predicate(s).
-A list of filtered rides would be returned.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">5.4.2. Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-data-structure-to-support-view-status-command"><a class="link" href="#aspect-data-structure-to-support-view-status-command">Aspect: Data structure to support view status command</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1(Current choice):</strong> Handle checking of status by passing the <code>Status</code> enumeration to <code>RideStatusPredicate</code> to test.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Code is more cohesive as each class is more focused.</p>
-</li>
-<li>
-<p>Cons: More classes are required to implement the check.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Handle checking of status in ViewStatusCommand by using a lambda expression to express the predicate.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easier to implement as less classes are needed.</p>
-</li>
-<li>
-<p>Cons: Reduced modularity as predicate logic is not abstracted.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="open-shutdown-feature"><a class="link" href="#open-shutdown-feature">5.5. Open/Shutdown Feature</a></h3>
-<div class="paragraph">
-<p>This section documents how open/shutdown features are implemented and how they work. Note that <code>open</code> and <code>shutdown</code>
-features are very similar to each other.</p>
-</div>
-<div class="sect3">
-<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">5.5.1. Current Implementation</a></h4>
-<div class="paragraph">
-<p>The <code>OpenActivityDiagram</code> below show the execution flow of <code>OpenCommand</code>:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/OpenActivityDiagram.png" alt="OpenActivityDiagram" width="800">
-</div>
-<div class="title">Figure 18. Activity Diagram of <code>OpenCommand</code></div>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram will show how the open/shutdown feature works:<br></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/OpenSequenceDiagram.png" alt="OpenSequenceDiagram" width="800">
-</div>
-<div class="title">Figure 19. Sequence Diagram for the Open Feature</div>
-</div>
-<div class="paragraph">
-<p>As seen in the diagram above, the <code>open</code> function is implemented with the help of <code>OpenCommand</code> and
-<code>UpdateRideDescriptor</code> class. When the <code>ThaneParkParser</code> parses the user input and finds the open command word <code>open</code>,
-it calls a new <code>OpenCommandParser</code> to parse the arguments from the user input.</p>
-</div>
-<div class="paragraph">
-<p>Next, the <code>OpenCommandParser</code> will parse the arguments from the user input into an <code>index</code> and
-return a new <code>OpenCommand</code> with the <code>index</code> as the parameter.</p>
-</div>
-<div class="paragraph">
-<p>Finally, the <code>LogicManager</code> will execute the <code>open</code> command, and the <code>index</code> will be used to find the <code>ride</code> from the
-list.
-After that, the <code>open</code> command will change the status of the ride to <code>Open</code> by utilising the <code>UpdateRideDescriptor</code>
-class.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">5.5.2. Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-data-structure-to-support-open-shutdown-commands"><a class="link" href="#aspect-data-structure-to-support-open-shutdown-commands">Aspect: Data structure to support open/shutdown commands</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1(Current choice):</strong> Change the status of the ride inside the <code>open</code> command and include the
-<code>UpdateRideDescriptor</code> in the <code>open</code> command as well.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: This would be easier to implement as <code>UpdateRideDescriptor</code> class no need to abstracted out from the
-<code>openCommand</code> class.</p>
-</li>
-<li>
-<p>Cons: <code>UpdateRideDescriptor</code> will modify the status of rides inside the <code>openCommand</code> class which will make the
-<code>openCommand</code> class less cohesive.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Abstracting <code>UpdateRideDescriptor</code> into a separate class and modify the status of rides in the
-separate class instead of <code>openCommand</code> class.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: The <code>openCommand</code> will be more cohesive.</p>
-</li>
-<li>
-<p>Cons: More classes would need to be implemented to modify the status of rides.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">5.6. [Proposed] Data Encryption</a></h3>
-<div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">5.7. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">5.6. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 5.8, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 5.7, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1287,7 +1390,7 @@ separate class instead of <code>openCommand</code> class.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">5.8. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">5.7. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -1366,7 +1469,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 20. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 21. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 <div class="sect2">
@@ -2715,4 +2818,4 @@ Use case ends.</p>
 </dl>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 14:08:47 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 14:26:53 UTC</div></div></div></body></html>

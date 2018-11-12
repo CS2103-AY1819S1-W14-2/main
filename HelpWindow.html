@@ -15,7 +15,7 @@
 <li><a href="#Features">4. Features</a>
 <ul class="sectlevel2">
 <li><a href="#manage-attractions">4.1. Manage Attractions</a></li>
-<li><a href="#manage-commands">4.2. Manage commands</a></li>
+<li><a href="#manage-commands">4.2. Manage Commands</a></li>
 <li><a href="#view-information-of-rides">4.3. View information of rides</a></li>
 <li><a href="#find-the-relevant-list-of-rides">4.4. Find the relevant list of rides</a></li>
 <li><a href="#add-access-for-different-type-of-users">4.5. Add access for different type of users</a></li>
@@ -90,6 +90,18 @@ similar to below:</p>
 <img src="images/Ui.png" alt="Ui" width="800">
 </div>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The bar at the top of the window allows you to access <code>Help</code> or <code>About</code>. The <code>About</code> option on the navigation bar opens an About Us window.
+</td>
+</tr>
+</table>
+</div>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -97,8 +109,9 @@ similar to below:</p>
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-You will not be able to customise the image for rides. This feature will only be implemented in <code>v2.0</code>.
-Similarly, the <code>About</code> button on the navigation bar opens a window to the teams' profile page.
+You will not be able to customise the image for rides. This feature will only be implemented in <code>v2.0</code>.<br>
+Additionally, note that you may not enter more than 250 characters inside the <code>CommandBox</code>.
+Any character past the 250th will be forcefully truncated. This is to guard against abuse.
 </td>
 </tr>
 </table>
@@ -155,7 +168,7 @@ Example: <code>{tab}</code> is the <kbd>TAB</kbd> keystroke.</p>
 </li>
 <li>
 <p>Items ending with ellipses <code>&#8230;&#8203;</code> denotes variable number of arguments.<br>
-Example: <code>history [findargs&#8230;&#8203;]</code></p>
+Example: <code>filter &lt;tag&gt; &lt;condition&gt; [[tag] [condition]&#8230;&#8203;]</code></p>
 </li>
 <li>
 <p>Parameters with prefix <code>/</code> can be in any order<br>
@@ -295,19 +308,19 @@ Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="manage-commands"><a class="link" href="#manage-commands">4.2. Manage commands</a></h3>
+<h3 id="manage-commands"><a class="link" href="#manage-commands">4.2. Manage Commands</a></h3>
 <div class="paragraph">
 <p>This section contains all commands related to managing commands.</p>
 </div>
 <div class="sect3">
 <h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">4.2.1. Viewing help: <code>help</code></a></h4>
 <div class="paragraph">
-<p>Display short summary of important commands. A summarized help
-sheet showing command syntax without details should appear as shown below.<br></p>
+<p>Displays short summary of important commands. You should see a similar-looking summarized help
+sheet as shown below.<br></p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/ui_screenshots/help-example-1.png" alt="help example 1" width="400">
+<img src="images/ui_screenshots/help-example-1.png" alt="help example 1" width="800">
 </div>
 </div>
 <div class="paragraph">
@@ -320,9 +333,10 @@ sheet showing command syntax without details should appear as shown below.<br></
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Extended usage of <code>help</code> command: <code>help [more]</code> or <code>help [commandWord]</code>. If provided <code>[commandWord]</code> is invalid,
-the default summarized help message will be shown.
-Any arguments beyond the 2nd position will be discarded and ignored.
+Extended usage of <code>help</code> command: If you want to see the full help manual, use <code>help [more]</code>.
+If you want to see the full help for a specific <code>commandWord</code>, use <code>help [commandWord]</code>.
+Should you provide an invalid <code>[commandWord]</code>, you will be shown the default short help message.
+Please note that any arguments beyond the 2nd position will be discarded and ignored.
 </td>
 </tr>
 </table>
@@ -334,13 +348,14 @@ Any arguments beyond the 2nd position will be discarded and ignored.
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-Information provided in the short help only shows the rough syntax of commands. For full information,
-do refer to this User Guide. Also note that <code>help</code> will cause the currently selected <code>Ride</code> to be deselected.
+Please note that the short help only shows the rough syntax of commands. If you want the full help,
+do refer to this User Guide. You should also note that <code>help</code> will cause the currently selected <code>Ride</code> to be deselected.
 </td>
 </tr>
 </table>
 </div>
-<table class="tableblock frame-all grid-all spread">
+<div style="page-break-after: always;"></div>
+<table class="tableblock frame-all grid-all spread white">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -352,13 +367,13 @@ do refer to this User Guide. Also note that <code>help</code> will cause the cur
 <div class="ulist">
 <ul>
 <li>
-<p><code>help more</code>: Opens the help window to show full usage of ThanePark.</p>
+<p><code>help more</code>: Opens a help window that describes the usage of ThanePark. You should see something similar to the image below.</p>
 </li>
 </ul>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/ui_screenshots/help-example-2.png" alt="help example 2" width="600">
+<img src="images/ui_screenshots/help-example-2.png" alt="help example 2" width="500">
 </div>
 </div></div></td>
 </tr>
@@ -366,7 +381,7 @@ do refer to this User Guide. Also note that <code>help</code> will cause the cur
 <td class="tableblock halign-left valign-top"><div><div class="ulist">
 <ul>
 <li>
-<p><code>help add</code>: Opens the help window and scrolls to <code>add</code> command word usage.</p>
+<p><code>help add</code>: Opens a help window and scrolls to <code>add</code> command word usage. You should see something similar to the image below.</p>
 </li>
 <li>
 <p><code>help add 1234</code>: Same as previous, the extra arguments are discarded and ignored.</p>
@@ -375,7 +390,7 @@ do refer to this User Guide. Also note that <code>help</code> will cause the cur
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/ui_screenshots/help-example-3.png" alt="help example 3" width="600">
+<img src="images/ui_screenshots/help-example-3.png" alt="help example 3" width="500">
 </div>
 </div></div></td>
 </tr>
@@ -389,6 +404,7 @@ do refer to this User Guide. Also note that <code>help</code> will cause the cur
 <br>
 Format: <kbd>TAB</kbd></p>
 </div>
+<div style="page-break-after: always;"></div>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -396,8 +412,8 @@ Format: <kbd>TAB</kbd></p>
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
+If you want to see common usage, skip to <a href="#suggest_examples">examples</a> to view common usage.
 The full functionality of suggesting commands can be quite heavy.
-Skip to <a href="#suggest_examples">examples</a> to view common usage.
 </td>
 </tr>
 </table>
@@ -443,13 +459,13 @@ Extended usage of suggesting commands:
 <td class="tableblock halign-left valign-top"><div><div class="ulist">
 <ul>
 <li>
-<p>Strip all text behind first prefix in <code>CommandBox</code>.</p>
+<p>Strips all text behind first prefix in <code>CommandBox</code>.</p>
 </li>
 <li>
-<p>Replace prefix with matching command word in <code>CommandBox</code>.</p>
+<p>Replaces prefix with matching command word in <code>CommandBox</code>.</p>
 </li>
 <li>
-<p>Display matching command word in result panel.</p>
+<p>Displays matching command word in result panel.</p>
 </li>
 </ul>
 </div></div></td>
@@ -469,7 +485,7 @@ Extended usage of suggesting commands:
 <td class="tableblock halign-left valign-top"><div><div class="ulist">
 <ul>
 <li>
-<p>Display all matching command words in result panel.</p>
+<p>Displays all matching command words in result panel.</p>
 </li>
 <li>
 <p>No change in <code>CommandBox</code>.</p>
@@ -529,7 +545,7 @@ Extended usage of suggesting commands:
 <td class="tableblock halign-left valign-top"><div><div class="ulist">
 <ul>
 <li>
-<p>Display all matching command words in result panel.</p>
+<p>Displays all matching command words in result panel.</p>
 </li>
 <li>
 <p>No change in <code>CommandBox</code>.</p>
@@ -552,7 +568,7 @@ Extended usage of suggesting commands:
 <td class="tableblock halign-left valign-top"><div><div class="ulist">
 <ul>
 <li>
-<p>Strip all text behind command word in <code>CommandBox</code>.</p>
+<p>Strips all text behind command word in <code>CommandBox</code>.</p>
 </li>
 <li>
 <p>Command in <code>CommandBox</code> will not be executed.</p>
@@ -578,13 +594,13 @@ Extended usage of suggesting commands:
 <td class="tableblock halign-left valign-top"><div><div class="ulist">
 <ul>
 <li>
-<p>Strip all text behind first prefix in <code>CommandBox</code>.</p>
+<p>Strips all text behind first prefix in <code>CommandBox</code>.</p>
 </li>
 <li>
-<p>Replace prefix with matching command word in <code>CommandBox</code>.</p>
+<p>Replaces prefix with matching command word in <code>CommandBox</code>.</p>
 </li>
 <li>
-<p>Display matching command word in result panel.</p>
+<p>Displays matching command word in result panel.</p>
 </li>
 </ul>
 </div></div></td>
@@ -604,7 +620,7 @@ Extended usage of suggesting commands:
 <td class="tableblock halign-left valign-top"><div><div class="ulist">
 <ul>
 <li>
-<p>Display all matching command words in result panel.</p>
+<p>Displays all matching command words in result panel.</p>
 </li>
 <li>
 <p>Remove all text in <code>CommandBox</code>.</p>
@@ -660,7 +676,7 @@ Extended usage of suggesting commands:
 </tr>
 </tbody>
 </table>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all spread white">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -688,9 +704,9 @@ Extended usage of suggesting commands:
 <div class="sect3">
 <h4 id="viewing-history-of-previous-commands-code-history-code"><a class="link" href="#viewing-history-of-previous-commands-code-history-code">4.2.3. Viewing history of previous commands: <code>history</code></a></h4>
 <div class="paragraph">
-<p>Display previous user inputs during this session. Does not include the executed <code>history</code> itself.<br>
+<p>Displays previous user inputs during this session. Does not include the executed <code>history</code> itself.<br>
 <br>
-Format: <code>history</code></p>
+Format: <code>history [more]</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -700,7 +716,7 @@ Format: <code>history</code></p>
 </td>
 <td class="content">
 Extended usage of <code>history</code>:<br>
-Use <code>history more</code> to generate a report of all cumulative command history.
+If you wish to get a report of all commands executed across sessions, use <code>history more</code> and a report will be generated.
 </td>
 </tr>
 </table>
@@ -712,14 +728,14 @@ Use <code>history more</code> to generate a report of all cumulative command his
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-ThanePark stores the command history in <code>commandHistory.xml</code>. If the storage file size exceeds 5MB,
-no new command history will be logged. Additionally, if the file format is changed, the program will
-restart the collation of history.
+The <code>xml</code> file produce by ThanePark was not designed for you to read.<br>
+You may experience loss of command history information when <code>commandHistory.xml</code> exceeds 5MB
+or is unintentionally modified.
 </td>
 </tr>
 </table>
 </div>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all spread white">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -756,7 +772,7 @@ restart the collation of history.
 <br>
 Format: <code>undo</code></p>
 </div>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all spread white">
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -769,12 +785,12 @@ Format: <code>undo</code></p>
 <ul>
 <li>
 <p><code>delete 1</code><br>
-<code>view</code><br>
+<code>viewAll</code><br>
 <code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
 </li>
 <li>
 <p><code>view 1</code><br>
-<code>view</code><br>
+<code>viewAll</code><br>
 <code>undo</code><br>
 The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
 </li>
@@ -1271,12 +1287,12 @@ Format: <code>logout</code></p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Add</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>add &lt;attraction&gt;</code> <code>&lt;maintenance&gt;</code> <code>&lt;waitTime&gt;</code> <code>&lt;address&gt;</code> <code>[tag(s)]</code><br>
-  e.g. add n/Mummy m/3 w/45 a/311, Clementi Ave 2, #02-25 t/3D t/indoor</p></td>
+e.g. add n/Mummy m/3 w/45 a/311, Clementi Ave 2, #02-25 t/3D t/indoor</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Delete</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>delete &lt;index&gt;</code><br>
-  e.g. delete 3</p></td>
+e.g. delete 3</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Update</strong></p></td>
@@ -1303,27 +1319,34 @@ Format: <code>logout</code></p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Help</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>help [option]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>help [more]</code>, <code>help [commandWord]</code><br>
+e.g. help add</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Autocomplete</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><kbd>TAB</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Using Autocomplete</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><kbd>TAB</kbd><br>
+e.g. dele<br>
+<kbd>TAB</kbd> completes the delete command word.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>History</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>history [option]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>history [more]</code><br>
+e.g. history more</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Undo</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>undo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>undo</code><br>
+e.g. undo</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Redo</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>redo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>redo</code><br>
+e.g. redo</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Exit</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>exit</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>exit</code><br>
+e.g. exit</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>View information on the list of rides</strong></p></td>
@@ -1354,4 +1377,4 @@ Format: <code>logout</code></p>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 14:08:47 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 14:26:53 UTC</div></div></div></body></html>
