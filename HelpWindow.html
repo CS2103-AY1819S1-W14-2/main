@@ -16,9 +16,9 @@
 <ul class="sectlevel2">
 <li><a href="#manage-attractions">4.1. Manage Attractions</a></li>
 <li><a href="#manage-commands">4.2. Manage commands</a></li>
-<li><a href="#view-information-on-the-list-of-rides">4.3. View information on the list of rides</a></li>
+<li><a href="#view-information-of-rides">4.3. View information of rides</a></li>
 <li><a href="#find-the-relevant-list-of-rides">4.4. Find the relevant list of rides</a></li>
-<li><a href="#see-commands-to-be-implemented-in-v2-0">4.5. See commands to be implemented in v2.0</a></li>
+<li><a href="#add-access-for-different-type-of-users">4.5. Add access for different type of users</a></li>
 </ul>
 </li>
 <li><a href="#faq">5. FAQ</a></li>
@@ -173,7 +173,7 @@ Example: if the command specifies n/name p/zone, p/zone n/name is also acceptabl
 <div class="sect3">
 <h4 id="adding-attractions-code-add-code"><a class="link" href="#adding-attractions-code-add-code">4.1.1. Adding attractions: <code>add</code></a></h4>
 <div class="paragraph">
-<p>Add an attraction by name with the information.<br>
+<p>Adds an attraction by name with the information.<br>
 Format: <code>add <code>&lt;attraction&gt;</code> <code>&lt;maintenance&gt;</code> <code>&lt;waitTime&gt;</code> <code>&lt;zone&gt;</code> [tag(s)]</code></p>
 </div>
 <div class="paragraph">
@@ -254,12 +254,36 @@ Format: <code>shutdown &lt;index&gt;</code></p>
 <p>Opens the ride for the day. Display statistics for the ride on that day.<br>
 Format: <code>open &lt;index&gt;</code></p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This command also resets the waiting time field to zero.
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect3">
 <h4 id="closing-attraction-for-maintenance-code-maintain-code"><a class="link" href="#closing-attraction-for-maintenance-code-maintain-code">4.1.6. Closing attraction for maintenance: <code>maintain</code></a></h4>
 <div class="paragraph">
 <p>Closes the ride for maintenance. Display statistics for the ride on that day.<br>
 Format: <code>maintain &lt;index&gt;</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This command also resets both waiting time and maintenance fields to zero.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
@@ -818,24 +842,16 @@ Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="view-information-on-the-list-of-rides"><a class="link" href="#view-information-on-the-list-of-rides">4.3. View information on the list of rides</a></h3>
+<h3 id="view-information-of-rides"><a class="link" href="#view-information-of-rides">4.3. View information of rides</a></h3>
 <div class="paragraph">
-<p>This section contains all commands related to viewing list on rides.</p>
+<p>This section contains all commands related to both viewing information of specific rides
+and viewing different lists of rides.</p>
 </div>
 <div class="sect3">
-<h4 id="viewing-all-available-rides-code-viewall-code"><a class="link" href="#viewing-all-available-rides-code-viewall-code">4.3.1. Viewing all available rides: <code>viewall</code></a></h4>
+<h4 id="viewing-detailed-information-of-a-specific-ride-code-view-code"><a class="link" href="#viewing-detailed-information-of-a-specific-ride-code-view-code">4.3.1. Viewing detailed information of a specific ride: <code>view</code></a></h4>
 <div class="paragraph">
-<p>Display all available rides in a list.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>viewall</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="viewing-detailed-information-of-a-specific-ride-code-view-code"><a class="link" href="#viewing-detailed-information-of-a-specific-ride-code-view-code">4.3.2. Viewing detailed information of a specific ride: <code>view</code></a></h4>
-<div class="paragraph">
-<p>Display all available information about a single ride on the list of displayed rides.
-<code>index</code> field specifies the index of the ride that the user wants to view.</p>
+<p>Displays all available information about a single ride on the list of displayed rides.
+The <code>index</code> field specifies the index of the ride that you want to view.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>view &lt;index&gt;</code></p>
@@ -847,16 +863,74 @@ Format: <code>exit</code></p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The range of <code>index</code> should be between one and one million.
+<code>index</code> should be a positive integer that is not larger than the size of the displayed list.
 </td>
 </tr>
 </table>
 </div>
+<div style="page-break-after: always;"></div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Example 1: <code>view 4</code></p>
+</div>
+<div class="paragraph">
+<p>Note how the information within the red box changes when <code>view 4</code> is executed.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ui_screenshots/view-example-1.png" alt="view example 1" width="600">
+</div>
+<div class="title">Figure 1. Before executing <code>view 4</code></div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ui_screenshots/view-example-2.png" alt="view example 2" width="600">
+</div>
+<div class="title">Figure 2. After executing <code>view 4</code></div>
+</div>
+<div class="paragraph">
+<p>When <code>view 4</code> is executed, the display shows the name, status, days since last maintenance and waiting time for  the selected ride.</p>
+</div>
+<div style="page-break-after: always;"></div>
+<div class="paragraph">
+<p>Example 2: <code>view 17</code></p>
+</div>
+<div class="paragraph">
+<p>Note how the information within the red box at the top changes when <code>view 17</code> is executed.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ui_screenshots/view-example-3.png" alt="view example 3" width="550">
+</div>
+<div class="title">Figure 3. Before executing <code>view 17</code></div>
+</div>
+<div class="paragraph">
+<p>The red box at the bottom of the diagram above shows the last ride, with an index of <strong>16</strong>.
+If you want to view a ride with an index larger than the list, an error message will be shown.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ui_screenshots/view-example-4.png" alt="view example 4" width="550">
+</div>
+<div class="title">Figure 4. After executing <code>view 17</code></div>
+</div>
+<div class="paragraph">
+<p>The red box in the diagram above shows the error message when you try to enter an index that is not in the list,</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
 </div>
 <div class="sect3">
-<h4 id="viewing-rides-by-their-status-code-viewstatus-code"><a class="link" href="#viewing-rides-by-their-status-code-viewstatus-code">4.3.3. Viewing rides by their status: <code>viewstatus</code></a></h4>
+<h4 id="viewing-rides-by-their-status-code-viewstatus-code"><a class="link" href="#viewing-rides-by-their-status-code-viewstatus-code">4.3.2. Viewing rides by their status: <code>viewstatus</code></a></h4>
 <div class="paragraph">
-<p>Display all rides according to the status of the rides.</p>
+<p>Displays all rides according to the status of the rides.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>viewstatus &lt;status&gt;</code></p>
@@ -873,6 +947,102 @@ There are only three statuses that are valid, namely open, shutdown and maintena
 </tr>
 </table>
 </div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Example 1: <code>viewstatus open</code></p>
+</div>
+<div class="paragraph">
+<p>Note how the information within the red boxes changes when the <code>viewstatus open</code> command is executed.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ui_screenshots/viewstatus-example-1.png" alt="viewstatus example 1" width="550">
+</div>
+<div class="title">Figure 5. Before executing <code>viewstatus open</code></div>
+</div>
+<div class="paragraph">
+<p>In the diagram above, note that the list of rides in the red box at the left contains rides with different statuses.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ui_screenshots/viewstatus-example-2.png" alt="viewstatus example 2" width="550">
+</div>
+<div class="title">Figure 6. After executing <code>viewstatus open</code></div>
+</div>
+<div class="paragraph">
+<p>As seen in the diagram above, once <code>viewstatus open</code> is executed, the list of rides in the box at the left only contains rides that are open.
+In addition, the response box at the top of the diagram displays the total number of rides that are open.</p>
+</div>
+<div class="paragraph">
+<p>Example 2: <code>viewstatus MainTenaNce</code></p>
+</div>
+<div class="paragraph">
+<p><code>viewstatus MainTenaNce</code> command accepts inputs with mixed cases in the status field.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ui_screenshots/viewstatus-example-3.png" alt="viewstatus example 3" width="550">
+</div>
+<div class="title">Figure 7. Before executing <code>viewstatus MainTenaNce</code> command</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ui_screenshots/viewstatus-example-4.png" alt="viewstatus example 4" width="550">
+</div>
+<div class="title">Figure 8. After executing <code>viewstatus MainTenaNce</code> command</div>
+</div>
+<div class="paragraph">
+<p>As seen in the diagram above, ThanePark is able to read <code>viewstatus MainTenaNce</code> and display rides with the status <code>MAINTENANCE</code>.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="viewing-all-available-rides-code-viewall-code"><a class="link" href="#viewing-all-available-rides-code-viewall-code">4.3.3. Viewing all available rides: <code>viewall</code></a></h4>
+<div class="paragraph">
+<p>Displays all available rides in a list.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>viewall</code></p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Example: <code>viewall</code></p>
+</div>
+<div class="paragraph">
+<p>Note how the information within the red boxes changes when the <code>viewall</code> command is executed.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ui_screenshots/viewall-example-1.png" alt="viewall example 1" width="540">
+</div>
+<div class="title">Figure 9. Before executing <code>viewall</code></div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ui_screenshots/viewall-example-2.png" alt="viewall example 2" width="540">
+</div>
+<div class="title">Figure 10. After executing <code>viewall</code></div>
+</div>
+<div class="paragraph">
+<p>As seen in the diagram above, the response box at the top of the diagram will display the total number of rides,
+with a break down of the total number of rides of different statuses.
+The list box at the left of the diagram is also updated to show all the rides in ThanePark, regardless of status.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -1043,9 +1213,21 @@ on the <code>BrowserPanel</code> or show the short help menu if no rides are fou
 </div>
 </div>
 <div class="sect2">
-<h3 id="see-commands-to-be-implemented-in-v2-0"><a class="link" href="#see-commands-to-be-implemented-in-v2-0">4.5. See commands to be implemented in v2.0</a></h3>
+<h3 id="add-access-for-different-type-of-users"><a class="link" href="#add-access-for-different-type-of-users">4.5. Add access for different type of users</a></h3>
 <div class="paragraph">
-<p>This section contains all commands that will be implemented in v2.0.</p>
+<p>This section contains all commands that is related to accessing the system.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+All commands in this section have not been implemented. They will be implemented in <code>v2.0</code>.
+</td>
+</tr>
+</table>
 </div>
 <div class="sect3">
 <h4 id="signing-up-as-a-user"><a class="link" href="#signing-up-as-a-user">4.5.1. Signing up as a user</a></h4>
@@ -1121,6 +1303,10 @@ Format: <code>logout</code></p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>open &lt;index&gt;</code></p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Maintain</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>maintain &lt;index&gt;</code></p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Clear</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>clear</code></p></td>
 </tr>
@@ -1160,11 +1346,11 @@ Format: <code>logout</code></p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>View</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>view</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>view &lt;index&gt;</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>View status</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>viewstatus &lt;name&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>viewstatus &lt;status&gt;</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Find the relevant list of rides</strong></p></td>
@@ -1180,4 +1366,4 @@ Format: <code>logout</code></p>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 05:21:58 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 08:53:47 UTC</div></div></div></body></html>

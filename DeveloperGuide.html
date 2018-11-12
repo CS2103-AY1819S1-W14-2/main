@@ -1084,17 +1084,27 @@ for result listing of results in <code>ResultDisplay</code>.</p>
 </div>
 <div class="sect2">
 <h3 id="view-status-feature"><a class="link" href="#view-status-feature">5.4. View Status Feature</a></h3>
+<div class="paragraph">
+<p>This section documents how <code>viewstatus</code> is being implemented.</p>
+</div>
 <div class="sect3">
 <h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">5.4.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The view status function is implemented with the help of <code>ViewStatusCommand</code> and <code>RideStatusPredicate</code> class.
-When the <code>ThaneParkParser</code> parses the user input and finds the view status command word <strong>viewstatus</strong>, it calls a new <code>ViewStatusCommandParser</code> to parse the arguments from the user input.</p>
+<p>The view status feature is implemented with the help of <code>ViewStatusCommand</code> and <code>RideStatusPredicate</code> classes.
+As seen in the sequence diagram below, when the <code>ThaneParkParser</code> class parses the user input of <code>viewstatus</code>,
+it calls a new <code>ViewStatusCommandParser</code> to parse the arguments from the user input.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/ViewStatusActivityDiagram.png" alt="ViewStatusActivityDiagram" width="800">
+<img src="images/ViewStatusSequenceDiagram.png" alt="ViewStatusSequenceDiagram" width="550">
 </div>
-<div class="title">Figure 16. Activity Diagram of <code>ViewStatusCommandParser</code></div>
+<div class="title">Figure 16. Sequence Diagram of the View Status feature</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ViewStatusActivityDiagram.png" alt="ViewStatusActivityDiagram" width="550">
+</div>
+<div class="title">Figure 17. Activity Diagram of <code>ViewStatusCommandParser</code></div>
 </div>
 <div class="paragraph">
 <p>As seen in the diagram above, the <code>ViewStatusCommandParser</code> class checks the arguments for keywords relating to the status of the rides.
@@ -1163,7 +1173,7 @@ features are very similar to each other.</p>
 <div class="content">
 <img src="images/OpenActivityDiagram.png" alt="OpenActivityDiagram" width="800">
 </div>
-<div class="title">Figure 17. Activity Diagram of <code>OpenCommand</code></div>
+<div class="title">Figure 18. Activity Diagram of <code>OpenCommand</code></div>
 </div>
 <div class="paragraph">
 <p>The following sequence diagram will show how the open/shutdown feature works:<br></p>
@@ -1172,7 +1182,7 @@ features are very similar to each other.</p>
 <div class="content">
 <img src="images/OpenSequenceDiagram.png" alt="OpenSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 18. Sequence Diagram for the Open Feature</div>
+<div class="title">Figure 19. Sequence Diagram for the Open Feature</div>
 </div>
 <div class="paragraph">
 <p>As seen in the diagram above, the <code>open</code> function is implemented with the help of <code>OpenCommand</code> and
@@ -1355,7 +1365,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 19. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 20. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 <div class="sect2">
@@ -2648,4 +2658,4 @@ Use case ends.</p>
 </dl>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 05:21:58 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 08:53:47 UTC</div></div></div></body></html>

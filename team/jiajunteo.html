@@ -11,16 +11,17 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>This portfolio serves to document my contributions to ThanePark.
-ThanePark is a project that I have done in my software engineering module(CS2103T), in year 2, semester 1.
-It is a desktop application used for theme park operators to manage their rides.</p>
+ThanePark is a desktop application used for theme park operators to manage their rides.
+It was managed and developed by a team of four members who spent three months on this project.
+This project is part of a software engineering module, CS2103T, offered by the School of Computing, National University of Singapore.</p>
 </div>
 <div class="paragraph">
 <p>A limitation set by the module is that the user has to interact with ThanePark using a Command Line Interface(CLI).
 It also has a Graphical User Interface(GUI) created with JavaFX.
-ThanePark is written in Java, and has about 10,000 lines of code.</p>
+ThanePark is written in Java, and has about 12,000 lines of code.</p>
 </div>
 <div class="paragraph">
-<p>My task in ThanePark is to implement the view status command to view rides of different statuses and to update documents.</p>
+<p>My role in ThanePark is to implement the <code>viewstatus</code> feature and to update documents.</p>
 </div>
 </div>
 </div>
@@ -30,32 +31,38 @@ ThanePark is written in Java, and has about 10,000 lines of code.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added the <code>viewstatus</code> command</p>
+<p><strong>Major enhancement</strong>: The addition of the <code>viewstatus</code> feature.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to obtain a list of rides filtered by the statuses of the rides.</p>
+<p>What it does: This feature allows the user to obtain a list of rides filtered by the statuses of the rides.</p>
 </li>
 <li>
-<p>Justification: Allows the user to find relevant rides with ease.</p>
+<p>Justification: This feature allows the user to find the relevant rides with ease.</p>
 </li>
 <li>
-<p>Highlight: This enhancement involved introduction a new predicate class, <code>RideStatusPredicate</code>,
+<p>Highlight: This feature introduces a new predicate class, <code>RideStatusPredicate</code>,
 to allow users to input a fixed set of statuses to compare values with the existing data.</p>
 </li>
 <li>
-<p>Credits: The view status feature is based on the way find feature works, with a <code>RideStatusPredicate</code> instead of a
+<p>Credits: This feature is based on the way find feature works, with a <code>RideStatusPredicate</code> instead of a
 <code>RideContainsKeywordsPredicate</code>.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>:</p>
+<p><strong>Minor enhancement</strong>: The addition of the <code>maintain</code> feature, which allows the user to update the status of a selected ride to <code>MAINTENANCE</code>.
+Also, the feature resets the maintenance and waiting time field to zero.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1819s1.github.io/cs2103-dashboard/#=undefined&amp;search=jiajunteo&amp;sort=displayName&amp;since=2018-09-12&amp;until=2018-11-11&amp;timeframe=day&amp;reverse=false&amp;repoSort=true">Functional and test code</a>]</p>
 </li>
+</ul>
+</div>
+<div style="page-break-after: always;"></div>
+<div class="ulist">
+<ul>
 <li>
 <p><strong>Other contributions</strong>:</p>
 <div class="ulist">
@@ -65,10 +72,16 @@ to allow users to input a fixed set of statuses to compare values with the exist
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Updated the section 4.3 of the User Guide on view information of rides [<a href="https://github.com/CS2103-AY1819S1-W14-2/main/pull/154">Pull Request #154</a>]</p>
+</li>
+<li>
+<p>Updated the section 5.4 of the Developer Guide on view status feature [<a href="https://github.com/CS2103-AY1819S1-W14-2/main/pull/101">Pull Request #101</a>]</p>
 </li>
 </ul>
 </div>
+</li>
+<li>
+<p>Community: Reported bugs for other teams in the class [<a href="https://github.com/CS2103-AY1819S1-T09-1/main/issues/144">T09-1 Issue #144</a>]</p>
 </li>
 </ul>
 </div>
@@ -92,24 +105,16 @@ They showcase my ability to write documentation targeting end-users.</em></p></t
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="view-information-on-the-list-of-rides"><a class="link" href="#view-information-on-the-list-of-rides">3.1. View information on the list of rides</a></h3>
+<h3 id="view-information-of-rides"><a class="link" href="#view-information-of-rides">3.1. View information of rides</a></h3>
 <div class="paragraph">
-<p>This section contains all commands related to viewing list on rides.</p>
+<p>This section contains all commands related to both viewing information of specific rides
+and viewing different lists of rides.</p>
 </div>
 <div class="sect3">
-<h4 id="viewing-all-available-rides-code-viewall-code"><a class="link" href="#viewing-all-available-rides-code-viewall-code">3.1.1. Viewing all available rides: <code>viewall</code></a></h4>
+<h4 id="viewing-detailed-information-of-a-specific-ride-code-view-code"><a class="link" href="#viewing-detailed-information-of-a-specific-ride-code-view-code">3.1.1. Viewing detailed information of a specific ride: <code>view</code></a></h4>
 <div class="paragraph">
-<p>Display all available rides in a list.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>viewall</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="viewing-detailed-information-of-a-specific-ride-code-view-code"><a class="link" href="#viewing-detailed-information-of-a-specific-ride-code-view-code">3.1.2. Viewing detailed information of a specific ride: <code>view</code></a></h4>
-<div class="paragraph">
-<p>Display all available information about a single ride on the list of displayed rides.
-<code>index</code> field specifies the index of the ride that the user wants to view.</p>
+<p>Displays all available information about a single ride on the list of displayed rides.
+The <code>index</code> field specifies the index of the ride that you want to view.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>view &lt;index&gt;</code></p>
@@ -121,16 +126,74 @@ They showcase my ability to write documentation targeting end-users.</em></p></t
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The range of <code>index</code> should be between one and one million.
+<code>index</code> should be a positive integer that is not larger than the size of the displayed list.
 </td>
 </tr>
 </table>
 </div>
+<div style="page-break-after: always;"></div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Example 1: <code>view 4</code></p>
+</div>
+<div class="paragraph">
+<p>Note how the information within the red box changes when <code>view 4</code> is executed.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ui_screenshots/view-example-1.png" alt="view example 1" width="600">
+</div>
+<div class="title">Figure 1. Before executing <code>view 4</code></div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ui_screenshots/view-example-2.png" alt="view example 2" width="600">
+</div>
+<div class="title">Figure 2. After executing <code>view 4</code></div>
+</div>
+<div class="paragraph">
+<p>When <code>view 4</code> is executed, the display shows the name, status, days since last maintenance and waiting time for  the selected ride.</p>
+</div>
+<div style="page-break-after: always;"></div>
+<div class="paragraph">
+<p>Example 2: <code>view 17</code></p>
+</div>
+<div class="paragraph">
+<p>Note how the information within the red box at the top changes when <code>view 17</code> is executed.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ui_screenshots/view-example-3.png" alt="view example 3" width="550">
+</div>
+<div class="title">Figure 3. Before executing <code>view 17</code></div>
+</div>
+<div class="paragraph">
+<p>The red box at the bottom of the diagram above shows the last ride, with an index of <strong>16</strong>.
+If you want to view a ride with an index larger than the list, an error message will be shown.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ui_screenshots/view-example-4.png" alt="view example 4" width="550">
+</div>
+<div class="title">Figure 4. After executing <code>view 17</code></div>
+</div>
+<div class="paragraph">
+<p>The red box in the diagram above shows the error message when you try to enter an index that is not in the list,</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
 </div>
 <div class="sect3">
-<h4 id="viewing-rides-by-their-status-code-viewstatus-code"><a class="link" href="#viewing-rides-by-their-status-code-viewstatus-code">3.1.3. Viewing rides by their status: <code>viewstatus</code></a></h4>
+<h4 id="viewing-rides-by-their-status-code-viewstatus-code"><a class="link" href="#viewing-rides-by-their-status-code-viewstatus-code">3.1.2. Viewing rides by their status: <code>viewstatus</code></a></h4>
 <div class="paragraph">
-<p>Display all rides according to the status of the rides.</p>
+<p>Displays all rides according to the status of the rides.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>viewstatus &lt;status&gt;</code></p>
@@ -147,6 +210,61 @@ There are only three statuses that are valid, namely open, shutdown and maintena
 </tr>
 </table>
 </div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Example 1: <code>viewstatus open</code></p>
+</div>
+<div class="paragraph">
+<p>Note how the information within the red boxes changes when the <code>viewstatus open</code> command is executed.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ui_screenshots/viewstatus-example-1.png" alt="viewstatus example 1" width="550">
+</div>
+<div class="title">Figure 5. Before executing <code>viewstatus open</code></div>
+</div>
+<div class="paragraph">
+<p>In the diagram above, note that the list of rides in the red box at the left contains rides with different statuses.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ui_screenshots/viewstatus-example-2.png" alt="viewstatus example 2" width="550">
+</div>
+<div class="title">Figure 6. After executing <code>viewstatus open</code></div>
+</div>
+<div class="paragraph">
+<p>As seen in the diagram above, once <code>viewstatus open</code> is executed, the list of rides in the box at the left only contains rides that are open.
+In addition, the response box at the top of the diagram displays the total number of rides that are open.</p>
+</div>
+<div class="paragraph">
+<p>Example 2: <code>viewstatus MainTenaNce</code></p>
+</div>
+<div class="paragraph">
+<p><code>viewstatus MainTenaNce</code> command accepts inputs with mixed cases in the status field.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ui_screenshots/viewstatus-example-3.png" alt="viewstatus example 3" width="550">
+</div>
+<div class="title">Figure 7. Before executing <code>viewstatus MainTenaNce</code> command</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ui_screenshots/viewstatus-example-4.png" alt="viewstatus example 4" width="550">
+</div>
+<div class="title">Figure 8. After executing <code>viewstatus MainTenaNce</code> command</div>
+</div>
+<div class="paragraph">
+<p>As seen in the diagram above, ThanePark is able to read <code>viewstatus MainTenaNce</code> and display rides with the status <code>MAINTENANCE</code>.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -160,23 +278,34 @@ There are only three statuses that are valid, namely open, shutdown and maintena
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide.
+They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
 </tr>
 </tbody>
 </table>
 <div class="sect2">
 <h3 id="view-status-feature"><a class="link" href="#view-status-feature">4.1. View Status Feature</a></h3>
+<div class="paragraph">
+<p>This section documents how <code>viewstatus</code> is being implemented.</p>
+</div>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">4.1.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The view status function is implemented with the help of <code>ViewStatusCommand</code> and <code>RideStatusPredicate</code> class.
-When the <code>ThaneParkParser</code> parses the user input and finds the view status command word <strong>viewstatus</strong>, it calls a new <code>ViewStatusCommandParser</code> to parse the arguments from the user input.</p>
+<p>The view status feature is implemented with the help of <code>ViewStatusCommand</code> and <code>RideStatusPredicate</code> classes.
+As seen in the sequence diagram below, when the <code>ThaneParkParser</code> class parses the user input of <code>viewstatus</code>,
+it calls a new <code>ViewStatusCommandParser</code> to parse the arguments from the user input.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/ViewStatusActivityDiagram.png" alt="ViewStatusActivityDiagram" width="800">
+<img src="../images/ViewStatusSequenceDiagram.png" alt="ViewStatusSequenceDiagram" width="550">
 </div>
-<div class="title">Figure 1. Activity Diagram of <code>ViewStatusCommandParser</code></div>
+<div class="title">Figure 9. Sequence Diagram of the View Status feature</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ViewStatusActivityDiagram.png" alt="ViewStatusActivityDiagram" width="550">
+</div>
+<div class="title">Figure 10. Activity Diagram of <code>ViewStatusCommandParser</code></div>
 </div>
 <div class="paragraph">
 <p>As seen in the diagram above, the <code>ViewStatusCommandParser</code> class checks the arguments for keywords relating to the status of the rides.
@@ -231,4 +360,4 @@ A list of filtered rides would be returned.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 05:21:58 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 08:53:47 UTC</div></div></div></body></html>
