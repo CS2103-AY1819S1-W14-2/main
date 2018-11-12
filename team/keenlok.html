@@ -14,13 +14,14 @@
 more specifically the contributions to this project Thane Park.<br></p>
 </div>
 <div class="paragraph">
-<p>Thane Park is a desktop application used for managing the rides and attractions in a theme park. The theme park manager
-and operators interacts with it using a Command Line Interface (CLI), and it has a Graphical User Interface (GUI) created
-with JavaFX. It is written in Java and has about 10 kLoc.<br></p>
+<p>Thane Park is a desktop application used for managing the rides and attractions in a theme park. The application allows
+theme park managers and operators to easily manage their theme park, finding the relevant information they need and updating
+the application as they desire  using a Command Line Interface (CLI), and it has a Graphical User Interface (GUI) created
+with JavaFX, to show them the relevant information about their attractions. It is written in Java and has about 10 kLoc.<br></p>
 </div>
 <div class="paragraph">
 <p>My role in the project is to manage the tests and storage in the application. I have also added and enhanced a couple of
-features, namely <code>Filter</code> and <code>Find</code>.</p>
+features, namely <code>filter</code> and <code>find</code>.</p>
 </div>
 </div>
 </div>
@@ -37,39 +38,40 @@ features, namely <code>Filter</code> and <code>Find</code>.</p>
 <p>What it does: This feature allows users to filter entries based on the conditions that they can input.</p>
 </li>
 <li>
-<p>Justification: This feature significantly improves the application because now, users don&#8217;t need to know the exact number
-or name of the ride that they want. They can simple specify a range and then the application will provide a list of entries
-that is within the range specified.</p>
+<p>Justification: This feature significantly improves the application as it offers users the ability to look for the rides
+that they need and do not need to go through each ride in the list that fits their requirements. They can simple specify
+a range and then the application will provide a list of entries that is within the range specified.</p>
 </li>
 <li>
 <p>Highlights: This enhancement introduces a new predicate class, <code>RideContainsConditionPredicate</code>, to allow
 users to input a range of values to compare values with the existing data.The attributes of the rides that contains numeric
-values are also abstracted out to create a new interface <code>Attribute</code> that the classes <code>Maintenance</code> and <code>WaitTime</code> implement.
+values are also abstracted out to create a new interface <code>NumericAttribute</code> that the classes <code>Maintenance</code> and <code>WaitTime</code> implement.
 This allows the implementation of the predicate class <code>AttributePredicate</code>, which enables it to store the user input and
 compare the values with the <code>Maintenance</code> and <code>WaitTime</code> of a ride class.</p>
 </li>
 <li>
-<p>Credits: The filter is based on the way find feature works, with a <code>RideContainsConditionPredicate</code> instead of a
-<code>RideContainsKeywordsPredicate</code>.</p>
+<p>Credits: The <code>filter</code> feature is based on the way the <code>find</code> feature works, with a <code>RideContainsConditionPredicate</code> instead of a
+<code>RideContainsKeywordsPredicate</code> to test the rides.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: <code>Find</code> can parse "address" and "tags" in addition to "a/" and "t/".</p>
+<p><strong>Minor enhancement</strong>: The <code>find</code> feature can now parse "zone" and "tags" in addition to "z/" and "t/".</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>]</p>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1819s1.github.io/cs2103-dashboard/#=undefined&amp;search=keenlok">Functional code</a>]</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Enhancements to existing features: Find can now search tags and addresses in addition to the names of the rides</p>
-</li>
+<p>Enhancements to the Project:</p>
+<div class="ulist">
+<ul>
 <li>
-<p>Project management: Reviewed Pull Requests(PR) on github.</p>
+<p>The <code>find</code> feature can now search tags and zones of the rides in addition to the names of the rides</p>
 </li>
 <li>
 <p>Refactored <code>Address Book</code> to <code>Thane Park</code> in the code.</p>
@@ -77,10 +79,31 @@ compare the values with the <code>Maintenance</code> and <code>WaitTime</code> o
 </ul>
 </div>
 </li>
+<li>
+<p>Project management: Reviewed Pull Requests(PR) on github:
+[<a href="https://github.com/CS2103-AY1819S1-W14-2/main/pulls?q=is%3Apr+is%3Aclosed+reviewed-by%3Akeenlok">Reviewed Pull Requests</a>]</p>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Updated the user guide for the <code>filter</code> and <code>find</code> features</p>
+</li>
+<li>
+<p>Updated the developer guide for the implementation of the <code>filter</code> feature with sequence and activity diagrams of how
+the <code>filter</code> command executes and works.</p>
+</li>
+<li>
+<p>Updated my personal portfolio page</p>
+</li>
 </ul>
 </div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -100,12 +123,108 @@ compare the values with the <code>Maintenance</code> and <code>WaitTime</code> o
 <div class="sect2">
 <h3 id="find-the-relevant-list-of-rides"><a class="link" href="#find-the-relevant-list-of-rides">3.1. Find the relevant list of rides</a></h3>
 <div class="paragraph">
-<p>This section contains all commands related to finding rides that is relevant to you.</p>
+<p>This section contains all commands related to finding rides that you need at any time.</p>
 </div>
 <div class="sect3">
-<h4 id="finding-rides-that-fits-the-given-condition-code-filter-code"><a class="link" href="#finding-rides-that-fits-the-given-condition-code-filter-code">3.1.1. Finding rides that fits the given condition: <code>filter</code></a></h4>
+<h4 id="finding-a-particular-attraction-code-find-code"><a class="link" href="#finding-a-particular-attraction-code-find-code">3.1.1. Finding a particular attraction: <code>find</code></a></h4>
 <div class="paragraph">
-<p>Display all rides that fits the condition in a table. It can only filter conditions that have numeric values i.e.
+<p>Find a list of rides that the you need to check on. Case insensitive.<br>
+Can only find the name, the zone, and the tags of the attractions.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>find &lt;[name] [[tag][keyword]&#8230;&#8203;]&gt;</code><br>
+Must include arguments when finding.<br></p>
+</div>
+<div class="paragraph">
+<p>Here are some examples with images to let you follow along.<br></p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find accelerator</code><br>
+Finds and displays the list of attractions in ThanePark with the name "accelerator".<br></p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You can only use <code>find</code> to look for a full word in the name. This means a part of the name like "accel" will not work
+and only the full name like "accelerator" will work.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The list of results should be like this if no changes were made to the application (ie. delete or add or update):<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ui_screenshots/find-example-1.png" alt="find example 1" width="600">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The input argument is case-insensitive i.e. "accelerator" and "Accelerator" should give the same result.
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find z/ sci-fi</code><br>
+Finds and displays the list of attractions with zones that contain the word "sci-fi".
+The list of results should look like this:</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ui_screenshots/find-example-2.png" alt="find example 2" width="600">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find zone sci-fi t/popular tag rollerCoaster</code><br>
+Finds and displays the list of attractions with zones in the theme park that contain the word "sci-fi" and the
+tags "rollerCoaster" and "popular".
+The list of results should look like this:</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ui_screenshots/find-example-3.png" alt="find example 3" width="600">
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="finding-rides-that-fits-the-given-condition-code-filter-code"><a class="link" href="#finding-rides-that-fits-the-given-condition-code-filter-code">3.1.2. Finding rides that fits the given condition: <code>filter</code></a></h4>
+<div class="paragraph">
+<p>Display all rides that fits the condition in a list. It can only filter conditions that have numeric values i.e.
 <code>Maintenance</code> and <code>WaitTime</code>.<br></p>
 </div>
 <div class="paragraph">
@@ -125,8 +244,8 @@ Can include more conditions as desired.<br></p>
 <ul>
 <li>
 <p><code>filter w/ &lt; 10</code><br>
-Filters attractions with waiting time less than 10 minutes. If no changes were made to your application
-(i.e. no delete, add commands were done), your window should look like this:<br></p>
+Filters attractions with waiting time less than 10 minutes.
+The list of results should like this if no changes were made to the application (ie. delete or add or update):<br></p>
 </li>
 </ul>
 </div>
@@ -138,9 +257,9 @@ Filters attractions with waiting time less than 10 minutes. If no changes were m
 <div class="ulist">
 <ul>
 <li>
-<p><code>filter w/ &lt; 10 m/ &gt; 50</code><br>
-Filters attractions with waiting time less than 500 and maintenance of more than 50 days.
-The result should be as follows:</p>
+<p><code>filter w/ &lt; 10 m/ &gt;= 50</code><br>
+Filters attractions with waiting time less than 10 and maintenance of more than equals 50 days.
+The list of results should look like this:</p>
 </li>
 </ul>
 </div>
@@ -148,67 +267,23 @@ The result should be as follows:</p>
 <div class="content">
 <img src="../images/ui_screenshots/filter-example-2.png" alt="filter example 2" width="600">
 </div>
-</div>
-<div class="sect3">
-<h4 id="finding-a-particular-attraction-code-find-code"><a class="link" href="#finding-a-particular-attraction-code-find-code">1. Finding a particular attraction: <code>find</code></a></h4>
-<div class="paragraph">
-<p>Find the rides that the user needs to check on. Case insensitive.<br>
-Can only find the name, the zone, and the tags of the attractions.<br></p>
-</div>
-<div class="paragraph">
-<p>Format: <code>find &lt;[name] [[tag][keyword]&#8230;&#8203;]&gt;</code><br>
-Must include arguments when finding.<br></p>
-</div>
-<div class="paragraph">
-<p>Here are some examples with images to let you follow along.<br></p>
-</div>
 </div></div></td>
 </tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p>a|
-Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>find accelerator</code><br>
-Finds and displays the list of attractions in ThanePark with the name "accelerator".</p>
-</li>
-</ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/ui_screenshots/find-example-1.png" alt="find example 1" width="600">
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>find z/ sci-fi</code><br>
-Finds and displays the list of attractions with zones that contain the word "sci-fi".</p>
-</li>
-</ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/ui_screenshots/find-example-2.png" alt="find example 2" width="600">
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>find zone sci-fi t/popular tag rollerCoaster</code><br>
-Finds and displays the list of attractions with addresses that contain the word "sci-fi" and the tags "rollerCoaster"
-and "popular"</p>
-</li>
-</ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/ui_screenshots/find-example-3.png" alt="find example 3" width="600">
-</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If a ride is selected, a <code>find</code> or <code>filter</code> is performed, the ride panel will still show the ride that was previously
+selected. Future versions will automatically select the first ride on the list and allow you to see information about it
+on the <code>BrowserPanel</code> or show the short help menu if no rides are found.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -230,12 +305,12 @@ and "popular"</p>
 <div class="sect2">
 <h3 id="filter-feature"><a class="link" href="#filter-feature">4.1. Filter Feature</a></h3>
 <div class="paragraph">
-<p>This section documents how filter is implemented and how it works.</p>
+<p>This section documents how <code>filter</code> is implemented and how it works.</p>
 </div>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">4.1.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The execution of filter is simple and linear as the following activity diagram would show:</p>
+<p>The execution of the <code>filter</code> command is simple and linear as the following activity diagram would show:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -244,7 +319,7 @@ and "popular"</p>
 <div class="title">Figure 1. Activity Diagram for the Filter Feature</div>
 </div>
 <div class="paragraph">
-<p>The following sequence diagram will show how the filter diagram works:<br></p>
+<p>The following sequence diagram will show how the <code>filter</code> command works:<br></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -253,25 +328,40 @@ and "popular"</p>
 <div class="title">Figure 2. Sequence Diagram for the Filter Feature</div>
 </div>
 <div class="paragraph">
-<p>The filter function is implemented with the help of <code>FilterCommand</code> and <code>AttributePredicate</code> class. When the
+<p>The feature is implemented with the help of <code>FilterCommand</code> and <code>AttributePredicate</code> class. When the
 <code>ThaneParkParser</code> parses the user input and finds the filter command word <code>filter</code> it calls a new <code>FilterCommandParser</code> to
 parse the arguments from the user input.</p>
 </div>
 <div class="paragraph">
 <p>It checks if there are any of the maintenance or waiting time prefix in the arguments. If any of the prefixes are present,
-an <code>AttributePredicate</code> is created with the operator (‘&lt;', ‘&gt;’, '&lt; =' or '&gt; =') and the attribute they are checking for (ie
-<code>Maintenance</code> or <code>WaitTime</code>). The AttributePredicates are added to a list. The user can add any amount of predicates that
-they want, like 3 predicates e.g. <code>filter w/&lt; 50 w/ &gt; 5 m/&gt;10</code> and the list would contain 3 predicates and if the user
-decides to input only one predicate, the list will only contain one.</p>
+an <code>AttributePredicate</code> is created with the operator (‘&lt;', ‘&gt;’, '&lt; =' or '&gt; =' or '==') and the <code>NumericAttribute</code> they
+are checking for (ie <code>Maintenance</code> or <code>WaitTime</code>). The <code>AttributePredicate</code>s are added to a list. The user can add any
+amount of predicates that they want, like 3 predicates e.g. <code>filter w/&lt; 50 w/ &gt; 5 m/&gt;10</code> and the list would contain 3
+predicates and if the user decides to input only one predicate, the list will only contain one.<br></p>
 </div>
 <div class="paragraph">
-<p>A new <code>RideContainsConditionPredicate</code> is instantiated with the list of AttributePredicates. The <code>FilterCommandParser</code> will
+<p>A new <code>RideContainsConditionPredicate</code> is instantiated with the list of <code>AttributePredicate</code>s. The <code>FilterCommandParser</code> will
 return a new <code>FilterCommand</code> with the <code>RideContainsConditionPredicate</code> in it.</p>
 </div>
 <div class="paragraph">
-<p>The <code>LogicManager</code> execute the command, and the <code>RideContainsConditionPredicate</code> will be set as the predicate to filter
-the list of rides and it will check if the ride fulfils the required predicate(s). After that a list of filtered rides
-would be returned after each ride is tested with the predicate.</p>
+<p>The <code>LogicManager</code> executes the command, and the <code>RideContainsConditionPredicate</code> will be set as the predicate to filter
+the list of rides and it will check if the ride fulfils the required predicate(s). The <code>RideContainsConditionPredicate</code>
+will test each ride using this method:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> <span class="type">boolean</span> test(Ride ride) {
+        <span class="keyword">return</span> attributePredicates.stream().allMatch(p -&gt; {
+            NumericAttribute attributeToTest = p.getAttribute();
+            NumericAttribute rideAttributeToTest = ride.getAttribute(attributeToTest);
+            <span class="keyword">return</span> p.test(rideAttributeToTest);
+        });
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So it should be pretty simple to add new <code>NumericAttribute</code>s to the rides like ratings if you wish to with minimal
+changes to other classes. After that a list of filtered rides would be returned after each ride is tested with the predicate.</p>
 </div>
 </div>
 <div class="sect3">
@@ -289,7 +379,7 @@ AttributePredicate to test the attribute</p>
 <p>Pros: More numeric attributes can be easily added  and minimal changes are required to filter new attributes</p>
 </li>
 <li>
-<p>Cons: More classes would need to be implemented to handle the</p>
+<p>Cons: More classes would need to be implemented to handle this feature</p>
 </li>
 </ul>
 </div>
@@ -299,7 +389,7 @@ AttributePredicate to test the attribute</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: This would be easier to implement as classes no need to abstracted</p>
+<p>Pros: Classes do not need to abstracted, and thus would be easier to implement</p>
 </li>
 <li>
 <p>Cons: RideContainsConditionPredicate would carry out parsing functions which would make it less cohesive</p>
@@ -313,4 +403,4 @@ AttributePredicate to test the attribute</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 15:58:20 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 05:00:05 UTC</div></div></div></body></html>

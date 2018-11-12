@@ -844,12 +844,12 @@ If the <code>currentStatePointer</code> is at index <code>ThaneParkStateList.siz
 <div class="sect2">
 <h3 id="filter-feature"><a class="link" href="#filter-feature">5.2. Filter Feature</a></h3>
 <div class="paragraph">
-<p>This section documents how filter is implemented and how it works.</p>
+<p>This section documents how <code>filter</code> is implemented and how it works.</p>
 </div>
 <div class="sect3">
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">5.2.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The execution of filter is simple and linear as the following activity diagram would show:</p>
+<p>The execution of the <code>filter</code> command is simple and linear as the following activity diagram would show:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -858,7 +858,7 @@ If the <code>currentStatePointer</code> is at index <code>ThaneParkStateList.siz
 <div class="title">Figure 10. Activity Diagram for the Filter Feature</div>
 </div>
 <div class="paragraph">
-<p>The following sequence diagram will show how the filter diagram works:<br></p>
+<p>The following sequence diagram will show how the <code>filter</code> command works:<br></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -867,25 +867,40 @@ If the <code>currentStatePointer</code> is at index <code>ThaneParkStateList.siz
 <div class="title">Figure 11. Sequence Diagram for the Filter Feature</div>
 </div>
 <div class="paragraph">
-<p>The filter function is implemented with the help of <code>FilterCommand</code> and <code>AttributePredicate</code> class. When the
+<p>The feature is implemented with the help of <code>FilterCommand</code> and <code>AttributePredicate</code> class. When the
 <code>ThaneParkParser</code> parses the user input and finds the filter command word <code>filter</code> it calls a new <code>FilterCommandParser</code> to
 parse the arguments from the user input.</p>
 </div>
 <div class="paragraph">
 <p>It checks if there are any of the maintenance or waiting time prefix in the arguments. If any of the prefixes are present,
-an <code>AttributePredicate</code> is created with the operator (‘&lt;', ‘&gt;’, '&lt; =' or '&gt; =') and the attribute they are checking for (ie
-<code>Maintenance</code> or <code>WaitTime</code>). The AttributePredicates are added to a list. The user can add any amount of predicates that
-they want, like 3 predicates e.g. <code>filter w/&lt; 50 w/ &gt; 5 m/&gt;10</code> and the list would contain 3 predicates and if the user
-decides to input only one predicate, the list will only contain one.</p>
+an <code>AttributePredicate</code> is created with the operator (‘&lt;', ‘&gt;’, '&lt; =' or '&gt; =' or '==') and the <code>NumericAttribute</code> they
+are checking for (ie <code>Maintenance</code> or <code>WaitTime</code>). The <code>AttributePredicate</code>s are added to a list. The user can add any
+amount of predicates that they want, like 3 predicates e.g. <code>filter w/&lt; 50 w/ &gt; 5 m/&gt;10</code> and the list would contain 3
+predicates and if the user decides to input only one predicate, the list will only contain one.<br></p>
 </div>
 <div class="paragraph">
-<p>A new <code>RideContainsConditionPredicate</code> is instantiated with the list of AttributePredicates. The <code>FilterCommandParser</code> will
+<p>A new <code>RideContainsConditionPredicate</code> is instantiated with the list of <code>AttributePredicate</code>s. The <code>FilterCommandParser</code> will
 return a new <code>FilterCommand</code> with the <code>RideContainsConditionPredicate</code> in it.</p>
 </div>
 <div class="paragraph">
-<p>The <code>LogicManager</code> execute the command, and the <code>RideContainsConditionPredicate</code> will be set as the predicate to filter
-the list of rides and it will check if the ride fulfils the required predicate(s). After that a list of filtered rides
-would be returned after each ride is tested with the predicate.</p>
+<p>The <code>LogicManager</code> executes the command, and the <code>RideContainsConditionPredicate</code> will be set as the predicate to filter
+the list of rides and it will check if the ride fulfils the required predicate(s). The <code>RideContainsConditionPredicate</code>
+will test each ride using this method:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> <span class="type">boolean</span> test(Ride ride) {
+        <span class="keyword">return</span> attributePredicates.stream().allMatch(p -&gt; {
+            NumericAttribute attributeToTest = p.getAttribute();
+            NumericAttribute rideAttributeToTest = ride.getAttribute(attributeToTest);
+            <span class="keyword">return</span> p.test(rideAttributeToTest);
+        });
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So it should be pretty simple to add new <code>NumericAttribute</code>s to the rides like ratings if you wish to with minimal
+changes to other classes. After that a list of filtered rides would be returned after each ride is tested with the predicate.</p>
 </div>
 </div>
 <div class="sect3">
@@ -903,7 +918,7 @@ AttributePredicate to test the attribute</p>
 <p>Pros: More numeric attributes can be easily added  and minimal changes are required to filter new attributes</p>
 </li>
 <li>
-<p>Cons: More classes would need to be implemented to handle the</p>
+<p>Cons: More classes would need to be implemented to handle this feature</p>
 </li>
 </ul>
 </div>
@@ -913,7 +928,7 @@ AttributePredicate to test the attribute</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: This would be easier to implement as classes no need to abstracted</p>
+<p>Pros: Classes do not need to abstracted, and thus would be easier to implement</p>
 </li>
 <li>
 <p>Cons: RideContainsConditionPredicate would carry out parsing functions which would make it less cohesive</p>
@@ -2633,4 +2648,4 @@ Use case ends.</p>
 </dl>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 15:58:20 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 05:00:05 UTC</div></div></div></body></html>
