@@ -885,7 +885,7 @@ return a new <code>FilterCommand</code> with the <code>RideContainsConditionPred
 <div class="paragraph">
 <p>The <code>LogicManager</code> executes the command, and the <code>RideContainsConditionPredicate</code> will be set as the predicate to filter
 the list of rides and it will check if the ride fulfils the required predicate(s). The <code>RideContainsConditionPredicate</code>
-will test each ride using this method:</p>
+will test if each ride fulfills the required conditions using this method:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -900,7 +900,8 @@ will test each ride using this method:</p>
 </div>
 <div class="paragraph">
 <p>So it should be pretty simple to add new <code>NumericAttribute</code>s to the rides like ratings if you wish to with minimal
-changes to other classes. After that a list of filtered rides would be returned after each ride is tested with the predicate.</p>
+changes to other classes, as long as relevant methods are added to <code>FilterCommandParser</code> to handle the new <code>NumericAttribute</code>s.
+After all of the rides in the application are tested, a list of filtered rides would be returned and shown to the user.</p>
 </div>
 </div>
 <div class="sect3">
@@ -910,7 +911,7 @@ changes to other classes. After that a list of filtered rides would be returned 
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1(Current Choice):</strong> Abstracting attributes that contain numeric values into a separate class and creating a
+<p><strong>Alternative 1(Current Choice):</strong> Abstract attributes that contain numeric values into a separate class and create a
 AttributePredicate to test the attribute</p>
 <div class="ulist">
 <ul>
@@ -924,7 +925,7 @@ AttributePredicate to test the attribute</p>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Gives the entire string condition to the RideContainsConditionPredicate to test.</p>
+<p><strong>Alternative 2:</strong> Give the entire string condition to the RideContainsConditionPredicate to test.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -2658,4 +2659,4 @@ Use case ends.</p>
 </dl>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 08:53:47 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 10:32:35 UTC</div></div></div></body></html>
