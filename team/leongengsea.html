@@ -49,11 +49,11 @@ easily.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to open and shutdown rides in ThanePark</strong></p>
+<p><strong>Major enhancement</strong>: Added <strong>the ability to open and shutdown rides in ThanePark</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to open and shutdown rides easily.</p>
+<p>It allows the user to open and shutdown rides easily.</p>
 </li>
 <li>
 <p>Justification: This feature improves the product significantly because a user can open/shutdown rides with a single
@@ -75,7 +75,7 @@ in <code>open</code>, <code>shutdown</code>, or <code>maintenance</code> status.
 </li>
 <li>
 <p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1819s1.github.io/cs2103-dashboard/#=undefined&amp;search=leongengsea">Functional
-code</a>]</p>
+code and test code</a>]</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -123,10 +123,35 @@ the <code>open</code> command works.</p>
 <h4 id="adding-attractions-code-add-code"><a class="link" href="#adding-attractions-code-add-code">3.1. Adding attractions: <code>add</code></a></h4>
 <div class="paragraph">
 <p>Adds an attraction by name with the information.<br>
-Format: <code>add <code>&lt;attraction&gt;</code> <code>&lt;maintenance&gt;</code> <code>&lt;waitTime&gt;</code> <code>&lt;zone&gt;</code> [tag(s)]</code></p>
+Format: <code>add <code>&lt;n/attraction&gt;</code> <code>&lt;m/maintenance&gt;</code> <code>&lt;w/waitTime&gt;</code> <code>&lt;z/zone&gt;</code> [t/tag(s)]</code></p>
 </div>
 <div class="paragraph">
 <p>A ride can have any number of tags (including 0).<br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Maintenance and waiting time should only contain positive integers with at least 1 digit long and should be less than
+1 billion.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The length limit for zone and tag(s) field is 40 characters.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -134,10 +159,10 @@ Format: <code>add <code>&lt;attraction&gt;</code> <code>&lt;maintenance&gt;</cod
 <div class="ulist">
 <ul>
 <li>
-<p>add n/Transformers m/1 w/30 a/John street, block 123, #01-01</p>
+<p>add n/Transformers m/1 w/30 z/John street, block 123, #01-01</p>
 </li>
 <li>
-<p>add n/The Mummy m/3 w/45 a/311, Clementi Ave 2, #02-25 t/3D t/indoor</p>
+<p>add n/The Mummy m/3 w/45 z/311, Clementi Ave 2, #02-25 t/3D t/indoor</p>
 </li>
 </ul>
 </div>
@@ -186,8 +211,65 @@ Deletes the 1st ride in the results of the find command.</p>
 <div class="sect3">
 <h4 id="updating-information-of-attraction-code-update-code"><a class="link" href="#updating-information-of-attraction-code-update-code">3.3. Updating information of attraction: <code>update</code></a></h4>
 <div class="paragraph">
-<p>Updates the information <code>&lt;tag&gt;</code> with <code>&lt;value&gt;</code> about the ride with <code>&lt;index&gt;</code>.<br>
-Format: <code>update &lt;index&gt; &lt;tag&gt; &lt;value&gt;</code></p>
+<p>Updates the details of the ride identified by the index number used in the displayed ride list.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The length limit for zone and tag(s) field is 40 characters.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Format: <code>update &lt;index&gt; &lt;prefix/value&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Parameters: INDEX (must be a positive integer) [n/NAME] [m/MAINTENANCE] [w/WAITING_TIME] [z/ZONE] [t/TAG].</p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>update 1 m/90</code><br>
+Updates the 1st ride in ThanePark.</p>
+</li>
+<li>
+<p><code>update 2 m/90 w/60</code><br>
+Updates the 2nd ride in ThanePark.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This command cannot update the waiting time and maintenance field when the ride is not open.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Maintenance and waiting time should only contain positive integers with at least 1 digit long and should be less than
+1 billion.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
@@ -196,12 +278,75 @@ Format: <code>update &lt;index&gt; &lt;tag&gt; &lt;value&gt;</code></p>
 <p>Closes the ride for the day. Display statistics for the ride on that day.<br>
 Format: <code>shutdown &lt;index&gt;</code></p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This command will reset the waiting time field to zero.
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Example : <code>shutdown 1</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>shutdown 1</code><br>
+Closes the 1st ride in ThanePark.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>As seen in the diagram below, the status of the 1st ride changes from <code>open</code> to <code>shutdown</code> within the red box after
+<code>shutdown 1</code> is executed.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ui_screenshots/shutdown-example-1.png" alt="shutdown example 1" width="600">
+</div>
+<div class="title">Figure 1. Before executing <code>shutdown 1</code></div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ui_screenshots/shutdown-example-2.png" alt="shutdown example 2" width="600">
+</div>
+<div class="title">Figure 2. After executing <code>shutdown 1</code></div>
+</div>
+<div class="paragraph">
+<p>After <code>shutdown 1</code> is executed, the name, status, days since last maintenance, waiting time, zone and tags for
+the ride is displayed.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect3">
 <h4 id="opening-attraction-code-open-code"><a class="link" href="#opening-attraction-code-open-code">3.5. Opening attraction: <code>open</code></a></h4>
 <div class="paragraph">
 <p>Opens the ride for the day. Display statistics for the ride on that day.<br>
 Format: <code>open &lt;index&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>open 2</code><br>
+Opens the 2nd ride in ThanePark.</p>
+</li>
+</ul>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -247,7 +392,7 @@ features are very similar to each other.</p>
 <div class="content">
 <img src="../images/OpenActivityDiagram.png" alt="OpenActivityDiagram" width="800">
 </div>
-<div class="title">Figure 1. Activity Diagram of <code>OpenCommand</code></div>
+<div class="title">Figure 3. Activity Diagram of <code>OpenCommand</code></div>
 </div>
 <div class="paragraph">
 <p>The following sequence diagram will show how the open/shutdown feature works:<br></p>
@@ -256,7 +401,7 @@ features are very similar to each other.</p>
 <div class="content">
 <img src="../images/OpenSequenceDiagram.png" alt="OpenSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 2. Sequence Diagram for the Open Feature</div>
+<div class="title">Figure 4. Sequence Diagram for the Open Feature</div>
 </div>
 <div class="paragraph">
 <p>As seen in the diagram above, the <code>open</code> function is implemented with the help of <code>OpenCommand</code> and
@@ -316,4 +461,4 @@ separate class instead of <code>openCommand</code> class.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 14:26:53 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 14:40:29 UTC</div></div></div></body></html>

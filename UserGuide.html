@@ -187,10 +187,35 @@ Example: if the command specifies n/name p/zone, p/zone n/name is also acceptabl
 <h4 id="adding-attractions-code-add-code"><a class="link" href="#adding-attractions-code-add-code">4.1.1. Adding attractions: <code>add</code></a></h4>
 <div class="paragraph">
 <p>Adds an attraction by name with the information.<br>
-Format: <code>add <code>&lt;attraction&gt;</code> <code>&lt;maintenance&gt;</code> <code>&lt;waitTime&gt;</code> <code>&lt;zone&gt;</code> [tag(s)]</code></p>
+Format: <code>add <code>&lt;n/attraction&gt;</code> <code>&lt;m/maintenance&gt;</code> <code>&lt;w/waitTime&gt;</code> <code>&lt;z/zone&gt;</code> [t/tag(s)]</code></p>
 </div>
 <div class="paragraph">
 <p>A ride can have any number of tags (including 0).<br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Maintenance and waiting time should only contain positive integers with at least 1 digit long and should be less than
+1 billion.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The length limit for zone and tag(s) field is 40 characters.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -198,10 +223,10 @@ Format: <code>add <code>&lt;attraction&gt;</code> <code>&lt;maintenance&gt;</cod
 <div class="ulist">
 <ul>
 <li>
-<p>add n/Transformers m/1 w/30 a/John street, block 123, #01-01</p>
+<p>add n/Transformers m/1 w/30 z/John street, block 123, #01-01</p>
 </li>
 <li>
-<p>add n/The Mummy m/3 w/45 a/311, Clementi Ave 2, #02-25 t/3D t/indoor</p>
+<p>add n/The Mummy m/3 w/45 z/311, Clementi Ave 2, #02-25 t/3D t/indoor</p>
 </li>
 </ul>
 </div>
@@ -250,8 +275,65 @@ Deletes the 1st ride in the results of the find command.</p>
 <div class="sect3">
 <h4 id="updating-information-of-attraction-code-update-code"><a class="link" href="#updating-information-of-attraction-code-update-code">4.1.3. Updating information of attraction: <code>update</code></a></h4>
 <div class="paragraph">
-<p>Updates the information <code>&lt;tag&gt;</code> with <code>&lt;value&gt;</code> about the ride with <code>&lt;index&gt;</code>.<br>
-Format: <code>update &lt;index&gt; &lt;tag&gt; &lt;value&gt;</code></p>
+<p>Updates the details of the ride identified by the index number used in the displayed ride list.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The length limit for zone and tag(s) field is 40 characters.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Format: <code>update &lt;index&gt; &lt;prefix/value&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Parameters: INDEX (must be a positive integer) [n/NAME] [m/MAINTENANCE] [w/WAITING_TIME] [z/ZONE] [t/TAG].</p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>update 1 m/90</code><br>
+Updates the 1st ride in ThanePark.</p>
+</li>
+<li>
+<p><code>update 2 m/90 w/60</code><br>
+Updates the 2nd ride in ThanePark.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This command cannot update the waiting time and maintenance field when the ride is not open.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Maintenance and waiting time should only contain positive integers with at least 1 digit long and should be less than
+1 billion.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
@@ -260,12 +342,75 @@ Format: <code>update &lt;index&gt; &lt;tag&gt; &lt;value&gt;</code></p>
 <p>Closes the ride for the day. Display statistics for the ride on that day.<br>
 Format: <code>shutdown &lt;index&gt;</code></p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This command will reset the waiting time field to zero.
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Example : <code>shutdown 1</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>shutdown 1</code><br>
+Closes the 1st ride in ThanePark.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>As seen in the diagram below, the status of the 1st ride changes from <code>open</code> to <code>shutdown</code> within the red box after
+<code>shutdown 1</code> is executed.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ui_screenshots/shutdown-example-1.png" alt="shutdown example 1" width="600">
+</div>
+<div class="title">Figure 1. Before executing <code>shutdown 1</code></div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ui_screenshots/shutdown-example-2.png" alt="shutdown example 2" width="600">
+</div>
+<div class="title">Figure 2. After executing <code>shutdown 1</code></div>
+</div>
+<div class="paragraph">
+<p>After <code>shutdown 1</code> is executed, the name, status, days since last maintenance, waiting time, zone and tags for
+the ride is displayed.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect3">
 <h4 id="opening-attraction-code-open-code"><a class="link" href="#opening-attraction-code-open-code">4.1.5. Opening attraction: <code>open</code></a></h4>
 <div class="paragraph">
 <p>Opens the ride for the day. Display statistics for the ride on that day.<br>
 Format: <code>open &lt;index&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>open 2</code><br>
+Opens the 2nd ride in ThanePark.</p>
+</li>
+</ul>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -901,13 +1046,13 @@ The <code>index</code> field specifies the index of the ride that you want to vi
 <div class="content">
 <img src="images/ui_screenshots/view-example-1.png" alt="view example 1" width="600">
 </div>
-<div class="title">Figure 1. Before executing <code>view 4</code></div>
+<div class="title">Figure 3. Before executing <code>view 4</code></div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/ui_screenshots/view-example-2.png" alt="view example 2" width="600">
 </div>
-<div class="title">Figure 2. After executing <code>view 4</code></div>
+<div class="title">Figure 4. After executing <code>view 4</code></div>
 </div>
 <div class="paragraph">
 <p>When <code>view 4</code> is executed, the display shows the name, status, days since last maintenance and waiting time for  the selected ride.</p>
@@ -923,7 +1068,7 @@ The <code>index</code> field specifies the index of the ride that you want to vi
 <div class="content">
 <img src="images/ui_screenshots/view-example-3.png" alt="view example 3" width="550">
 </div>
-<div class="title">Figure 3. Before executing <code>view 17</code></div>
+<div class="title">Figure 5. Before executing <code>view 17</code></div>
 </div>
 <div class="paragraph">
 <p>The red box at the bottom of the diagram above shows the last ride, with an index of <strong>16</strong>.
@@ -933,7 +1078,7 @@ If you want to view a ride with an index larger than the list, an error message 
 <div class="content">
 <img src="images/ui_screenshots/view-example-4.png" alt="view example 4" width="550">
 </div>
-<div class="title">Figure 4. After executing <code>view 17</code></div>
+<div class="title">Figure 6. After executing <code>view 17</code></div>
 </div>
 <div class="paragraph">
 <p>The red box in the diagram above shows the error message when you try to enter an index that is not in the list,</p>
@@ -979,7 +1124,7 @@ There are only three statuses that are valid, namely open, shutdown and maintena
 <div class="content">
 <img src="images/ui_screenshots/viewstatus-example-1.png" alt="viewstatus example 1" width="550">
 </div>
-<div class="title">Figure 5. Before executing <code>viewstatus open</code></div>
+<div class="title">Figure 7. Before executing <code>viewstatus open</code></div>
 </div>
 <div class="paragraph">
 <p>In the diagram above, note that the list of rides in the red box at the left contains rides with different statuses.</p>
@@ -988,7 +1133,7 @@ There are only three statuses that are valid, namely open, shutdown and maintena
 <div class="content">
 <img src="images/ui_screenshots/viewstatus-example-2.png" alt="viewstatus example 2" width="550">
 </div>
-<div class="title">Figure 6. After executing <code>viewstatus open</code></div>
+<div class="title">Figure 8. After executing <code>viewstatus open</code></div>
 </div>
 <div class="paragraph">
 <p>As seen in the diagram above, once <code>viewstatus open</code> is executed, the list of rides in the box at the left only contains rides that are open.
@@ -1004,13 +1149,13 @@ In addition, the response box at the top of the diagram displays the total numbe
 <div class="content">
 <img src="images/ui_screenshots/viewstatus-example-3.png" alt="viewstatus example 3" width="550">
 </div>
-<div class="title">Figure 7. Before executing <code>viewstatus MainTenaNce</code> command</div>
+<div class="title">Figure 9. Before executing <code>viewstatus MainTenaNce</code> command</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/ui_screenshots/viewstatus-example-4.png" alt="viewstatus example 4" width="550">
 </div>
-<div class="title">Figure 8. After executing <code>viewstatus MainTenaNce</code> command</div>
+<div class="title">Figure 10. After executing <code>viewstatus MainTenaNce</code> command</div>
 </div>
 <div class="paragraph">
 <p>As seen in the diagram above, ThanePark is able to read <code>viewstatus MainTenaNce</code> and display rides with the status <code>MAINTENANCE</code>.</p>
@@ -1043,13 +1188,13 @@ In addition, the response box at the top of the diagram displays the total numbe
 <div class="content">
 <img src="images/ui_screenshots/viewall-example-1.png" alt="viewall example 1" width="540">
 </div>
-<div class="title">Figure 9. Before executing <code>viewall</code></div>
+<div class="title">Figure 11. Before executing <code>viewall</code></div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/ui_screenshots/viewall-example-2.png" alt="viewall example 2" width="540">
 </div>
-<div class="title">Figure 10. After executing <code>viewall</code></div>
+<div class="title">Figure 12. After executing <code>viewall</code></div>
 </div>
 <div class="paragraph">
 <p>As seen in the diagram above, the response box at the top of the diagram will display the total number of rides,
@@ -1286,17 +1431,18 @@ Format: <code>logout</code></p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Add</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>add &lt;attraction&gt;</code> <code>&lt;maintenance&gt;</code> <code>&lt;waitTime&gt;</code> <code>&lt;address&gt;</code> <code>[tag(s)]</code><br>
-e.g. add n/Mummy m/3 w/45 a/311, Clementi Ave 2, #02-25 t/3D t/indoor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>add &lt;n/attraction&gt;</code> <code>&lt;m/maintenance&gt;</code> <code>&lt;w/waitTime&gt;</code> <code>&lt;z/zone&gt;</code> <code>[t/tag(s)]</code><br>
+  e.g. add n/Mummy m/3 w/45 z/311, Clementi Ave 2, #02-25 t/3D t/indoor</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Delete</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>delete &lt;index&gt;</code><br>
-e.g. delete 3</p></td>
+  e.g. delete 3</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Update</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>update &lt;index&gt; &lt;tag&gt; &lt;value&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>update &lt;index&gt; &lt;prefix/value&gt;</code><br>
+  e.g. update 2 m/90 w/60</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Shutdown</strong></p></td>
@@ -1377,4 +1523,4 @@ e.g. exit</p></td>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 14:26:53 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 14:40:29 UTC</div></div></div></body></html>
